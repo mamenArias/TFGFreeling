@@ -13,5 +13,27 @@
     <string name="el">Él</string>
     <string name="ella">Ella</string>
     <string name="elle">Elle</string>
-
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="hombreTrans">Hombre Trans</string>
+    <string name="mujerTrans">Mujer Trans</string>
+    <string name="androgino">Andrógino</string>
+    <string name="neutro">Género Neutro</string>
+    <string name="queer">Queer</string>
+    <string name="noBinario">No Binario</string>
+    <string name="agenero">Agénero</string>
+    <string name="bigenero">Bigénero</string>
+    <string name="fluido">Género Fluido</string>
+    <string name="poligenero">Poligénero</string>
+    <string name="intergenero">Intergénero</string>
+    <string name="hetero">Heterosexual</string>
+    <string name="homo">Homosexual</string>
+    <string name="bisexual">Bisexual</string>
+    <string name="pansexual">Pansexual</string>
+    <string name="asexual">Asexual</string>
+    <string name="demisexual">Demisexual</string>
+    <string name="lightsexual">Lightsexual</string>
+    <string name="autosexual">Autosexual</string>
+    <string name="antrosexual">Antrosexual</string>
+    <string name="polisexual">Polisexual</string>
 </resources>

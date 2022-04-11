@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Freeling</string>
+    <string name="email">Email</string>
+    <string name="passw">Contraseña</string>
+    <string name="inicioSesion">Iniciar Sesión</string>
+    <string name="registro">Registrarse</string>
+    <string name="cuentaNoRegistrada">¿No tienes cuenta? ¡Regístrate!</string>
+    <string name="logoApp">Logo de la App</string>
+    <string name="fotoPerfil">Foto de perfil</string>
+    <string name="nombreUsuario">Nombre de Usuario</string>
+    <string name="edad">Edad</string>
+    <string name="intereses">Describe tus intereses: música, cine, videojuegos...</string>
 </resources>

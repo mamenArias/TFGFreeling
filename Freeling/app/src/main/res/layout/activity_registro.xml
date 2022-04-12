@@ -41,7 +41,7 @@
 
         <EditText
             android:id="@+id/campoUsuarioRegistro"
-            android:layout_width="270dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -76,7 +76,7 @@
 
         <EditText
             android:id="@+id/campoPasswRegistro"
-            android:layout_width="270dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -111,7 +111,7 @@
 
         <EditText
             android:id="@+id/campoNombreRegistro"
-            android:layout_width="160dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -146,7 +146,7 @@
 
         <Spinner
             android:id="@+id/spinnerPronombreRegistro"
-            android:layout_width="105dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/campoNombreRegistro"
             app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +157,7 @@
 
         <Spinner
             android:id="@+id/spinnerGeneroRegistro"
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -170,7 +170,7 @@
 
         <Spinner
             android:id="@+id/spinnerOrientacSexRegistro"
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -183,7 +183,7 @@
 
         <EditText
             android:id="@+id/campoEdadRegistro"
-            android:layout_width="270dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -224,7 +224,7 @@
             android:fontFamily="@font/avertaregular"
             android:text="@string/rangoEdad"
             android:textColor="@color/azulOscuro"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/lblGuion"
             app:layout_constraintEnd_toEndOf="@+id/edadMax"
@@ -284,7 +284,7 @@
 
         <EditText
             android:id="@+id/campoInteresesRegistro"
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -298,13 +298,12 @@
             android:scrollbars="vertical"
             android:textAlignment="viewStart"
             android:textColor="@color/white"
-            tools:ignore="TextContrastCheck"
             app:layout_constraintBottom_toTopOf="@+id/botonRegistrarUsuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblGuion"
-    />
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/botonRegistrarUsuario"

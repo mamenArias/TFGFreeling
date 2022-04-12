@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freeling">
         <activity
+            android:name=".EncuentroActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
             android:name=".ActivityRegistro"
             android:screenOrientation="portrait"
             android:exported="false" />

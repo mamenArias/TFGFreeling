@@ -57,6 +57,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx:24.1.0'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:1.2.0"
 }
 repositories {
     mavenCentral()

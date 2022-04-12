@@ -17,9 +17,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/LogoConIDiferenteConSombra"
+        app:srcCompat="@drawable/logoconidiferenteconsombra"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/LogoConIDiferenteConSombra" />
+        tools:srcCompat="@drawable/logoconidiferenteconsombra" />
 
     <EditText
         android:id="@+id/campoUsuario"

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/naranja"
             app:cardCornerRadius="30dp"
             app:layout_constraintBottom_toTopOf="@+id/campoUsuarioRegistro"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,11 +30,12 @@
 
             <ImageView
                 android:id="@+id/imagenPerfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
                 android:contentDescription="@string/fotoPerfil"
-                tools:ignore="ImageContrastCheck"
-                tools:srcCompat="@tools:sample/avatars" />
+
+                app:srcCompat="@drawable/avatarpordefecto"
+                tools:ignore="ImageContrastCheck" />
 
         </androidx.cardview.widget.CardView>
 
@@ -307,9 +309,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/fucsia"
             android:text="@string/registro"
-            android:textColor="@color/white"
+            style="@style/ButtonGradient"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

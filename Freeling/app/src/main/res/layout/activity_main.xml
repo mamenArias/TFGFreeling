@@ -114,7 +114,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/botonRegistro"
         app:layout_constraintEnd_toEndOf="@+id/botonRegistro"
-        app:layout_constraintStart_toStartOf="@+id/botonRegistro" />
+        app:layout_constraintStart_toStartOf="@+id/botonRegistro"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/botonRegistro"

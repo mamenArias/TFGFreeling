@@ -69,8 +69,11 @@ class ActivityRegistro : AppCompatActivity() {
 
         binding.botonRegistrarUsuario.setOnClickListener {
 
+            val regex = Regex(pattern = ".*[0-9].*")
+
             if (binding.campoUsuarioRegistro.text.isNullOrEmpty() || binding.campoPasswRegistro.text.isNullOrEmpty()
-                || binding.campoNombreRegistro.text.isNullOrEmpty() ) {
+                || binding.campoNombreRegistro.text.isNullOrEmpty()||binding.edadMax.text.isNullOrEmpty()||
+                    binding.edadMin.text.isNullOrEmpty()) {
                 Toast.makeText(this, R.string.camposVacios, Toast.LENGTH_SHORT).show()
             }
             else if(binding.spinnerPronombreRegistro.selectedItemPosition==0){
@@ -84,6 +87,21 @@ class ActivityRegistro : AppCompatActivity() {
             }
             else if(!Patterns.EMAIL_ADDRESS.matcher(binding.campoUsuarioRegistro.text).matches()) {
                 Toast.makeText(this, R.string.emailValido, Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.campoPasswRegistro.text.toString().length<8){
+                Toast.makeText(this, R.string.contraseniaLongitud, Toast.LENGTH_SHORT).show()
+            }
+            else if(!regex.containsMatchIn(input=binding.campoPasswRegistro.text.toString())){
+                Toast.makeText(this, R.string.contraseniaInCarac, Toast.LENGTH_LONG).show()
+            }
+            else if(binding.campoEdadRegistro.text.toString().toByte()<18) {
+                Toast.makeText(this, R.string.menorEdad, Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.edadMin.text.toString().toByte()>=binding.edadMax.text.toString().toByte()){
+                Toast.makeText(this, R.string.intervaloValido, Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.edadMin.text.toString().toByte()<18){
+                Toast.makeText(this, R.string.edadBuscadaValida, Toast.LENGTH_SHORT).show()
             }
             else {
                 val auth = FirebaseAuth.getInstance()

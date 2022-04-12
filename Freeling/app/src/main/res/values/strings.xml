@@ -51,4 +51,7 @@
     <string name="generoVacio">Por favor, elige un género</string>
     <string name="orientacionVacio">Por favor, elige una orientación sexual</string>
     <string name="pronombreVacio">Por favor, elige una orientación sexual</string>
+    <string name="usuarioVacio">Introduce un email</string>
+    <string name="passwVacia">Introduce una contraseña</string>
+    <string name="loginInc">Login incorrecto</string>
 </resources>

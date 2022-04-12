@@ -18,4 +18,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        /* comprueba si hay usuario logueado
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+         */
+
+    }
+
+    /* si el usuario esta dentro ya se salta el login
+    fun updateUI(account: FirebaseUser?) {
+        if (account != null) {
+            startActivity(Intent(this,PantallaPrincipalconelchat::java.class))
+        } else {
+
+        }
+    }
+     */
 }

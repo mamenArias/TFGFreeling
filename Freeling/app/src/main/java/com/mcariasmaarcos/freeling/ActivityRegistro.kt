@@ -12,6 +12,14 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +31,8 @@ import java.util.jar.Manifest
 class ActivityRegistro : AppCompatActivity() {
 
     val binding by lazy { ActivityRegistroBinding.inflate(layoutInflater) }
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var storageRef: StorageReference
 
     private val STORAGE_PERMISSION_CODE = 123
     private lateinit var image:Uri
@@ -55,17 +65,45 @@ class ActivityRegistro : AppCompatActivity() {
         adapterOrient.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerOrientacSexRegistro.adapter = adapterOrient
 
+        binding.botonRegistrarUsuario.setOnClickListener {
+
+        if(binding.campoUsuarioRegistro.text.isEmpty()||binding.campoPasswRegistro.text.isEmpty()
+            ||binding.campoNombreRegistro.text.isEmpty()){
+            //TODO completar los empty y eso para hacer todas las comprobaciones necesarias
+        }else{
+            val auth=FirebaseAuth.getInstance()
+            val tarea =auth.createUserWithEmailAndPassword(
+                binding.campoUsuarioRegistro.text.toString(),binding.campoPasswRegistro.text.toString()
+            )
+
+            tarea.addOnCompleteListener (this, object:OnCompleteListener<AuthResult>{
+                override fun onComplete(p0: Task<AuthResult>) {
+                    if(tarea.isSuccessful){
+                        Toast.makeText(this@ActivityRegistro, "Éxito", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(this@ActivityRegistro, "Fallo", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
+            })
+
+
+        }
+
+
+
+
+
         binding.imagenPerfil.setOnClickListener {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                 STORAGE_PERMISSION_CODE)
         }
     }
 
-    private fun selectImage() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        selectImageResultLauncher.launch(intent)
-    }
+
+}
 
     private val selectImageResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
@@ -80,6 +118,12 @@ class ActivityRegistro : AppCompatActivity() {
             }
         }
     )
+
+    private fun selectImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        selectImageResultLauncher.launch(intent)
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

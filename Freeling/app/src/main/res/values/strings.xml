@@ -42,4 +42,5 @@
     <string name="iconoPassw">🔑</string>
     <string name="iconoNombre">🙍‍</string>
     <string name="iconoEdad">📅</string>
+    <string name="equipoApp">Logo del equipo de la App</string>
 </resources>

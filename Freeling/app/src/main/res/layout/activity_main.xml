@@ -35,9 +35,25 @@
         app:layout_constraintBottom_toTopOf="@+id/botonInicioSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblIconoEmail"
         app:layout_constraintTop_toBottomOf="@+id/logoApp"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/lblIconoEmail"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="@string/iconoEmail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/campoUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/campoUsuario"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/campoUsuario"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/campoPassword"
@@ -52,24 +68,41 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblIconoPassw"
         app:layout_constraintTop_toBottomOf="@+id/campoUsuario"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
 
+    <TextView
+        android:id="@+id/lblIconoPassw"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="@string/iconoPassw"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/campoPassword"
+        app:layout_constraintEnd_toStartOf="@+id/campoPassword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/campoPassword"
+        tools:ignore="TextContrastCheck" />
+
     <Button
         android:id="@+id/botonInicioSesion"
+        style="@style/ButtonBlue"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/inicioSesion"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        style="@style/ButtonBlue"
         app:layout_constraintBottom_toTopOf="@+id/botonRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/campoUsuario"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/lblRegistro"
@@ -78,6 +111,7 @@
         android:layout_marginBottom="10sp"
         android:fontFamily="@font/avertaextrabold"
         android:text="@string/cuentaNoRegistrada"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/botonRegistro"
         app:layout_constraintEnd_toEndOf="@+id/botonRegistro"
@@ -85,6 +119,7 @@
 
     <Button
         android:id="@+id/botonRegistro"
+        style="@style/ButtonGradient"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/avertaextrabold"
@@ -92,7 +127,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="19sp"
-        style="@style/ButtonGradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -100,10 +134,11 @@
         app:layout_constraintTop_toBottomOf="@+id/botonInicioSesion" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iconoEquipo"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/equipoApp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

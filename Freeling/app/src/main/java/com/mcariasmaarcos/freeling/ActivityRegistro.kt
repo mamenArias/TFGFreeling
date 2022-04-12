@@ -1,13 +1,25 @@
 package com.mcariasmaarcos.freeling
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
 import com.mcariasmaarcos.freeling.databinding.ActivityRegistroBinding
 
 class ActivityRegistro : AppCompatActivity() {
 
     val binding by lazy { ActivityRegistroBinding.inflate(layoutInflater) }
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var storageRef: StorageReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,5 +48,46 @@ class ActivityRegistro : AppCompatActivity() {
         val adapterOrient = ArrayAdapter(this, R.layout.spinner_estilo, orientacion)
         adapterOrient.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerOrientacSexRegistro.adapter = adapterOrient
+
+        binding.botonRegistrarUsuario.setOnClickListener {
+
+        if(binding.campoUsuarioRegistro.text.isEmpty()||binding.campoPasswRegistro.text.isEmpty()
+            ||binding.campoNombreRegistro.text.isEmpty()){
+            //TODO completar los empty y eso para hacer todas las comprobaciones necesarias
+        }else{
+            val auth=FirebaseAuth.getInstance()
+            val tarea =auth.createUserWithEmailAndPassword(
+                binding.campoUsuarioRegistro.text.toString(),binding.campoPasswRegistro.text.toString()
+            )
+
+            tarea.addOnCompleteListener (this, object:OnCompleteListener<AuthResult>{
+                override fun onComplete(p0: Task<AuthResult>) {
+                    if(tarea.isSuccessful){
+                        Toast.makeText(this@ActivityRegistro, "Éxito", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(this@ActivityRegistro, "Fallo", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
+            })
+
+
+        }
+
+
+
+
+
+        }
     }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+
+
 }

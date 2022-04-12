@@ -17,9 +17,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logoconidiferenteconsombra"
+        app:srcCompat="@drawable/LogoConIDiferenteConSombra"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/logoconidiferenteconsombra" />
+        tools:srcCompat="@drawable/LogoConIDiferenteConSombra" />
 
     <EditText
         android:id="@+id/campoUsuario"
@@ -60,12 +60,11 @@
         android:id="@+id/botonInicioSesion"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/azulOscuro"
-        android:fontFamily="@font/avertaextrabold"
         android:text="@string/inicioSesion"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
+        style="@style/ButtonBlue"
         app:layout_constraintBottom_toTopOf="@+id/botonRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -88,16 +87,27 @@
         android:id="@+id/botonRegistro"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_gradient"
         android:fontFamily="@font/avertaextrabold"
         android:text="@string/registro"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="19sp"
+        style="@style/ButtonGradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonInicioSesion" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/designedbymeow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

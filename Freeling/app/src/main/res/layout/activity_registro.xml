@@ -111,7 +111,7 @@
 
         <EditText
             android:id="@+id/campoNombreRegistro"
-            android:layout_width="170dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -146,7 +146,7 @@
 
         <Spinner
             android:id="@+id/spinnerPronombreRegistro"
-            android:layout_width="95dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/campoNombreRegistro"
             app:layout_constraintEnd_toEndOf="parent"

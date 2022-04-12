@@ -48,4 +48,7 @@
     <string name="equipoApp">Logo del equipo de la App</string>
     <string name="camposVacios">No dejes ningún campo vacío</string>
     <string name="emailValido">Introduce un email válido</string>
+    <string name="generoVacio">Por favor, elige un género</string>
+    <string name="orientacionVacio">Por favor, elige una orientación sexual</string>
+    <string name="pronombreVacio">Por favor, elige una orientación sexual</string>
 </resources>

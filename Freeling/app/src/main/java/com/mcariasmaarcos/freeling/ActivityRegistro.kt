@@ -70,9 +70,17 @@ class ActivityRegistro : AppCompatActivity() {
         binding.botonRegistrarUsuario.setOnClickListener {
 
             if (binding.campoUsuarioRegistro.text.isNullOrEmpty() || binding.campoPasswRegistro.text.isNullOrEmpty()
-                || binding.campoNombreRegistro.text.isNullOrEmpty() ||binding.spinnerPronombreRegistro.selectedItemPosition==0
-                ||binding.spinnerGeneroRegistro.selectedItemPosition==0|| binding.spinnerOrientacSexRegistro.selectedItemPosition==0) {
+                || binding.campoNombreRegistro.text.isNullOrEmpty() ) {
                 Toast.makeText(this, R.string.camposVacios, Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.spinnerPronombreRegistro.selectedItemPosition==0){
+                Toast.makeText(this,R.string.pronombreVacio , Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.spinnerGeneroRegistro.selectedItemPosition==0){
+                Toast.makeText(this, R.string.generoVacio, Toast.LENGTH_SHORT).show()
+            }
+            else if( binding.spinnerOrientacSexRegistro.selectedItemPosition==0){
+                Toast.makeText(this, R.string.orientacionVacio, Toast.LENGTH_SHORT).show()
             }
             else if(!Patterns.EMAIL_ADDRESS.matcher(binding.campoUsuarioRegistro.text).matches()) {
                 Toast.makeText(this, R.string.emailValido, Toast.LENGTH_SHORT).show()

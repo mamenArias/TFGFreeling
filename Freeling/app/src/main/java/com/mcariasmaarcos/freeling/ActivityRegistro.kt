@@ -11,6 +11,7 @@ import android.util.Patterns
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
@@ -185,6 +186,8 @@ class ActivityRegistro : AppCompatActivity() {
                 val data = result.data
                 image = data!!.data!!
                 binding.imagenPerfil.setImageURI(image)
+                binding.imagenPerfil.scaleType = ImageView.ScaleType.CENTER_CROP
+
             } else {
                 Toast.makeText(this, "No se ha podido modificar la imagen", Toast.LENGTH_SHORT)
                     .show()

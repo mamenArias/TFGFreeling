@@ -1,17 +1,22 @@
 package com.mcariasmaarcos.freeling
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.mcariasmaarcos.freeling.databinding.ActivityRegistroBinding
 import java.util.jar.Manifest
 
@@ -26,27 +31,27 @@ class ActivityRegistro : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val pronombres = arrayOf(resources.getString(R.string.el), resources.getString(R.string.ella),
+        val pronombres = arrayOf(resources.getString(R.string.pronombres),resources.getString(R.string.el), resources.getString(R.string.ella),
         resources.getString(R.string.elle))
-        val adapterPron = ArrayAdapter(this, R.layout.spinner_estilo, pronombres)
+        val adapterPron = CustomArrayAdapter(this, R.layout.spinner_estilo, pronombres)
         adapterPron.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerPronombreRegistro.adapter = adapterPron
 
-        val generos = arrayOf(resources.getString(R.string.hombre), resources.getString(R.string.mujer),
+        val generos = arrayOf(resources.getString(R.string.genero),resources.getString(R.string.hombre), resources.getString(R.string.mujer),
             resources.getString(R.string.hombreTrans), resources.getString(R.string.mujerTrans),
             resources.getString(R.string.androgino), resources.getString(R.string.neutro),
             resources.getString(R.string.queer), resources.getString(R.string.noBinario),
             resources.getString(R.string.agenero), resources.getString(R.string.bigenero),
             resources.getString(R.string.fluido), resources.getString(R.string.poligenero), resources.getString(R.string.intergenero))
-        val adapterGen = ArrayAdapter(this, R.layout.spinner_estilo, generos)
+        val adapterGen = CustomArrayAdapter(this, R.layout.spinner_estilo, generos)
         adapterGen.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerGeneroRegistro.adapter = adapterGen
 
-        val orientacion = arrayOf(resources.getString(R.string.hetero), resources.getString(R.string.homo),
+        val orientacion = arrayOf(resources.getString(R.string.orientacion),resources.getString(R.string.hetero), resources.getString(R.string.homo),
             resources.getString(R.string.bisexual), resources.getString(R.string.pansexual), resources.getString(R.string.asexual),
             resources.getString(R.string.demisexual), resources.getString(R.string.lightsexual),
             resources.getString(R.string.autosexual), resources.getString(R.string.antrosexual), resources.getString(R.string.polisexual))
-        val adapterOrient = ArrayAdapter(this, R.layout.spinner_estilo, orientacion)
+        val adapterOrient = CustomArrayAdapter(this, R.layout.spinner_estilo, orientacion)
         adapterOrient.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerOrientacSexRegistro.adapter = adapterOrient
 
@@ -88,6 +93,21 @@ class ActivityRegistro : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Permisos denegados", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    class CustomArrayAdapter(context: Context, resource: Int, objects: Array<String>) : ArrayAdapter<String>(context, resource, objects) {
+
+        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = super.getDropDownView(position, convertView, parent)
+            if (view is TextView) {
+                if (position == 0) {
+                    view.setTextColor(ContextCompat.getColor(parent.context, R.color.gris))
+                } else {
+                    view.setTextColor(ContextCompat.getColor(parent.context, R.color.white))
+                }
+            }
+            return view
         }
     }
 }

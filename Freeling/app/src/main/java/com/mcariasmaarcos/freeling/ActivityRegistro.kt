@@ -74,92 +74,108 @@ class ActivityRegistro : AppCompatActivity() {
 
         binding.botonRegistrarUsuario.setOnClickListener {
 
+            val userDocRef = FirebaseFirestore.getInstance().collection("Usuarios").document(binding.campoUsuarioRegistro.text.toString());
             val regex = Regex(pattern = ".*[0-9].*")
-
-            if (binding.campoUsuarioRegistro.text.isNullOrEmpty() || binding.campoPasswRegistro.text.isNullOrEmpty()
-                || binding.campoNombreRegistro.text.isNullOrEmpty()||binding.edadMax.text.isNullOrEmpty()||
-                    binding.edadMin.text.isNullOrEmpty()) {
-                Toast.makeText(this, R.string.camposVacios, Toast.LENGTH_SHORT).show()
-            }
-            else if(binding.spinnerPronombreRegistro.selectedItemPosition==0){
-                Toast.makeText(this,R.string.pronombreVacio , Toast.LENGTH_SHORT).show()
-            }
-            else if(binding.spinnerGeneroRegistro.selectedItemPosition==0){
-                Toast.makeText(this, R.string.generoVacio, Toast.LENGTH_SHORT).show()
-            }
-            else if( binding.spinnerOrientacSexRegistro.selectedItemPosition==0){
-                Toast.makeText(this, R.string.orientacionVacio, Toast.LENGTH_SHORT).show()
-            }
-            else if(!Patterns.EMAIL_ADDRESS.matcher(binding.campoUsuarioRegistro.text).matches()) {
-                Toast.makeText(this, R.string.emailValido, Toast.LENGTH_SHORT).show()
-            }
-            else if(binding.campoPasswRegistro.text.toString().length<8){
-                Toast.makeText(this, R.string.contraseniaLongitud, Toast.LENGTH_SHORT).show()
-            }
-            else if(!regex.containsMatchIn(input=binding.campoPasswRegistro.text.toString())){
-                Toast.makeText(this, R.string.contraseniaInCarac, Toast.LENGTH_LONG).show()
-            }
-            else if(binding.campoEdadRegistro.text.toString().toByte()<18) {
-                Toast.makeText(this, R.string.menorEdad, Toast.LENGTH_SHORT).show()
-            }
-            else if(binding.edadMin.text.toString().toByte()>=binding.edadMax.text.toString().toByte()){
-                Toast.makeText(this, R.string.intervaloValido, Toast.LENGTH_SHORT).show()
-            }
-            else if(binding.edadMin.text.toString().toByte()<18){
-                Toast.makeText(this, R.string.edadBuscadaValida, Toast.LENGTH_SHORT).show()
-            }
-            else {
-                val auth = FirebaseAuth.getInstance()
-                val tarea = auth.createUserWithEmailAndPassword(
-                    binding.campoUsuarioRegistro.text.toString(),
-                    binding.campoPasswRegistro.text.toString()
-                )
-
-                tarea.addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
-                    override fun onComplete(p0: Task<AuthResult>) {
-                        if (tarea.isSuccessful) {
-                            Toast.makeText(this@ActivityRegistro, "Éxito", Toast.LENGTH_SHORT)
-                                .show()
-
-                            if(image!=null){
-                                val reference = FirebaseStorage.getInstance()
-                                    .getReference("imagenesPerfil/" +binding.campoUsuarioRegistro.text.toString() + ".jpg")
-                                reference.putFile(image!!)
-                                storageRef =dbStorage.reference.child("imagenesPerfil").child(binding.campoUsuarioRegistro.text.toString() + ".jpg")
-                            }
-                            else{
-                                storageRef =dbStorage.reference.child("imagenesPerfil").child("avatarpordefecto.png")
-                            }
-                            storageRef.downloadUrl.addOnSuccessListener { url ->
-
-                                var user = Usuario(binding.campoUsuarioRegistro.text.toString(),
-                                binding.campoNombreRegistro.text.toString(),binding.spinnerPronombreRegistro.selectedItem.toString(),
-                                binding.spinnerGeneroRegistro.selectedItem.toString(),binding.spinnerOrientacSexRegistro.selectedItem.toString(),
-                                binding.campoEdadRegistro.text.toString().toInt(),binding.edadMin.text.toString().toInt(),
-                                binding.edadMax.text.toString().toInt(),binding.campoInteresesRegistro.text.toString(),url.toString())
-                            db.collection("Usuarios").document(user.email).set(user)
-                            }
-
-                        } else {
-                            Toast.makeText(this@ActivityRegistro, "Fallo", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+            userDocRef.get().addOnCompleteListener(){task ->
+                val result = task.result
+                if(result.exists()){
+                    Toast.makeText(this@ActivityRegistro, R.string.emailExistente, Toast.LENGTH_SHORT).show()
+                }else{
+                    if (binding.campoUsuarioRegistro.text.isNullOrEmpty() || binding.campoPasswRegistro.text.isNullOrEmpty()
+                        || binding.campoNombreRegistro.text.isNullOrEmpty()||binding.edadMax.text.isNullOrEmpty()||
+                        binding.edadMin.text.isNullOrEmpty()) {
+                        Toast.makeText(this, R.string.camposVacios, Toast.LENGTH_SHORT).show()
                     }
+                    else if(binding.spinnerPronombreRegistro.selectedItemPosition==0){
+                        Toast.makeText(this,R.string.pronombreVacio , Toast.LENGTH_SHORT).show()
+                    }
+                    else if(binding.spinnerGeneroRegistro.selectedItemPosition==0){
+                        Toast.makeText(this, R.string.generoVacio, Toast.LENGTH_SHORT).show()
+                    }
+                    else if( binding.spinnerOrientacSexRegistro.selectedItemPosition==0){
+                        Toast.makeText(this, R.string.orientacionVacio, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(!Patterns.EMAIL_ADDRESS.matcher(binding.campoUsuarioRegistro.text).matches()) {
+                        Toast.makeText(this, R.string.emailValido, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(binding.campoPasswRegistro.text.toString().length<8){
+                        Toast.makeText(this, R.string.contraseniaLongitud, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(!regex.containsMatchIn(input=binding.campoPasswRegistro.text.toString())){
+                        Toast.makeText(this, R.string.contraseniaInCarac, Toast.LENGTH_LONG).show()
+                    }
+                    else if(binding.campoEdadRegistro.text.toString().toByte()<18) {
+                        Toast.makeText(this, R.string.menorEdad, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(binding.edadMin.text.toString().toByte()>=binding.edadMax.text.toString().toByte()){
+                        Toast.makeText(this, R.string.intervaloValido, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(binding.edadMin.text.toString().toByte()<18){
+                        Toast.makeText(this, R.string.edadBuscadaValida, Toast.LENGTH_SHORT).show()
+                    }
+                    else if(binding.campoEdadRegistro.text.toString().toInt()>100||binding.edadMin.text.toString().toInt()>100
+                        ||binding.edadMax.text.toString().toInt()>100){
+                        Toast.makeText(this, R.string.demasiadaEdad, Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        val auth = FirebaseAuth.getInstance()
+                        val tarea = auth.createUserWithEmailAndPassword(
+                            binding.campoUsuarioRegistro.text.toString(),
+                            binding.campoPasswRegistro.text.toString()
+                        )
+
+                        tarea.addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
+                            override fun onComplete(p0: Task<AuthResult>) {
+                                if (tarea.isSuccessful) {
+                                    Toast.makeText(this@ActivityRegistro, "Éxito", Toast.LENGTH_SHORT)
+                                        .show()
+
+                                    if(image!=null){
+                                        val reference = FirebaseStorage.getInstance()
+                                            .getReference("imagenesPerfil/" +binding.campoUsuarioRegistro.text.toString() + ".jpg")
+                                        reference.putFile(image!!)
+                                        storageRef =dbStorage.reference.child("imagenesPerfil").child(binding.campoUsuarioRegistro.text.toString() + ".jpg")
+                                    }
+                                    else{
+                                        storageRef =dbStorage.reference.child("imagenesPerfil").child("avatarpordefecto.png")
+                                    }
+                                    storageRef.downloadUrl.addOnSuccessListener { url ->
+
+                                        var user = Usuario(binding.campoUsuarioRegistro.text.toString(),
+                                            binding.campoNombreRegistro.text.toString(),binding.spinnerPronombreRegistro.selectedItem.toString(),
+                                            binding.spinnerGeneroRegistro.selectedItem.toString(),binding.spinnerOrientacSexRegistro.selectedItem.toString(),
+                                            binding.campoEdadRegistro.text.toString().toInt(),binding.edadMin.text.toString().toInt(),
+                                            binding.edadMax.text.toString().toInt(),binding.campoInteresesRegistro.text.toString(),url.toString())
+                                        db.collection("Usuarios").document(user.email).set(user)
+                                    }
+
+                                } else {
+                                    Toast.makeText(this@ActivityRegistro, "Fallo", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            }
 
 
-                })
+                        })
 
 
+                    }
+                }
             }
-            binding.imagenPerfil.setOnClickListener {
-                ActivityCompat.requestPermissions(
-                    this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                    STORAGEPERMISSIONCODE
-                )
-            }
+
+
+
+
+
+
         }
 
-
+        binding.imagenPerfil.setOnClickListener {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGEPERMISSIONCODE
+            )
+        }
     }
 
     private val selectImageResultLauncher = registerForActivityResult(

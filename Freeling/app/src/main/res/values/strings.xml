@@ -59,4 +59,6 @@
     <string name="edadBuscadaValida">Debes buscar personas que tengan al menos 18 años</string>
     <string name="contraseniaLongitud">La contraseña debe tener 8 caracteres</string>
     <string name="contraseniaInCarac">La contraseña debe contener al menos un número</string>
+    <string name="emailExistente">Ya existe un usuario con ese email</string>
+    <string name="demasiadaEdad">Introduce una edad no mayor de 100 años</string>
 </resources>

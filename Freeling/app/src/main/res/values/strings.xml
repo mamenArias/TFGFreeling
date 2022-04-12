@@ -50,8 +50,13 @@
     <string name="emailValido">Introduce un email válido</string>
     <string name="generoVacio">Por favor, elige un género</string>
     <string name="orientacionVacio">Por favor, elige una orientación sexual</string>
-    <string name="pronombreVacio">Por favor, elige una orientación sexual</string>
     <string name="usuarioVacio">Introduce un email</string>
     <string name="passwVacia">Introduce una contraseña</string>
     <string name="loginInc">Login incorrecto</string>
+    <string name="pronombreVacio">Por favor, elige un pronombre</string>
+    <string name="menorEdad">Debes tener al menos 18 años para registrarte</string>
+    <string name="intervaloValido">Debes introducir un intervalo válido de edad a buscar</string>
+    <string name="edadBuscadaValida">Debes buscar personas que tengan al menos 18 años</string>
+    <string name="contraseniaLongitud">La contraseña debe tener 8 caracteres</string>
+    <string name="contraseniaInCarac">La contraseña debe contener al menos un número</string>
 </resources>

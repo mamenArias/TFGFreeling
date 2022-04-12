@@ -43,4 +43,6 @@
     <string name="iconoNombre">🙍‍</string>
     <string name="iconoEdad">📅</string>
     <string name="equipoApp">Logo del equipo de la App</string>
+    <string name="camposVacios">No dejes ningún campo vacío</string>
+    <string name="emailValido">Introduce un email válido</string>
 </resources>

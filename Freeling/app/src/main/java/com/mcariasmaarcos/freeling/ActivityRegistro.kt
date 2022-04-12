@@ -27,6 +27,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.view.get
 import androidx.core.content.ContextCompat
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.databinding.ActivityRegistroBinding
 import java.util.jar.Manifest
 
@@ -35,9 +38,11 @@ class ActivityRegistro : AppCompatActivity() {
     val binding by lazy { ActivityRegistroBinding.inflate(layoutInflater) }
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var storageRef: StorageReference
+    val dbStorage = FirebaseStorage.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
-    private val STORAGE_PERMISSION_CODE = 123
-    private lateinit var image: Uri
+    private val STORAGEPERMISSIONCODE = 123
+    private var image: Uri?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +120,26 @@ class ActivityRegistro : AppCompatActivity() {
                         if (tarea.isSuccessful) {
                             Toast.makeText(this@ActivityRegistro, "Éxito", Toast.LENGTH_SHORT)
                                 .show()
+
+                            if(image!=null){
+                                val reference = FirebaseStorage.getInstance()
+                                    .getReference("imagenesPerfil/" +binding.campoUsuarioRegistro.text.toString() + ".jpg")
+                                reference.putFile(image!!)
+                                storageRef =dbStorage.reference.child("imagenesPerfil").child(binding.campoUsuarioRegistro.text.toString() + ".jpg")
+                            }
+                            else{
+                                storageRef =dbStorage.reference.child("imagenesPerfil").child("avatarpordefecto.png")
+                            }
+                            storageRef.downloadUrl.addOnSuccessListener { url ->
+
+                                var user = Usuario(binding.campoUsuarioRegistro.text.toString(),
+                                binding.campoNombreRegistro.text.toString(),binding.spinnerPronombreRegistro.selectedItem.toString(),
+                                binding.spinnerGeneroRegistro.selectedItem.toString(),binding.spinnerOrientacSexRegistro.selectedItem.toString(),
+                                binding.campoEdadRegistro.text.toString().toInt(),binding.edadMin.text.toString().toInt(),
+                                binding.edadMax.text.toString().toInt(),binding.campoInteresesRegistro.text.toString(),url.toString())
+                            db.collection("Usuarios").document(user.email).set(user)
+                            }
+
                         } else {
                             Toast.makeText(this@ActivityRegistro, "Fallo", Toast.LENGTH_SHORT)
                                 .show()
@@ -126,15 +151,10 @@ class ActivityRegistro : AppCompatActivity() {
 
 
             }
-
-
-
-
-
             binding.imagenPerfil.setOnClickListener {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                    STORAGE_PERMISSION_CODE
+                    STORAGEPERMISSIONCODE
                 )
             }
         }
@@ -168,7 +188,7 @@ class ActivityRegistro : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == STORAGE_PERMISSION_CODE) {
+        if (requestCode == STORAGEPERMISSIONCODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 selectImage()
             } else {

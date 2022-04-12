@@ -1,13 +1,26 @@
 package com.mcariasmaarcos.freeling
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import com.mcariasmaarcos.freeling.databinding.ActivityRegistroBinding
+import java.util.jar.Manifest
 
 class ActivityRegistro : AppCompatActivity() {
 
     val binding by lazy { ActivityRegistroBinding.inflate(layoutInflater) }
+
+    private val STORAGE_PERMISSION_CODE = 123
+    private lateinit var image:Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,5 +49,45 @@ class ActivityRegistro : AppCompatActivity() {
         val adapterOrient = ArrayAdapter(this, R.layout.spinner_estilo, orientacion)
         adapterOrient.setDropDownViewResource(R.layout.spinner_estilo)
         binding.spinnerOrientacSexRegistro.adapter = adapterOrient
+
+        binding.imagenPerfil.setOnClickListener {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGE_PERMISSION_CODE)
+        }
+    }
+
+    private fun selectImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        selectImageResultLauncher.launch(intent)
+    }
+
+    private val selectImageResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+        ActivityResultCallback<ActivityResult> { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                image = data!!.data!!
+                binding.imagenPerfil.setImageURI(image)
+            } else {
+                Toast.makeText(this, "No se ha podido modificar la imagen", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    )
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE){
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                selectImage()
+            }else{
+                Toast.makeText(this, "Permisos denegados", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

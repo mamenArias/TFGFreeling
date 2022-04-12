@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 task.addOnCompleteListener(this, object : OnCompleteListener<AuthResult>{
                     override fun onComplete(p0: Task<AuthResult>) {
                         if (task.isSuccessful){
-                            startActivity(Intent(this@MainActivity, ActivityRegistro::class.java))
+                            startActivity(Intent(this@MainActivity, EncuentroActivity::class.java))
                         } else {
                             Toast.makeText(this@MainActivity, R.string.loginInc, Toast.LENGTH_SHORT).show()
                         }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "341137116556",
+    "project_id": "freling-20485",
+    "storage_bucket": "freling-20485.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341137116556:android:a1c4c319bd340ca32adaa9",
+        "android_client_info": {
+          "package_name": "com.mcariasmaarcos.freeling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341137116556-vfqk6ij2fatklnvemenngf73sgn8ufvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mcariasmaarcos.freeling",
+            "certificate_hash": "4cb46a9010e4508937575fa45bfd4bc07ea8cb48"
+          }
+        },
+        {
+          "client_id": "341137116556-1g4mevrg94qoa9si4busi60ivg7bhmsf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkgIxt4g9CMeVCVpXxJ67ZioUsLgUwHVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341137116556-1g4mevrg94qoa9si4busi60ivg7bhmsf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

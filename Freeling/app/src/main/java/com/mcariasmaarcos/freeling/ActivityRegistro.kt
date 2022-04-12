@@ -2,7 +2,6 @@ package com.mcariasmaarcos.freeling
 
 import android.content.Intent
 import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -98,11 +97,8 @@ class ActivityRegistro : AppCompatActivity() {
         }
     }
 
-    private fun selectImage() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        selectImageResultLauncher.launch(intent)
-    }
+
+}
 
     private val selectImageResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
@@ -117,6 +113,12 @@ class ActivityRegistro : AppCompatActivity() {
             }
         }
     )
+
+    private fun selectImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        selectImageResultLauncher.launch(intent)
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -137,7 +139,3 @@ class ActivityRegistro : AppCompatActivity() {
         super.onStart()
 
     }
-
-
-
-}

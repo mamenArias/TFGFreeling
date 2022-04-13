@@ -34,7 +34,7 @@
         <item name="fontFamily">@font/avertaextrabold</item>
     </style>
 
-    <style name="ButtonOrange" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="ButtonOrange" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:background">@drawable/background_gradient_orange</item>
         <item name="fontFamily">@font/avertaextrabold</item>
         <item name="android:textColor">@color/white</item>

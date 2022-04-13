@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -16,6 +16,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.Nullable
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,14 +29,16 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mcariasmaarcos.clases.Usuario
-import com.mcariasmaarcos.freeling.databinding.ActivityEditarPerfilBinding
+import com.mcariasmaarcos.freeling.databinding.FragmentPerfilActivityBinding
+
+
 /**
  * A simple [Fragment] subclass.
  * Use the [PerfilActivityFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
-    private val binding by lazy{ ActivityEditarPerfilBinding.inflate(layoutInflater)}
+    private lateinit var binding:FragmentPerfilActivityBinding
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
     private lateinit var storageReference: StorageReference
@@ -46,8 +50,17 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     val dbStorage = FirebaseStorage.getInstance()
     private val STORAGEPERMISSIONCODE = 123
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        @Nullable container: ViewGroup?,
+        @Nullable savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentPerfilActivityBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
         val pronombres = arrayOf(

@@ -172,7 +172,7 @@ class ActivityRegistro : AppCompatActivity() {
                                                 )
                                                 db.collection("Usuarios").document(user.email)
                                                     .set(user)
-                                                startActivity(Intent(this@ActivityRegistro,EditarPerfilActivity::class.java))
+                                                startActivity(Intent(this@ActivityRegistro,MainActivity::class.java))
                                             }
 
                                         } else {

@@ -236,8 +236,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
 
 
         binding.imagenPerfilEditar.setOnClickListener {
-            ActivityCompat.requestPermissions(
-                this.context as Activity, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+            requestPermissions(
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                 STORAGEPERMISSIONCODE
             )
         }

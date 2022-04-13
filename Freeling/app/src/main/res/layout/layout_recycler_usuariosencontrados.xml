@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/fotoUsuarioEncontrado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="@string/fotoPerfil"
+        app:layout_constraintBottom_toBottomOf="@+id/edadUsuarioEncontrado"
+        app:layout_constraintEnd_toStartOf="@+id/botonRechazarUsuario"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado"
+        app:srcCompat="@drawable/avatarpordefecto" />
+
+    <TextView
+        android:id="@+id/nombreUsuarioEncontrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/nombreUsuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fotoUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pronombreUsuarioEncontrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/pronombres"
+        app:layout_constraintBottom_toBottomOf="@+id/nombreUsuarioEncontrado"
+        app:layout_constraintStart_toEndOf="@+id/nombreUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado" />
+
+    <TextView
+        android:id="@+id/edadUsuarioEncontrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/edad"
+        app:layout_constraintStart_toStartOf="@+id/nombreUsuarioEncontrado"
+        app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioEncontrado" />
+
+    <ImageButton
+        android:id="@+id/botonAceptarUsuario"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/aceptar"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/botonRechazarUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/botonRechazarUsuario"
+        app:layout_constraintTop_toTopOf="@+id/botonRechazarUsuario"
+        app:srcCompat="@drawable/accept"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/botonRechazarUsuario"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/rechazar"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fotoUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cancel"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

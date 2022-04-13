@@ -25,6 +25,7 @@
         app:itemIconTint="@drawable/color_icon_menu"
         app:itemTextColor="@drawable/color_icon_menu"
         app:itemIconSize="40dp"
+        android:theme="@style/BottomNavigationBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

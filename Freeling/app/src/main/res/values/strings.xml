@@ -65,6 +65,8 @@
     <string name="contraseniaInCarac">La contraseña debe contener al menos un número</string>
     <string name="emailExistente">Ya existe un usuario con ese email</string>
     <string name="demasiadaEdad">Introduce una edad no mayor de 100 años</string>
+    <string name="aceptar">Botón aceptar</string>
+    <string name="rechazar">Boton rechazar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

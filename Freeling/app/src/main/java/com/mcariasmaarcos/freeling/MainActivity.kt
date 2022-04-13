@@ -8,6 +8,9 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.freeling.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -47,20 +50,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        /* comprueba si hay usuario logueado
-        val currentUser = auth.currentUser
+        // comprueba si hay usuario logueado
+        val currentUser = Firebase.auth.currentUser
         updateUI(currentUser)
-         */
+
 
     }
 
-    /* si el usuario esta dentro ya se salta el login
+    //si el usuario esta dentro ya se salta el login
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
-            startActivity(Intent(this,PantallaPrincipalconelchat::java.class))
+            startActivity(Intent(this@MainActivity, EncuentroActivity::class.java))
         } else {
 
         }
     }
-     */
+
 }

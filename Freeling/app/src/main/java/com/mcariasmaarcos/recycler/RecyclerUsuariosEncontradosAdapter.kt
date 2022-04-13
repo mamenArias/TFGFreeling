@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ktx.firestore
@@ -24,6 +25,7 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
 
         db.collection("Usuarios").document(usuariosEncontrados[position]).get().addOnSuccessListener {
             Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuario)
+            holder.fotoUsuario.scaleType = ImageView.ScaleType.CENTER_CROP
             holder.nombreUsuario.text = it.get(("nombre")).toString()
             holder.pronombreUsuario.text = it.get("pronombre").toString()
             holder.edadUsuario.text = it.get("edad").toString()

@@ -5,20 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/fotoUsuarioEncontrado"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewFotoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="5dp"
-        android:contentDescription="@string/fotoPerfil"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/edadUsuarioEncontrado"
         app:layout_constraintEnd_toStartOf="@+id/botonRechazarUsuario"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado"
-        app:srcCompat="@drawable/avatarpordefecto" />
+        app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado">
+
+        <ImageView
+            android:id="@+id/fotoUsuarioEncontrado"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/fotoPerfil"
+            app:srcCompat="@drawable/avatarpordefecto" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/nombreUsuarioEncontrado"
@@ -26,34 +34,63 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="10dp"
-        android:fontFamily="@font/avertaregular"
+        android:fontFamily="@font/avertaextrabold"
         android:text="@string/nombreUsuario"
         android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fotoUsuarioEncontrado"
+        app:layout_constraintStart_toEndOf="@+id/cardViewFotoUsuario"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/parentesisInicial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/parentesisInicial"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pronombreUsuarioEncontrado"
+        app:layout_constraintEnd_toStartOf="@+id/pronombreUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="@+id/pronombreUsuarioEncontrado" />
 
     <TextView
         android:id="@+id/pronombreUsuarioEncontrado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/avertaregular"
         android:text="@string/pronombres"
         android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintStart_toEndOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado" />
 
     <TextView
+        android:id="@+id/parentesisFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/parentesisFinal"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pronombreUsuarioEncontrado"
+        app:layout_constraintStart_toEndOf="@+id/pronombreUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="@+id/pronombreUsuarioEncontrado"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
         android:id="@+id/edadUsuarioEncontrado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/avertaregular"
         android:text="@string/edad"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioEncontrado" />
 
@@ -80,9 +117,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fotoUsuarioEncontrado"
+        app:layout_constraintStart_toEndOf="@+id/cardViewFotoUsuario"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cancel"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/avertaregular"
+        android:text="@string/anios"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edadUsuarioEncontrado"
+        app:layout_constraintStart_toEndOf="@+id/edadUsuarioEncontrado"
+        app:layout_constraintTop_toTopOf="@+id/edadUsuarioEncontrado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

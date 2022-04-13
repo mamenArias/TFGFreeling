@@ -70,4 +70,7 @@
     <string name="modificarPerfil">Modificar Perfil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="parentesisInicial">(</string>
+    <string name="parentesisFinal">)</string>
+    <string name="anios">años</string>
 </resources>

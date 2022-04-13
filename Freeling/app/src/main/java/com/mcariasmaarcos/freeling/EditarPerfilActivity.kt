@@ -1,14 +1,11 @@
 package com.mcariasmaarcos.freeling
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.util.Patterns
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -20,13 +17,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.core.view.iterator
-import androidx.core.view.size
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -276,7 +267,8 @@ class EditarPerfilActivity : AppCompatActivity() {
         }
     }
 
-    class CustomArrayAdapter(context: Context, resource: Int, objects: Array<String>) : ArrayAdapter<String>(context, resource, objects) {
+    class CustomArrayAdapter(context: Context?, resource: Int, objects: Array<String>) : ArrayAdapter<String>(
+        context!!, resource, objects) {
 
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = super.getDropDownView(position, convertView, parent)

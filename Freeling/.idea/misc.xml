@@ -3,27 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/drawable/color_icon_menu.xml" value="0.1635" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/drawable/icono_chat_background.xml" value="0.1635" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/drawable/icono_home_background.xml" value="0.1635" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_encuentro.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_registro.xml" value="0.264" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_chat_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_encuentro_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_logros_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_perfil_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/layout_recycler_usuariosencontrados.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/spinner_estilo.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_chat.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_chat_round.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_home.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_home_round.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_medalla.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_medalla_round.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_usuario.xml" value="0.15" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_usuario_round.xml" value="0.15" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/drawable/background_gradient.xml" value="0.193" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/drawable/background_gradient_blue.xml" value="0.2" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/drawable/background_gradient_orange.xml" value="0.193" />
@@ -36,6 +18,9 @@
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/activity_registro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/spinner_editar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/spinner_estilo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round_custom.xml" value="0.1935" />
+        <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/mipmap-anydpi-v26/icono_usuario_round.xml" value="0.1935" />
       </map>
     </option>
   </component>

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Freeling</string>
+    <string name="home">Home</string>
+    <string name="chat">Chat</string>
+    <string name="logros">Logros</string>
+    <string name="perfil">Perfil</string>
     <string name="email">Email</string>
     <string name="passw">Contraseña</string>
     <string name="inicioSesion">Iniciar Sesión</string>
@@ -62,4 +66,6 @@
     <string name="emailExistente">Ya existe un usuario con ese email</string>
     <string name="demasiadaEdad">Introduce una edad no mayor de 100 años</string>
     <string name="modificarPerfil">Modificar Perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

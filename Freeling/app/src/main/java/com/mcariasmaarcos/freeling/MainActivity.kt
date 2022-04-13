@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 task.addOnCompleteListener(this, object : OnCompleteListener<AuthResult>{
                     override fun onComplete(p0: Task<AuthResult>) {
                         if (task.isSuccessful){
-                            startActivity(Intent(this@MainActivity, EditarPerfilActivity::class.java))
+                            startActivity(Intent(this@MainActivity, EncuentroActivity::class.java))
                         } else {
                             Toast.makeText(this@MainActivity, R.string.loginInc, Toast.LENGTH_SHORT).show()
                         }
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     //si el usuario esta dentro ya se salta el login
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
-            startActivity(Intent(this@MainActivity, EditarPerfilActivity::class.java))
+            startActivity(Intent(this@MainActivity, EncuentroActivity::class.java))
         } else {
 
         }

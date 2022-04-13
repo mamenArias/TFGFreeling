@@ -29,8 +29,6 @@ class EncuentroActivity : AppCompatActivity() {
             }
             true
         }
-
-        binding.menuInferior.setBackgroundColor(resources.getColor(R.color.naranja))
     }
 
     private fun seleccionarFragment(fragment:Fragment){

@@ -12,7 +12,7 @@ class RecyclerUsuariosEncontradosHolder(itemView: View): RecyclerView.ViewHolder
     val fotoUsuario:ImageView by lazy { itemView.findViewById(R.id.fotoUsuarioEncontrado) }
     val nombreUsuario:TextView by lazy { itemView.findViewById(R.id.nombreUsuarioEncontrado) }
     val pronombreUsuario:TextView by lazy { itemView.findViewById(R.id.pronombreUsuarioEncontrado) }
-    val edad:TextView by lazy { itemView.findViewById(R.id.edadUsuarioEncontrado) }
+    val edadUsuario:TextView by lazy { itemView.findViewById(R.id.edadUsuarioEncontrado) }
     val bontonAceptar:Button by lazy { itemView.findViewById(R.id.botonAceptarUsuario) }
     val botonRechazar:Button by lazy { itemView.findViewById(R.id.botonRechazarUsuario) }
 

@@ -28,6 +28,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/avertaregular"
         android:text="@string/nombreUsuario"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fotoUsuarioEncontrado"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +40,7 @@
         android:layout_marginStart="5dp"
         android:fontFamily="@font/avertaregular"
         android:text="@string/pronombres"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintStart_toEndOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintTop_toTopOf="@+id/nombreUsuarioEncontrado" />
@@ -51,6 +53,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/avertaregular"
         android:text="@string/edad"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/nombreUsuarioEncontrado"
         app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioEncontrado" />
 

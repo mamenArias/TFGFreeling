@@ -62,7 +62,6 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val pronombres = arrayOf(
             resources.getString(R.string.pronombres),
             resources.getString(R.string.el),
@@ -191,13 +190,15 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 Toast.makeText(this.context, R.string.demasiadaEdad, Toast.LENGTH_SHORT).show()
             } else {
 
-                if (image != null) {
+               if (image != null) {
+
                     val reference = FirebaseStorage.getInstance()
                         .getReference("imagenesPerfil/" + binding.campoEmailRegistroEditar.text.toString() + ".jpg")
                     reference.putFile(image!!)
                     storageRef =
                         dbStorage.reference.child("imagenesPerfil")
                             .child(binding.campoEmailRegistroEditar.text.toString() + ".jpg")
+
                 } else {
                     storageRef =
                         dbStorage.reference.child("imagenesPerfil")
@@ -221,10 +222,23 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                         url.toString()
                     )
 
-                    db.collection("Usuarios").document(user.email).delete()
+                    //db.collection("Usuarios").document(user.email).delete()
 
-                    db.collection("Usuarios").document(user.email)
-                        .set(user)
+                    //db.collection("Usuarios").document(user.email).set(user)
+                    db.collection("Usuarios").document(user.email).update(
+                        "email",user.email,
+                        "nombre",user.nombre,
+                        "pronombre",user.pronombre,
+                        "genero",user.genero,
+                        "edadDeseadaSup",user.edadDeseadaSup,
+                        "edadDeseadaInf",user.edadDeseadaInf,
+                        "orientacionSexual",user.orientacionSexual,
+                        "edad",user.edad,
+                        "biografia",user.biografia,
+                        "fotoPerfil",user.fotoPerfil
+
+                    )
+
                     Toast.makeText(
                         this.context,
                         "Perfil actualizado",

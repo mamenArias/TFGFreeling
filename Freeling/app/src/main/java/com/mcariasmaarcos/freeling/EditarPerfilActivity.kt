@@ -41,6 +41,8 @@ class EditarPerfilActivity : AppCompatActivity() {
     val dbStorage = FirebaseStorage.getInstance()
     private val STORAGEPERMISSIONCODE = 123
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -203,10 +205,31 @@ class EditarPerfilActivity : AppCompatActivity() {
                         url.toString()
                     )
 
-                    db.collection("Usuarios").document(user.email).delete()
+                   // db.collection("Usuarios").document(user.email).delete()
 
-                    db.collection("Usuarios").document(user.email)
-                        .set(user)
+                   // db.collection("Usuarios").document(user.email).set(user)
+
+                    db.collection("Usuarios").document(user.email).update(
+                        "email",user.email,
+                        "nombre",user.nombre,
+                        "pronombre",user.pronombre,
+                        "genero",user.genero,
+                        "edadDeseadaSup",user.edadDeseadaSup,
+                        "edadDeseadaInf",user.edadDeseadaInf,
+                        "orientacionSexual",user.orientacionSexual,
+                        "edad",user.edad,
+                        "biografia",user.biografia
+
+                    )
+                    if(image!=null){
+                        db.collection("Usuarios").document(user.email).update(
+                            "fotoPerfil",user.fotoPerfil
+                        )
+                    }
+
+
+
+
                     Toast.makeText(
                         this@EditarPerfilActivity,
                         "Perfil actualizado",

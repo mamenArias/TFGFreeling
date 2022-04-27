@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.ListView
+import android.widget.*
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import com.google.android.gms.nearby.Nearby
@@ -70,6 +67,7 @@ override fun onCreateView(
 
         mMessageListener = object : MessageListener() {
             override fun onFound(message: Message) {
+               // Toast.makeText(activity, "Encontrado", Toast.LENGTH_SHORT).show()
                 // Called when a new message is found.
                 val msgBody = String(message.content)
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
@@ -170,7 +168,7 @@ override fun onCreateView(
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
-        private const val TTL_IN_SECONDS = 3 * 60 // Three minutes.
+        private const val TTL_IN_SECONDS = 10 // Three minutes.
 
         /**
          * Sets the time in seconds for a published message or a subscription to live. Set to three

@@ -32,8 +32,9 @@ import java.nio.charset.Charset
  */
 class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity) {
 
-    private lateinit var binding:FragmentEncuentroActivityBinding
+    private lateinit var binding: FragmentEncuentroActivityBinding
     private val db = FirebaseFirestore.getInstance()
+
     /**
      * The [Message] object used to broadcast information about the device to nearby devices.
      */
@@ -47,7 +48,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
     /**
      * Adapter for working with messages from nearby publishers.
      */
-    private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
+//    private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,31 +61,29 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var listaUsuarios:ArrayList<String> = arrayListOf<String>()
-       // listaUsuarios.add("moneite@gmail.com")
+        var listaUsuarios: ArrayList<String> = arrayListOf<String>()
+        // listaUsuarios.add("moneite@gmail.com")
         //listaUsuarios.add("mamen@gmail.com")
-       lateinit var user:Usuario
-       db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+        lateinit var user: Usuario
+        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
             .get() //Al debuguear, se detiene en esta linea y salta hasta el return, dando como resultado un 0 cuando se recibe en el adaptador.
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                     user = it.result.toObject(Usuario::class.java)!!
-                  //  adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
+                    user = it.result.toObject(Usuario::class.java)!!
+//                    adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
                 }
             }.addOnSuccessListener {
-                if(user!=null){
+                if (user != null) {
                     //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
                     listaUsuarios = user!!.usuariosEncontrados
-                    val adapter:RecyclerUsuariosEncontradosAdapter = RecyclerUsuariosEncontradosAdapter(this.context,listaUsuarios)
+                    val adapter: RecyclerUsuariosEncontradosAdapter =
+                        RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
                     binding.recyclerPersonasEncontradas.adapter = adapter
-                    binding.recyclerPersonasEncontradas.layoutManager = LinearLayoutManager(this.context)
+                    binding.recyclerPersonasEncontradas.layoutManager =
+                        LinearLayoutManager(this.context)
                 }
-           }
-
-
+            }
         var email:String =Firebase.auth.currentUser!!.email.toString()
-
-
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
 
         mMessageListener = object : MessageListener() {
@@ -95,24 +94,31 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
                     FieldValue.arrayUnion(msgBody)
                 )
-                mNearbyDevicesArrayAdapter!!.add(msgBody)
+                listaUsuarios = user.usuariosEncontrados
+                val adapter: RecyclerUsuariosEncontradosAdapter =
+                    RecyclerUsuariosEncontradosAdapter(requireActivity().getApplicationContext(), listaUsuarios)
+                binding.recyclerPersonasEncontradas.adapter = adapter
+                binding.recyclerPersonasEncontradas.layoutManager =
+                    LinearLayoutManager(requireActivity().getApplicationContext())
+                adapter.notifyItemInserted(adapter.itemCount)
+//                mNearbyDevicesArrayAdapter!!.add(msgBody)
             }
             override fun onLost(message: Message) {
                 // Called when a message is no longer detectable nearby.
                 val msgBody = String(message.content)
-                mNearbyDevicesArrayAdapter!!.remove(msgBody)
+//                mNearbyDevicesArrayAdapter!!.remove(msgBody)
             }
         }
         val nearbyDevicesArrayList: List<String> = ArrayList()
-        mNearbyDevicesArrayAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_list_item_1,
-            nearbyDevicesArrayList
-        )
-        val nearbyDevicesListView = view.findViewById<View>(R.id.nearby_devices_list_view) as ListView
-        if (nearbyDevicesListView != null) {
-            nearbyDevicesListView.adapter = mNearbyDevicesArrayAdapter
-        }
+//        mNearbyDevicesArrayAdapter = ArrayAdapter(
+//            requireContext(),
+//            android.R.layout.simple_list_item_1,
+//            nearbyDevicesArrayList
+//        )
+//        val nearbyDevicesListView = view.findViewById<View>(R.id.nearby_devices_list_view) as ListView
+//        if (nearbyDevicesListView != null) {
+//            nearbyDevicesListView.adapter = mNearbyDevicesArrayAdapter
+//        }
 
 
         binding!!.publishSwitch.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
@@ -133,7 +139,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
      */
     private fun subscribe() {
         Log.i(TAG, "Subscribing")
-        mNearbyDevicesArrayAdapter!!.clear()
+//        mNearbyDevicesArrayAdapter!!.clear()
         val options = SubscribeOptions.Builder()
             .setStrategy(PUB_SUB_STRATEGY)
             .setCallback(object : SubscribeCallback() {
@@ -204,7 +210,9 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
     }
 
 
-    }
+}
+
+
 
 
 

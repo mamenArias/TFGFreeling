@@ -32,22 +32,22 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var listaChats:ArrayList<String>
-        lateinit var user: Usuario
-        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    user = it.result.toObject(Usuario::class.java)!!
-                }
-            }.addOnSuccessListener {
-                if(user!=null){
-                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
-                    listaChats = user!!.listaChats
-                    val adapter: RecyclerUsuariosEncontradosAdapter = RecyclerUsuariosEncontradosAdapter(this.context,listaChats)
-                    binding.recyclerChats.adapter = adapter
-                    binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
-                }
-            }
-    }
+//        var listaChats:ArrayList<String>
+//        lateinit var user: Usuario
+//        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+//            .get()
+//            .addOnCompleteListener {
+//                if (it.isSuccessful) {
+//                    user = it.result.toObject(Usuario::class.java)!!
+//                }
+//            }.addOnSuccessListener {
+//                if(user!=null){
+//                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
+//                    listaChats = user!!.listaChats
+//                    val adapter: RecyclerUsuariosEncontradosAdapter = RecyclerUsuariosEncontradosAdapter(this.context,listaChats)
+//                    binding.recyclerChats.adapter = adapter
+//                    binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+//                }
+//            }
+  }
 }

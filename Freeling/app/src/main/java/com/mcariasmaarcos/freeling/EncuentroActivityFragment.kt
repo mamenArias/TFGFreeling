@@ -1,17 +1,14 @@
 package com.mcariasmaarcos.freeling
 
-import android.content.ClipData.Item
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.CompoundButton
-import android.widget.ListView
-import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.messages.*
@@ -49,6 +46,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
      * Adapter for working with messages from nearby publishers.
      */
 //    private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
+    private var adapter: RecyclerUsuariosEncontradosAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +55,8 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
     ): View? {
         binding = FragmentEncuentroActivityBinding.inflate(inflater, container, false)
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +76,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 if (user != null) {
                     //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
                     listaUsuarios = user!!.usuariosEncontrados
-                    val adapter: RecyclerUsuariosEncontradosAdapter =
+                    adapter =
                         RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
                     binding.recyclerPersonasEncontradas.adapter = adapter
                     binding.recyclerPersonasEncontradas.layoutManager =
@@ -94,13 +94,22 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
                     FieldValue.arrayUnion(msgBody)
                 )
-                listaUsuarios = user.usuariosEncontrados
-                val adapter: RecyclerUsuariosEncontradosAdapter =
-                    RecyclerUsuariosEncontradosAdapter(requireActivity().getApplicationContext(), listaUsuarios)
-                binding.recyclerPersonasEncontradas.adapter = adapter
-                binding.recyclerPersonasEncontradas.layoutManager =
-                    LinearLayoutManager(requireActivity().getApplicationContext())
-                adapter.notifyItemInserted(adapter.itemCount)
+                listaUsuarios = user!!.usuariosEncontrados
+               adapter!!.setData(listaUsuarios)
+                refreshFragment()
+//                requireActivity().getSupportFragmentManager().findFragmentById(R.id.home)?.let {
+//                    activity!!.getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .detach(it) // detach the current fragment
+//                       .attach(requireParentFragment()) // attach with current fragment
+//                        .commit()
+//                };
+//                val adapter: RecyclerUsuariosEncontradosAdapter =
+//                    RecyclerUsuariosEncontradosAdapter(requireActivity().getApplicationContext(), listaUsuarios)
+//                binding.recyclerPersonasEncontradas.adapter = adapter
+//                binding.recyclerPersonasEncontradas.layoutManager =
+//                    LinearLayoutManager(requireActivity().getApplicationContext())
+//                adapter.notifyItemInserted(adapter.itemCount)
 //                mNearbyDevicesArrayAdapter!!.add(msgBody)
             }
             override fun onLost(message: Message) {
@@ -109,7 +118,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //                mNearbyDevicesArrayAdapter!!.remove(msgBody)
             }
         }
-        val nearbyDevicesArrayList: List<String> = ArrayList()
+//        val nearbyDevicesArrayList: List<String> = ArrayList()
 //        mNearbyDevicesArrayAdapter = ArrayAdapter(
 //            requireContext(),
 //            android.R.layout.simple_list_item_1,
@@ -209,10 +218,11 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 "https://developers.google.com/nearby/messages/android/get-started#step_4_configure_your_project"
     }
 
+    fun refreshFragment() {
+
+      parentFragmentManager.beginTransaction().detach(requireParentFragment()). // detach the current fragment
+                   attach(requireParentFragment()).commit()
+    }
+
 
 }
-
-
-
-
-

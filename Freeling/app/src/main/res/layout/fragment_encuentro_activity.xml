@@ -13,22 +13,37 @@
         android:layout_height="match_parent"
         android:layout_weight="12"
         android:background="@color/fucsiaClaro">
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/publish_switch"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Conectar"
-            tools:ignore="TextContrastCheck" />
-        <ImageView
-            android:id="@+id/logoAppSup"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:contentDescription="@string/logoApp"
-            android:src="@drawable/isologo"
-            tools:ignore="ImageContrastCheck" />
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/publish_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avertaextrabold"
+                android:text="Conectar"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <ImageView
+                android:id="@+id/logoAppSup"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/logoApp"
+                android:src="@drawable/isologo"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView

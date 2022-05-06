@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.databinding.FragmentChatActivityBinding
+import com.mcariasmaarcos.recycler.RecyclerChatAdapter
 import com.mcariasmaarcos.recycler.RecyclerUsuariosEncontradosAdapter
 
 private lateinit var binding: FragmentChatActivityBinding
@@ -42,9 +43,8 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
                 }
             }.addOnSuccessListener {
                 if(user!=null){
-                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
                     listaChats = user!!.listaChats
-                    val adapter: RecyclerUsuariosEncontradosAdapter = RecyclerUsuariosEncontradosAdapter(this.context,listaChats)
+                    val adapter: RecyclerChatAdapter = RecyclerChatAdapter(this.context,listaChats)
                     binding.recyclerChats.adapter = adapter
                     binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
                 }

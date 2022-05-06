@@ -74,4 +74,6 @@
     <string name="parentesisFinal">)</string>
     <string name="anios">años</string>
     <string name="conectar">Conectar</string>
+    <string name="escribe_mensaje">Escribe Mensaje</string>
+    <string name="enviar">Enviar</string>
 </resources>

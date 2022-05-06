@@ -109,7 +109,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //                mNearbyDevicesArrayAdapter!!.remove(msgBody)
             }
         }
-        val nearbyDevicesArrayList: List<String> = ArrayList()
+//        val nearbyDevicesArrayList: List<String> = ArrayList()
 //        mNearbyDevicesArrayAdapter = ArrayAdapter(
 //            requireContext(),
 //            android.R.layout.simple_list_item_1,

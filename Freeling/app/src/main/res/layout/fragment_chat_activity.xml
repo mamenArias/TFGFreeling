@@ -8,12 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/publish_switch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Conectar"
-        tools:ignore="TextContrastCheck" />
+
 
     <ListView
         android:id="@+id/nearby_devices_list_view"

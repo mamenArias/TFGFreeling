@@ -13,7 +13,12 @@
         android:layout_height="match_parent"
         android:layout_weight="12"
         android:background="@color/fucsiaClaro">
-
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/publish_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Conectar"
+            tools:ignore="TextContrastCheck" />
         <ImageView
             android:id="@+id/logoAppSup"
             android:layout_width="150dp"

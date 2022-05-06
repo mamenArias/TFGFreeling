@@ -17,7 +17,7 @@
             android:id="@+id/publish_switch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Conectar"
+            android:text="@string/conectar"
             tools:ignore="TextContrastCheck" />
         <ImageView
             android:id="@+id/logoAppSup"

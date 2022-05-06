@@ -73,4 +73,5 @@
     <string name="parentesisInicial">(</string>
     <string name="parentesisFinal">)</string>
     <string name="anios">años</string>
+    <string name="conectar">Conectar</string>
 </resources>

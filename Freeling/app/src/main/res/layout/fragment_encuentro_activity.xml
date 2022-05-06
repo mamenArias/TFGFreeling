@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".EncuentroActivityFragment">
+    tools:context=".EncuentroActivityFragment"
+    android:tag="fragmentHome">
 
     <FrameLayout
         android:layout_width="match_parent"

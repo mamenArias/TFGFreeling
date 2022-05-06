@@ -19,11 +19,16 @@ import com.mcariasmaarcos.freeling.R
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private val usuariosEncontrados: ArrayList<String>): RecyclerView.Adapter<RecyclerUsuariosEncontradosHolder>(){
+class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private var usuariosEncontrados: ArrayList<String>): RecyclerView.Adapter<RecyclerUsuariosEncontradosHolder>(){
 
     private val db = Firebase.firestore
     var otroUsuarioEmail: String? = null
     lateinit var usuarioActual:Usuario
+
+    fun setData(list: ArrayList<String>){
+        usuariosEncontrados = list
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecyclerUsuariosEncontradosHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_usuariosencontrados, parent, false)

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round_custom"
         android:supportsRtl="true"
         android:theme="@style/Theme.Freeling">
-
+        <activity
+            android:name=".ChatMensajesActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.mcariasmaarcos.freeling.API_KEY"
@@ -21,7 +23,7 @@
         <activity
             android:name=".EditarPerfilActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EncuentroActivity"
             android:exported="false"

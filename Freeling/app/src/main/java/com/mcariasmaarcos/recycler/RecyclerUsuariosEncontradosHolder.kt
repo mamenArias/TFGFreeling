@@ -9,8 +9,8 @@ import com.mcariasmaarcos.freeling.R
 
 class RecyclerUsuariosEncontradosHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-    val fotoUsuario:ImageView by lazy { itemView.findViewById(R.id.fotoUsuarioEncontrado) }
-    val nombreUsuario:TextView by lazy { itemView.findViewById(R.id.nombreUsuarioEncontrado) }
+    val fotoUsuario:ImageView by lazy { itemView.findViewById(R.id.fotoUsuarioEncontradoChat) }
+    val nombreUsuario:TextView by lazy { itemView.findViewById(R.id.nombreUsuarioEncontradoChat) }
     val pronombreUsuario:TextView by lazy { itemView.findViewById(R.id.pronombreUsuarioEncontrado) }
     val edadUsuario:TextView by lazy { itemView.findViewById(R.id.edadUsuarioEncontrado) }
     val bontonAceptar:Button by lazy { itemView.findViewById(R.id.botonAceptarUsuario) }

@@ -16,7 +16,7 @@
 
         <meta-data
             android:name="com.mcariasmaarcos.freeling.API_KEY"
-            android:value="AIzaSyDkgIxt4g9CMeVCVpXxJ67ZioUsLgUwHVc" />
+            android:value="AIzaSyDljvttpcfVDVDO34BKLtoq1_7I5DSL7k4" />
 
         <activity
             android:name=".EditarPerfilActivity"

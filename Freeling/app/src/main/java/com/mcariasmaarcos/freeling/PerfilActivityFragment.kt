@@ -255,6 +255,13 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 STORAGEPERMISSIONCODE
             )
         }
+
+        binding.botonCerrarSesion.setOnClickListener {
+
+            Firebase.auth.signOut()
+            val intent:Intent = Intent(requireActivity(),MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

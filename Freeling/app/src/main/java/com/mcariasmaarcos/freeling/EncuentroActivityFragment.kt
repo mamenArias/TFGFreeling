@@ -220,8 +220,8 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 
     fun refreshFragment() {
 
-      parentFragmentManager.beginTransaction().detach(requireParentFragment()). // detach the current fragment
-                   attach(requireParentFragment()).commit()
+//      parentFragmentManager.beginTransaction().detach(requireParentFragment()). // detach the current fragment
+//                   attach(requireParentFragment()).commit()
     }
 
 

@@ -74,4 +74,6 @@
     <string name="parentesisFinal">)</string>
     <string name="anios">años</string>
     <string name="conectar">Conectar</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
+    <string name="miEmail">Mi email</string>
 </resources>

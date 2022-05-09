@@ -1,5 +1,6 @@
 package com.mcariasmaarcos.freeling
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -175,18 +176,18 @@ class EditarPerfilActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.demasiadaEdad, Toast.LENGTH_SHORT).show()
             } else {
 
-                if (image != null) {
+//                if (image != null) {
                     val reference = FirebaseStorage.getInstance()
                         .getReference("imagenesPerfil/" + binding.campoEmailRegistroEditar.text.toString() + ".jpg")
                     reference.putFile(image!!)
                     storageRef =
                         dbStorage.reference.child("imagenesPerfil")
                             .child(binding.campoEmailRegistroEditar.text.toString() + ".jpg")
-                } else {
-                    storageRef =
-                        dbStorage.reference.child("imagenesPerfil")
-                            .child("avatarpordefecto.png")
-                }
+//                } else {
+//                    storageRef =
+//                        dbStorage.reference.child("imagenesPerfil")
+//                            .child("avatarpordefecto.png")
+//                }
                 storageRef.downloadUrl.addOnSuccessListener { url ->
 
 
@@ -221,11 +222,11 @@ class EditarPerfilActivity : AppCompatActivity() {
                         "biografia",user.biografia
 
                     )
-                    if(image!=null){
+//                    if(image!=null){
                         db.collection("Usuarios").document(user.email).update(
                             "fotoPerfil",user.fotoPerfil
                         )
-                    }
+//                    }
 
 
 
@@ -238,6 +239,8 @@ class EditarPerfilActivity : AppCompatActivity() {
                 }
             }
         }
+
+
 
 
         binding.imagenPerfilEditar.setOnClickListener {
@@ -305,4 +308,11 @@ class EditarPerfilActivity : AppCompatActivity() {
             return view
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        onCreate(Bundle())
+    }
+
+
 }

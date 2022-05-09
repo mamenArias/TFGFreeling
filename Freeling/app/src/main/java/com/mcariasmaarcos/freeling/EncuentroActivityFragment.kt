@@ -56,7 +56,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
         binding = FragmentEncuentroActivityBinding.inflate(inflater, container, false)
         return binding.root
 
-
+        requireActivity().intent.extras!!.getString("user")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

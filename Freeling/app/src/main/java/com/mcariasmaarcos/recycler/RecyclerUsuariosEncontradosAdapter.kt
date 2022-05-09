@@ -53,26 +53,21 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         holder.edadUsuario.text = it.get("edad").toString()
                         otroUsuarioEmail = it.get("email").toString()
                     }
-
-                /*holder.bontonAceptar.setOnClickListener {
-                    val chatId = UUID.randomUUID().toString()
-                    val otroUsuario = otroUsuarioEmail
-                    val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
-
-                    val chat: Chat = Chat(chatId, "Chat con $otroUsuario", usuariosChat)
-
-                    db.collection("Chats").document(chatId).set(chat)
-                    db.collection("Usuarios").document(usuarioActual.email).collection("chats").document(chatId).set(chat)
-                    if (otroUsuario != null) {
-                        db.collection("Usuarios").document(otroUsuario).collection("chats").document(chatId).set(chat)
-                    }
-
-                    val intent = Intent(context, ChatMensajesActivity::class.java)
-                    intent.putExtra("chatId", chatId)
-                    intent.putExtra("user", usuarioActual.email)
-                    context?.startActivity(intent)
-                }*/
             }
+
+        holder.bontonAceptar.setOnClickListener {
+            val chatId = UUID.randomUUID().toString()
+            val otroUsuario = otroUsuarioEmail
+            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
+
+            val chat: Chat = Chat(chatId, "Chat con $otroUsuario", usuariosChat)
+
+            db.collection("chats").document(chatId).set(chat)
+            db.collection("Usuarios").document(usuarioActual.email).collection("chats").document(chatId).set(chat)
+            if (otroUsuario != null) {
+                db.collection("Usuarios").document(otroUsuario).collection("chats").document(chatId).set(chat)
+            }
+        }
     }
 
     override fun getItemCount(): Int {

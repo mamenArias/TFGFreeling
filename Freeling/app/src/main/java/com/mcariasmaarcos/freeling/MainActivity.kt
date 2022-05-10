@@ -60,7 +60,9 @@ class MainActivity : AppCompatActivity() {
     //si el usuario esta dentro ya se salta el login
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
-            startActivity(Intent(this@MainActivity, EncuentroActivity::class.java))
+            val intent = Intent(this@MainActivity, EncuentroActivity::class.java)
+            intent.putExtra("user", account.email)
+            startActivity(intent)
         } else {
 
         }

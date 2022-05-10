@@ -14,7 +14,6 @@ import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.databinding.FragmentChatActivityBinding
 import com.mcariasmaarcos.recycler.RecyclerChatAdapter
-import com.mcariasmaarcos.recycler.RecyclerUsuariosEncontradosAdapter
 
 private lateinit var binding: FragmentChatActivityBinding
 
@@ -44,10 +43,31 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
             }.addOnSuccessListener {
                 if(user!=null){
                     listaChats = user!!.listaChats
-                    val adapter: RecyclerChatAdapter = RecyclerChatAdapter(this.context,listaChats)
+                    val adapter = RecyclerChatAdapter(this.context,listaChats)
                     binding.recyclerChats.adapter = adapter
                     binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
                 }
             }
+
+        /*val userRef = db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+
+        userRef.collection("chats").get()
+            .addOnSuccessListener { chats ->
+                val listaChats = chats.toObjects(Chat::class.java)
+                val adapter = RecyclerChatAdapter(this.context,listaChats)
+                binding.recyclerChats.adapter = adapter
+                binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+            }
+
+        userRef.collection("chats").addSnapshotListener { chats, error ->
+            if (error == null){
+                chats?.let {
+                    val listaChats = chats.toObjects(Chat::class.java)
+                    val adapter = RecyclerChatAdapter(this.context,listaChats)
+                    binding.recyclerChats.adapter = adapter
+                    binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+                }
+            }
+        }*/
     }
 }

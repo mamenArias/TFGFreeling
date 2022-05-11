@@ -71,18 +71,33 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 if (it.isSuccessful) {
                     user = it.result.toObject(Usuario::class.java)!!
 //                    adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
+                    if (user != null) {
+                        //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
+                        listaUsuarios = user!!.usuariosEncontrados
+                        adapter =
+                            RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
+                        binding.recyclerPersonasEncontradas.adapter = adapter
+                        binding.recyclerPersonasEncontradas.layoutManager =
+                            LinearLayoutManager(this.context)
+
+                        // RELLENAR VARIABLES INTERNAS DE EMAIL Y EL MMESSAGE
+                        //PONER MENSAJE DE CARGA y poner el BINDING DEL SWITCH
+                    // ACTIVAR EL SWITCH
+                    }
+
                 }
-            }.addOnSuccessListener {
-                if (user != null) {
-                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
-                    listaUsuarios = user!!.usuariosEncontrados
-                    adapter =
-                        RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
-                    binding.recyclerPersonasEncontradas.adapter = adapter
-                    binding.recyclerPersonasEncontradas.layoutManager =
-                        LinearLayoutManager(this.context)
-                }
-            }
+         }
+//            .addOnSuccessListener {
+//                if (user != null) {
+//                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
+//                    listaUsuarios = user!!.usuariosEncontrados
+//                    adapter =
+//                        RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
+//                    binding.recyclerPersonasEncontradas.adapter = adapter
+//                    binding.recyclerPersonasEncontradas.layoutManager =
+//                        LinearLayoutManager(this.context)
+//                }
+//            }
         var email:String =Firebase.auth.currentUser!!.email.toString()
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
 

@@ -1,5 +1,6 @@
 package com.mcariasmaarcos.recycler
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
@@ -70,6 +72,8 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
             //if (otroUsuario != null) {
                 db.collection("Usuarios").document(otroUsuario.toString()).collection("Chats").document(chatId).set(chat)
             //}
+            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+                .update("listaChats", FieldValue.arrayUnion(otroUsuario))
 
         }
     }

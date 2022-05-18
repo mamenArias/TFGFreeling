@@ -27,15 +27,16 @@ class RecyclerChatAdapter(private val context: Context?, private val listaChats:
     }
 
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
-        db.collection("Usuarios").document(listaChats[position].toString()).get().addOnSuccessListener {
-            Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuarioChat)
-            holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
-            holder.emailChat.text = it.get("email").toString()
-            holder.nombreUsuarioChat.text = it.get(("nombre")).toString()
+        db.collection("Usuarios").document(listaChats[position].toString()).get()
+            .addOnSuccessListener {
+                Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuarioChat)
+                holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
+                holder.emailChat.text = it.get("email").toString()
+                holder.nombreUsuarioChat.text = it.get("nombre").toString()
         }
 
         lateinit var chatId: String
-        db.collection("chats").document(Firebase.auth.currentUser!!.email.toString())
+        db.collection("Chats").document(Firebase.auth.currentUser!!.email.toString())
             .get()
             .addOnSuccessListener {
                 chatId = it.get("id").toString()

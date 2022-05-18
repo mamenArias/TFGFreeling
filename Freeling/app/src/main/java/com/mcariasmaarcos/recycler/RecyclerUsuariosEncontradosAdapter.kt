@@ -2,6 +2,7 @@ package com.mcariasmaarcos.recycler
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,17 +57,20 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
             }
 
         holder.bontonAceptar.setOnClickListener {
+            // VAMOS A AÑADIR LOS USUARIOS A LA LISTCHATS DEL USUARIO
+
             val chatId = UUID.randomUUID().toString()
             val otroUsuario = otroUsuarioEmail
             val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
 
-            val chat: Chat = Chat(chatId, "Chat con $otroUsuario", usuariosChat)
+            val chat: Chat = Chat(chatId, usuariosChat)
 
-            db.collection("chats").document(chatId).set(chat)
-            db.collection("Usuarios").document(usuarioActual.email).collection("chats").document(chatId).set(chat)
-            if (otroUsuario != null) {
-                db.collection("Usuarios").document(otroUsuario).collection("chats").document(chatId).set(chat)
-            }
+            db.collection("Chats").document(chatId).set(chat)
+            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).collection("Chats").document(chatId).set(chat)
+            //if (otroUsuario != null) {
+                db.collection("Usuarios").document(otroUsuario.toString()).collection("Chats").document(chatId).set(chat)
+            //}
+
         }
     }
 

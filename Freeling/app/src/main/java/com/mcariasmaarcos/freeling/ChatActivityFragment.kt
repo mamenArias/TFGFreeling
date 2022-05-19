@@ -1,6 +1,7 @@
 package com.mcariasmaarcos.freeling
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.mcariasmaarcos.clases.Chat
 import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.databinding.FragmentChatActivityBinding
 import com.mcariasmaarcos.recycler.RecyclerChatAdapter
@@ -18,6 +20,7 @@ import com.mcariasmaarcos.recycler.RecyclerChatAdapter
 private lateinit var binding: FragmentChatActivityBinding
 
 private val db = FirebaseFirestore.getInstance()
+lateinit var user: String
 
 class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
 
@@ -33,8 +36,13 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var listaChats:ArrayList<String>
-        lateinit var user: Usuario
-        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+
+        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get() //Al debuguear, se detiene en esta linea y salta hasta el return, dando como resultado un 0 cuando se recibe en el adaptador.
+            .addOnSuccessListener {
+                    user = it.get("email").toString()
+                }
+
+        /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -47,27 +55,37 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
                     binding.recyclerChats.adapter = adapter
                     binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
                 }
-            }
+            }*/
 
-        /*val userRef = db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+        binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+        binding.recyclerChats.adapter = RecyclerChatAdapter {chat: Chat ->  chatSeleccionado(chat)}
 
-        userRef.collection("chats").get()
+        val userRef = db.collection("Usuarios").document(user)
+
+        userRef.collection("Chats").get()
             .addOnSuccessListener { chats ->
                 val listaChats = chats.toObjects(Chat::class.java)
-                val adapter = RecyclerChatAdapter(this.context,listaChats)
-                binding.recyclerChats.adapter = adapter
-                binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+
+                (binding.recyclerChats.adapter as RecyclerChatAdapter).setData(listaChats)
             }
 
-        userRef.collection("chats").addSnapshotListener { chats, error ->
+        userRef.collection("Chats").addSnapshotListener { chats, error ->
             if (error == null){
                 chats?.let {
-                    val listaChats = chats.toObjects(Chat::class.java)
-                    val adapter = RecyclerChatAdapter(this.context,listaChats)
-                    binding.recyclerChats.adapter = adapter
-                    binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
+                    val listaChats = it.toObjects(Chat::class.java)
+
+                    (binding.recyclerChats.adapter as RecyclerChatAdapter).setData(listaChats)
                 }
             }
-        }*/
+        }
+
+
+    }
+
+    private fun chatSeleccionado(chat:Chat){
+        val intent = Intent(this.context, ChatMensajesActivity::class.java)
+        intent.putExtra("chatId", chat.id)
+        intent.putExtra("usuario", user)
+        startActivity(intent)
     }
 }

@@ -17,9 +17,15 @@ import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.ChatMensajesActivity
 import com.mcariasmaarcos.freeling.R
 
-class RecyclerChatAdapter(private val context: Context?, private val listaChats: ArrayList<String>): RecyclerView.Adapter<RecyclerChatHolder>() {
+class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: Context?, private val listaChats: ArrayList<String>*/): RecyclerView.Adapter<RecyclerChatHolder>() {
 
     private val db = Firebase.firestore
+    var chats: List<Chat> = emptyList()
+
+    fun setData(list: List<Chat>){
+        chats = list
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerChatHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_chatlist, parent, false)
@@ -27,15 +33,19 @@ class RecyclerChatAdapter(private val context: Context?, private val listaChats:
     }
 
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
-        db.collection("Usuarios").document(listaChats[position].toString()).get()
+        /*db.collection("Usuarios").document(chats[position].toString()).get()
             .addOnSuccessListener {
-                Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuarioChat)
+                Glide.with().load(it.get("fotoPerfil")).into(holder.fotoUsuarioChat)
                 holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
                 holder.emailChat.text = it.get("email").toString()
                 holder.nombreUsuarioChat.text = it.get("nombre").toString()
+        }*/
+
+        holder.itemView.setOnClickListener {
+            chatClick(chats[position])
         }
 
-        lateinit var chatId: String
+        /*lateinit var chatId: String
         db.collection("Chats").document(Firebase.auth.currentUser!!.email.toString())
             .get()
             .addOnSuccessListener {
@@ -48,16 +58,17 @@ class RecyclerChatAdapter(private val context: Context?, private val listaChats:
             .addOnSuccessListener {
                 usuarioEmail = it.get("email").toString()
             }
+
         holder.itemView.setOnClickListener {
             listaChats[position]
             val intent = Intent(context, ChatMensajesActivity::class.java)
             intent.putExtra("chatId", chatId)
             intent.putExtra("usuario", usuarioEmail)
             context?.startActivity(intent)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
-        return listaChats.size
+        return chats.size
     }
 }

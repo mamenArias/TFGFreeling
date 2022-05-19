@@ -8,10 +8,13 @@ import com.mcariasmaarcos.freeling.databinding.ActivityEncuentroBinding
 class EncuentroActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityEncuentroBinding.inflate(layoutInflater)}
+    private var usuario = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        intent.getStringExtra("usuario")?.let { user = it }
 
         val homeFragment = EncuentroActivityFragment()
         val chatFragment = ChatActivityFragment()

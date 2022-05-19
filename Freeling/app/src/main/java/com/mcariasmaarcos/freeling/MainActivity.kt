@@ -15,7 +15,7 @@ import com.mcariasmaarcos.freeling.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
             val intent = Intent(this@MainActivity, EncuentroActivity::class.java)
-            intent.putExtra("user", account.email)
+            intent.putExtra("usuario", account.email)
             startActivity(intent)
         } else {
 

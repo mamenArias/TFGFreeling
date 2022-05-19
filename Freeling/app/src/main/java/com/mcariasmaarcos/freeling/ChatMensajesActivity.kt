@@ -25,16 +25,39 @@ class ChatMensajesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        chatId = intent.getStringExtra("chatId").toString()
-        usuario = intent.getStringExtra("usuario").toString()
+        intent.getStringExtra("chatId")?.let { chatId = it }
+        intent.getStringExtra("usuario")?.let { usuario = it }
 
-        if(chatId.isNotEmpty()){
+        if(chatId.isNotEmpty() && user.isNotEmpty()){
             initViews()
         }
     }
 
     private fun initViews(){
-        val adapter = RecyclerMensajeAdapter(usuario)
+        binding.recyclerMensajesChat.layoutManager = LinearLayoutManager(this)
+        binding.recyclerMensajesChat.adapter = RecyclerMensajeAdapter(usuario)
+
+        binding.botonEnviarMensaje.setOnClickListener { enviarMensaje() }
+
+        val chatRef = db.collection("Chats").document(chatId)
+
+        chatRef.collection("Mensajes").orderBy("dob", Query.Direction.ASCENDING).get()
+            .addOnSuccessListener { mensajes ->
+                val listaMensajes = mensajes.toObjects(MensajeChat::class.java)
+                (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
+            }
+
+        chatRef.collection("Mensajes").orderBy("dob", Query.Direction.ASCENDING)
+            .addSnapshotListener { mensajes, error ->
+                if (error == null){
+                    mensajes?.let {
+                        val listaMensajes = it.toObjects(MensajeChat::class.java)
+                        (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
+                    }
+                }
+            }
+
+        /*val adapter = RecyclerMensajeAdapter(usuario)
         binding.recyclerMensajesChat.adapter = adapter
         binding.recyclerMensajesChat.layoutManager = LinearLayoutManager(this)
 
@@ -58,7 +81,7 @@ class ChatMensajesActivity : AppCompatActivity() {
                         (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
                     }
                 }
-            }
+            }*/
     }
 
     private fun enviarMensaje(){
@@ -67,7 +90,7 @@ class ChatMensajesActivity : AppCompatActivity() {
             from = usuario
         )
 
-        db.collection("chats").document(chatId).collection("mensajes").document().set(mensaje)
+        db.collection("Chats").document(chatId).collection("Mensajes").document().set(mensaje)
 
         binding.campoEscribirMensaje.setText("")
     }

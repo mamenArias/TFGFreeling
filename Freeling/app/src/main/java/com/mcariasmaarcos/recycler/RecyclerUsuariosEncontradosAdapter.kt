@@ -1,9 +1,11 @@
 package com.mcariasmaarcos.recycler
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +28,7 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
 
     private val db = Firebase.firestore
     var otroUsuarioEmail: String? = null
+    var otroUsuarioNombre: String? = null
     lateinit var usuarioActual:Usuario
 
     fun setData(list: ArrayList<String>){
@@ -55,27 +58,44 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         holder.pronombreUsuario.text = it.get("pronombre").toString()
                         holder.edadUsuario.text = it.get("edad").toString()
                         otroUsuarioEmail = it.get("email").toString()
+                        otroUsuarioNombre = it.get(("nombre")).toString()
+
+                        holder.bontonAceptar.setOnClickListener {
+                            // VAMOS A AÑADIR LOS USUARIOS A LA LISTCHATS DEL USUARIO
+
+                            val chatId = UUID.randomUUID().toString()
+                            val otroUsuario = otroUsuarioEmail
+                            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
+
+                            val chat: Chat = Chat(chatId, usuariosChat, otroUsuarioNombre)
+
+                            db.collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).collection("Chats").document(chatId).set(chat)
+                            //if (otroUsuario != null) {
+                            db.collection("Usuarios").document(otroUsuario.toString()).collection("Chats").document(chatId).set(chat)
+                            //}
+                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+                                .update("listaChats", FieldValue.arrayUnion(otroUsuario))
+                            /*usuariosEncontrados.removeAt(position)
+                            notifyItemRemoved(position)
+                            notifyDataSetChanged()
+                            db.collection("Usuarios").document(usuariosEncontrados[position]).delete()
+                                .addOnSuccessListener { Log.d(TAG, "Usuario añadido a la lista de chats") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }*/
+                        }
+
+                        /*holder.botonRechazar.setOnClickListener {
+                            usuariosEncontrados.removeAt(position)
+                            notifyItemRemoved(position)
+                            notifyDataSetChanged()
+                            db.collection("Usuarios").document(usuariosEncontrados[position]).delete()
+                                .addOnSuccessListener { Log.d(TAG, "Usuario eliminado") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }
+                        }*/
                     }
             }
 
-        holder.bontonAceptar.setOnClickListener {
-            // VAMOS A AÑADIR LOS USUARIOS A LA LISTCHATS DEL USUARIO
 
-            val chatId = UUID.randomUUID().toString()
-            val otroUsuario = otroUsuarioEmail
-            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
-
-            val chat: Chat = Chat(chatId, usuariosChat)
-
-            db.collection("Chats").document(chatId).set(chat)
-            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).collection("Chats").document(chatId).set(chat)
-            //if (otroUsuario != null) {
-                db.collection("Usuarios").document(otroUsuario.toString()).collection("Chats").document(chatId).set(chat)
-            //}
-            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-                .update("listaChats", FieldValue.arrayUnion(otroUsuario))
-
-        }
     }
 
     override fun getItemCount(): Int {

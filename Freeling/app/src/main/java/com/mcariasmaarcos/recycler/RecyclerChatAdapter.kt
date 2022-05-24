@@ -55,6 +55,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
             }*/
 
         holder.emailChat.text = chats[position].users.toString()
+        holder.nombreUsuarioChat.text = chats[position].nombreUsuario
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
         }

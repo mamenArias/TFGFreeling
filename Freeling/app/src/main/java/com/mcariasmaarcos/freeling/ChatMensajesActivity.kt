@@ -41,13 +41,13 @@ class ChatMensajesActivity : AppCompatActivity() {
 
         val chatRef = db.collection("Chats").document(chatId)
 
-        chatRef.collection("Mensajes").orderBy("dob", Query.Direction.ASCENDING).get()
+        chatRef.collection("Mensajes").orderBy("fecha", Query.Direction.ASCENDING).get()
             .addOnSuccessListener { mensajes ->
                 val listaMensajes = mensajes.toObjects(MensajeChat::class.java)
                 (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
             }
 
-        chatRef.collection("Mensajes").orderBy("dob", Query.Direction.ASCENDING)
+        chatRef.collection("Mensajes").orderBy("fecha", Query.Direction.ASCENDING)
             .addSnapshotListener { mensajes, error ->
                 if (error == null){
                     mensajes?.let {

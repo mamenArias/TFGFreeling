@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -61,21 +62,19 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         otroUsuarioNombre = it.get(("nombre")).toString()
 
                         holder.bontonAceptar.setOnClickListener {
-                            // VAMOS A AÑADIR LOS USUARIOS A LA LISTCHATS DEL USUARIO
 
                             val chatId = UUID.randomUUID().toString()
-                            val otroUsuario = otroUsuarioEmail
-                            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuario.toString())
+                            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuarioEmail.toString())
 
-                            val chat: Chat = Chat(chatId, usuariosChat, otroUsuarioNombre)
+                            val chat = Chat(chatId, usuariosChat, otroUsuarioNombre)
 
                             db.collection("Chats").document(chatId).set(chat)
-                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(usuarioActual.email).collection("Chats").document(chatId).set(chat)
                             //if (otroUsuario != null) {
-                            db.collection("Usuarios").document(otroUsuario.toString()).collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(otroUsuarioEmail.toString()).collection("Chats").document(chatId).set(chat)
                             //}
-                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-                                .update("listaChats", FieldValue.arrayUnion(otroUsuario))
+                            /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+                                .update("listaChats", FieldValue.arrayUnion(otroUsuario))*/
                             /*usuariosEncontrados.removeAt(position)
                             notifyItemRemoved(position)
                             notifyDataSetChanged()
@@ -94,6 +93,10 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         }*/
                     }
             }
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(this.context, "Usuario$otroUsuarioEmail", Toast.LENGTH_SHORT).show()
+        }
 
 
     }

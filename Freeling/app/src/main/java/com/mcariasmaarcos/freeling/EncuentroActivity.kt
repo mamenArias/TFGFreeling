@@ -8,7 +8,7 @@ import com.mcariasmaarcos.freeling.databinding.ActivityEncuentroBinding
 class EncuentroActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityEncuentroBinding.inflate(layoutInflater)}
-    private var usuario = ""
+    //private var usuario = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

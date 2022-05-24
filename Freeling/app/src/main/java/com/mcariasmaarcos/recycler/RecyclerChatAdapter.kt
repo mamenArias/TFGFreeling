@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
@@ -21,7 +22,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
 
     private val db = Firebase.firestore
     var chats: List<Chat> = emptyList()
-    lateinit var usuarioActual:Usuario
+    //lateinit var usuarioActual:Usuario
 
 
     fun setData(list: List<Chat>){

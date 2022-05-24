@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/white">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/misMensajesLayout"
@@ -25,7 +24,8 @@
             android:background="@color/azulOscuro"
             android:gravity="end"
             android:padding="8dp"
-            android:textColor="@android:color/white"
+            android:text=""
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,8 @@
             android:layout_marginBottom="8dp"
             android:background="@color/purpura"
             android:padding="8dp"
-            android:textColor="@android:color/white"
+            android:text=""
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

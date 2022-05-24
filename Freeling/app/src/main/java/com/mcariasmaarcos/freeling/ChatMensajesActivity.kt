@@ -28,7 +28,7 @@ class ChatMensajesActivity : AppCompatActivity() {
         intent.getStringExtra("chatId")?.let { chatId = it }
         intent.getStringExtra("usuario")?.let { usuario = it }
 
-        if(chatId.isNotEmpty() && user.isNotEmpty()){
+        if(chatId.isNotEmpty() && usuario.isNotEmpty()){
             initViews()
         }
     }

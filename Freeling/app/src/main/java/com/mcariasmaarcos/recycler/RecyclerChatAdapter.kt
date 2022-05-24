@@ -21,6 +21,8 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
 
     private val db = Firebase.firestore
     var chats: List<Chat> = emptyList()
+    lateinit var usuarioActual:Usuario
+
 
     fun setData(list: List<Chat>){
         chats = list
@@ -33,14 +35,26 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
     }
 
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
-        /*db.collection("Usuarios").document(chats[position].toString()).get()
-            .addOnSuccessListener {
-                Glide.with().load(it.get("fotoPerfil")).into(holder.fotoUsuarioChat)
-                holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
-                holder.emailChat.text = it.get("email").toString()
-                holder.nombreUsuarioChat.text = it.get("nombre").toString()
-        }*/
 
+        /*var listaChats: ArrayList<String> = arrayListOf()
+
+        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    usuarioActual = it.result.toObject(Usuario::class.java)!!
+                }
+
+                listaChats = usuarioActual.listaChats
+                db.collection("Usuarios").document(listaChats[position]).get()
+                    .addOnSuccessListener {
+                        //Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuario)
+                        //holder.fotoUsuario.scaleType = ImageView.ScaleType.CENTER_CROP
+                        holder.nombreUsuarioChat.text = it.get(("nombre")).toString()
+                        holder.emailChat.text = it.get("email").toString()
+                    }
+            }*/
+
+        holder.emailChat.text = chats[position].users.toString()
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
         }

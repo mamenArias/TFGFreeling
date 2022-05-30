@@ -78,4 +78,6 @@
     <string name="miEmail">Mi email</string>
     <string name="escribe_mensaje">Escribe Mensaje</string>
     <string name="enviar">Enviar</string>
+    <string name="volver">Volver</string>
+    <string name="mi_email">Mi email</string>
 </resources>

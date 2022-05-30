@@ -21,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
 import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.ChatMensajesActivity
+import com.mcariasmaarcos.freeling.PerfilUsuarioEncontradoActivity
 import com.mcariasmaarcos.freeling.R
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,9 +56,9 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                     .addOnSuccessListener {
                         Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuario)
                         holder.fotoUsuario.scaleType = ImageView.ScaleType.CENTER_CROP
-                        holder.nombreUsuario.text = it.get(("nombre")).toString()
-                        holder.pronombreUsuario.text = it.get("pronombre").toString()
-                        holder.edadUsuario.text = it.get("edad").toString()
+                        holder.nombreUsuario.setText(it.get(("nombre")).toString())
+                        holder.pronombreUsuario.setText(it.get("pronombre").toString())
+                        holder.edadUsuario.setText(it.get("edad").toString())
                         otroUsuarioEmail = it.get("email").toString()
                         otroUsuarioNombre = it.get(("nombre")).toString()
 
@@ -95,6 +96,9 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
             }
 
         holder.itemView.setOnClickListener {
+            val intent = Intent(this.context, PerfilUsuarioEncontradoActivity::class.java)
+            intent.putExtra("otroUsuario", otroUsuarioEmail)
+            context?.startActivity(intent)
             Toast.makeText(this.context, "Usuario$otroUsuarioEmail", Toast.LENGTH_SHORT).show()
         }
 

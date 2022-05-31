@@ -80,4 +80,11 @@
     <string name="enviar">Enviar</string>
     <string name="volver">Volver</string>
     <string name="mi_email">Mi email</string>
+    <string name="parentesisIzq">(</string>
+    <string name="parentesisDcho">)</string>
+    <string name="rangoEdadOtro">Rango de edad que busca:</string>
+    <string name="interesesOtro">Intereses:</string>
+    <string name="cero">0</string>
+    <string name="darMedallaBuena">Dar Medalla buena al usuario encontrado</string>
+    <string name="darMedallaMala">Dar Medalla mala al usuario encontrado</string>
 </resources>

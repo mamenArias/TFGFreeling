@@ -29,8 +29,6 @@ import kotlin.collections.ArrayList
 class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private var usuariosEncontrados: ArrayList<String>): RecyclerView.Adapter<RecyclerUsuariosEncontradosHolder>(){
 
     private val db = Firebase.firestore
-    var otroUsuarioEmail: String? = null
-    var otroUsuarioNombre: String? = null
     lateinit var usuarioActual:Usuario
 
     fun setData(list: ArrayList<String>){
@@ -59,20 +57,18 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         holder.nombreUsuario.setText(it.get(("nombre")).toString())
                         holder.pronombreUsuario.setText(it.get("pronombre").toString())
                         holder.edadUsuario.setText(it.get("edad").toString())
-                        otroUsuarioEmail = it.get("email").toString()
-                        otroUsuarioNombre = it.get(("nombre")).toString()
 
                         holder.bontonAceptar.setOnClickListener {
 
                             val chatId = UUID.randomUUID().toString()
-                            val usuariosChat = listOf<String>(usuarioActual.email, otroUsuarioEmail.toString())
+                            val usuariosChat = listOf<String>(usuarioActual.email, usuariosEncontrados[position])
 
-                            val chat = Chat(chatId, usuariosChat, otroUsuarioNombre)
+                            val chat = Chat(chatId, usuariosChat, holder.nombreUsuario.text.toString())
 
                             db.collection("Chats").document(chatId).set(chat)
                             db.collection("Usuarios").document(usuarioActual.email).collection("Chats").document(chatId).set(chat)
                             //if (otroUsuario != null) {
-                            db.collection("Usuarios").document(otroUsuarioEmail.toString()).collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(usuariosEncontrados[position]).collection("Chats").document(chatId).set(chat)
                             //}
                             /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
                                 .update("listaChats", FieldValue.arrayUnion(otroUsuario))*/
@@ -88,18 +84,17 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                             usuariosEncontrados.removeAt(position)
                             notifyItemRemoved(position)
                             notifyDataSetChanged()
-                            db.collection("Usuarios").document(usuariosEncontrados[position]).delete()
-                                .addOnSuccessListener { Log.d(TAG, "Usuario eliminado") }
-                                .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }
+                            db.collection("Usuarios").document(usuarioActual.email).get(usuariosEncontrados[position]).delete()
+                                //.addOnSuccessListener { Log.d(TAG, "Usuario eliminado") }
+                                //.addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }
                         }*/
                     }
             }
 
         holder.itemView.setOnClickListener {
             val intent = Intent(this.context, PerfilUsuarioEncontradoActivity::class.java)
-            intent.putExtra("otroUsuario", otroUsuarioEmail)
+            intent.putExtra("otroUsuario", usuariosEncontrados[position])
             context?.startActivity(intent)
-            Toast.makeText(this.context, "Usuario$otroUsuarioEmail", Toast.LENGTH_SHORT).show()
         }
 
 

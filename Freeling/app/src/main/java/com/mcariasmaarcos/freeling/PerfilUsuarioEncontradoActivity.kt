@@ -26,18 +26,18 @@ class PerfilUsuarioEncontradoActivity : AppCompatActivity() {
 
         db.collection("Usuarios").document(otroUsuario).get()
             .addOnSuccessListener{
-                binding.campoEmailOtro.text = it.get("email").toString()
+                binding.emailOtro.text = it.get("email").toString()
                 Glide.with(this).load(it.get("fotoPerfil"))
                     .into(binding.imagenPerfilOtro as ImageView)
                 binding.imagenPerfilOtro.scaleType = ImageView.ScaleType.CENTER_CROP
-                binding.campoNombreOtro.setText(it.get("nombre").toString())
+                binding.nombreOtro.setText(it.get("nombre").toString())
                 binding.pronombreOtro.setText(it.get("pronombre").toString())
                 binding.generoOtro.setText(it.get("genero").toString())
                 binding.orientacionSexOtro.setText(it.get("orientacionSexual").toString())
-                binding.campoEdadOtro.setText(it.get("edad").toString())
+                binding.edadOtro.setText(it.get("edad").toString())
                 binding.edadMaxOtro.setText(it.get("edadDeseadaSup").toString())
                 binding.edadMinOtro.setText(it.get("edadDeseadaInf").toString())
-                binding.campoInteresesOtro.setText(it.get("biografia").toString())
+                binding.interesesOtro.setText(it.get("biografia").toString())
             }
     }
 }

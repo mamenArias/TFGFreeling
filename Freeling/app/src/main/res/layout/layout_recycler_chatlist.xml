@@ -45,11 +45,41 @@
         android:id="@+id/campoEmailChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/averta"
         android:text="@string/email"
         app:layout_constraintEnd_toEndOf="@+id/nombreUsuarioEncontradoChat"
         app:layout_constraintStart_toEndOf="@+id/cardViewFotoUsuarioChat"
         app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioEncontradoChat" />
+
+    <ImageView
+        android:id="@+id/darMedallaBuena"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/darMedallaBuena"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/darMedallaMala"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/nombreUsuarioEncontradoChat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/medallabuena"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/darMedallaMala"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/darMedallaMala"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/darMedallaBuena"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/medallamala" />
 </androidx.constraintlayout.widget.ConstraintLayout>

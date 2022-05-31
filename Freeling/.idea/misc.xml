@@ -7,16 +7,12 @@
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_editar_perfil.xml" value="0.22916666666666666" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_encuentro.xml" value="0.22916666666666666" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_perfil_usuario_encontrado.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/activity_registro.xml" value="0.264" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_chat_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_encuentro_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_logros_activity.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/fragment_perfil_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/layout_recycler_chatlist.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/layout_recycler_mensajeschat.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/layout_recycler_usuariosencontrados.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/spinner_editar.xml" value="0.25416666666666665" />
         <entry key="..\:/Mamen/2DAM/ProyectoFinalFreeling/TFGFreeling/Freeling/app/src/main/res/layout/spinner_estilo.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/drawable/background_gradient.xml" value="0.193" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/drawable/background_gradient_blue.xml" value="0.2" />
@@ -29,6 +25,8 @@
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/activity_registro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/fragment_chat_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/fragment_encuentro_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/fragment_logros_activity.xml" value="0.2854077253218884" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/fragment_perfil_activity.xml" value="0.264" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/spinner_editar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/monei/Desktop/FP/2do Trimestre/TFG/TFGFreeling/Freeling/app/src/main/res/layout/spinner_estilo.xml" value="0.25416666666666665" />

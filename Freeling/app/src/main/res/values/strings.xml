@@ -80,4 +80,12 @@
     <string name="enviar">Enviar</string>
     <string name="volver">Volver</string>
     <string name="mi_email">Mi email</string>
+    <string name="iniciaTuPrimerChat">Inicia tu primer chat</string>
+    <string name="conseguido">Conseguido</string>
+    <string name="bloqueado">Bloqueado</string>
+    <string name="iniciaDiezChatsDiferentes">Inicia 10 chats diferentes</string>
+    <string name="encuentraPrimerContacto">Encuentra tu primer contacto</string>
+    <string name="encuentraDiezcontactos">Encuentra 10 contactos</string>
+    <string name="entregaTuPrimeraMedalla">Entrega tu primera medalla</string>
+    <string name="recibeTuPrimeraMedalla">Recibe tu primera medalla</string>
 </resources>

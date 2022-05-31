@@ -16,6 +16,9 @@
     <color name="fucsia">#EF0A6A</color>
     <color name="fucsiaClaro">#F464A1</color>
     <color name="gris">#8B8B8B</color>
+    <color name="grisOscuro">#636262</color>
+    <color name="verde">#18590C</color>
+    <color name="rojo">#6A2222</color>
     <color name="transparente">#00000000</color>
     <color name="negroTransparente">#70000000</color>
 </resources>

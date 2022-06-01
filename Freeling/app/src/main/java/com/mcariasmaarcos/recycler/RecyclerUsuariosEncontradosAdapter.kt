@@ -1,36 +1,42 @@
 package com.mcariasmaarcos.recycler
 
-import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
 import com.mcariasmaarcos.clases.Usuario
-import com.mcariasmaarcos.freeling.ChatMensajesActivity
 import com.mcariasmaarcos.freeling.PerfilUsuarioEncontradoActivity
 import com.mcariasmaarcos.freeling.R
 import java.util.*
 import kotlin.collections.ArrayList
 
+/**
+ * Adapter para el Recycler de los usuarios encontrados a través de Google Nearby
+ * @author Miguel Ángel Arcos Reyes
+ * @author Mª Carme Arias de Haro
+ * @since 1.2
+ * @param context Contexto donde se implementa el Recycler
+ * @param usuariosEncontrados ArrayList de los usuarios encontrados que se añadirán al recycler
+ */
 class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private var usuariosEncontrados: ArrayList<String>): RecyclerView.Adapter<RecyclerUsuariosEncontradosHolder>(){
 
+    /** Constante para establecer la conexión a Firebase **/
     private val db = Firebase.firestore
+    /** Variable que se inicializará con el usuario actual conectado una vez que accedamos a Firebase **/
     lateinit var usuarioActual:Usuario
 
+    /**
+     * Función que va a igualar la lista de usuarios encontrados a la que se le pase por argumentos.
+     * @param list Lista de usuarios encontrados
+     */
     fun setData(list: ArrayList<String>){
         usuariosEncontrados = list
         notifyDataSetChanged()
@@ -60,9 +66,12 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
 
                         holder.bontonAceptar.setOnClickListener {
 
+                            /** Id del chat que vamos a crear generada aleatoriamente **/
                             val chatId = UUID.randomUUID().toString()
+                            /** Lista de usuarios que utilizan el chat que se va a crear **/
                             val usuariosChat = listOf<String>(usuarioActual.email, usuariosEncontrados[position])
 
+                            /** Chat creado con los dos usuarios **/
                             val chat = Chat(chatId, usuariosChat, holder.nombreUsuario.text.toString())
 
                             db.collection("Chats").document(chatId).set(chat)
@@ -91,13 +100,13 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                     }
             }
 
+        /** Al hacer click sobre cualquier elemento del recycler, nos llevará a la pantalla PerfilUsuarioEncontrado,
+         * y nos mostrará los datos de dicho usuario **/
         holder.itemView.setOnClickListener {
             val intent = Intent(this.context, PerfilUsuarioEncontradoActivity::class.java)
             intent.putExtra("otroUsuario", usuariosEncontrados[position])
             context?.startActivity(intent)
         }
-
-
     }
 
     override fun getItemCount(): Int {

@@ -22,49 +22,40 @@ import com.mcariasmaarcos.freeling.databinding.FragmentEncuentroActivityBinding
 import com.mcariasmaarcos.recycler.RecyclerUsuariosEncontradosAdapter
 import java.nio.charset.Charset
 
-
 /**
- * A simple [Fragment] subclass.
- * Use the [EncuentroActivityFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment que va a almacenar todos los usuarios que el propietario de la App se encuentre por la calle a través de Google Nearby.
+ * Se añadirán en un recycler y desde ahí se podrán agregar a otra lista para poder chatear con ellos, o eliminarlos directamente
+ * si no está interesado.
+ * @author Miguel Ángel Arcos Reyes
+ * @author Mª Carme Arias de Haro
+ * @since 1.2
  */
 class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity) {
 
+    /** Variable que permite enlazar los elementos del layout **/
     private lateinit var binding: FragmentEncuentroActivityBinding
+    /** Constante para establecer la conexión a Firebase **/
     private val db = FirebaseFirestore.getInstance()
 
-    /**
-     * The [Message] object used to broadcast information about the device to nearby devices.
-     */
+    /** The [Message] object used to broadcast information about the device to nearby devices. **/
     private var mMessage: Message? = null
 
-    /**
-     * A [MessageListener] for processing messages from nearby devices.
-     */
+    /** A [MessageListener] for processing messages from nearby devices. **/
     private var mMessageListener: MessageListener? = null
 
-    /**
-     * Adapter for working with messages from nearby publishers.
-     */
-//    private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
+    //private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
+    /** Adapter for working with messages from nearby publishers. **/
     private var adapter: RecyclerUsuariosEncontradosAdapter? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        @Nullable container: ViewGroup?,
-        @Nullable savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentEncuentroActivityBinding.inflate(inflater, container, false)
         return binding.root
-
         //requireActivity().intent.extras!!.getString("user")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var listaUsuarios: ArrayList<String> = arrayListOf<String>()
-        // listaUsuarios.add("moneite@gmail.com")
-        //listaUsuarios.add("mamen@gmail.com")
         lateinit var user: Usuario
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
             .get() //Al debuguear, se detiene en esta linea y salta hasta el return, dando como resultado un 0 cuando se recibe en el adaptador.
@@ -99,6 +90,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //                        LinearLayoutManager(this.context)
 //                }
 //            }
+        /** Variable que almacena el email del usuario conectado **/
         var email:String =Firebase.auth.currentUser!!.email.toString()
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
 
@@ -111,7 +103,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                     FieldValue.arrayUnion(msgBody)
                 )
                 listaUsuarios = user!!.usuariosEncontrados
-               adapter!!.setData(listaUsuarios)
+                adapter!!.setData(listaUsuarios)
                 refreshFragment()
 //                requireActivity().getSupportFragmentManager().findFragmentById(R.id.home)?.let {
 //                    activity!!.getSupportFragmentManager()

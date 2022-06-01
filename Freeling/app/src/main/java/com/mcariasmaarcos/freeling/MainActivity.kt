@@ -13,14 +13,22 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.freeling.databinding.ActivityMainBinding
 
+/**
+ * Clase inicial de la aplicación, donde el usuario puede iniciar sesión si ya está registrado, introduciendo su email y contraseña,
+ * o darle al botón de Registro que le conducirá a otra pantalla en la que darse de alta.
+ * @author Miguel Ángel Arcos Reyes
+ * @author Mª Carme Arias de Haro
+ * @since 1.2
+ */
 class MainActivity : AppCompatActivity() {
-
+    /** Constante que permite enlazar los elementos del layout **/
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        /** Botón para iniciar sesión si el usuario y la contraseña introducidos son correctos **/
         binding.botonInicioSesion.setOnClickListener {
             if (binding.campoUsuario.text.isNullOrEmpty()){
                 Toast.makeText(this, R.string.usuarioVacio, Toast.LENGTH_SHORT).show()
@@ -42,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        /** Botón que nos conduce a otra pantalla para realizar el registro de un nuevo usuario dentro de la app **/
         binding.botonRegistro.setOnClickListener {
             val intent:Intent = Intent(this@MainActivity, ActivityRegistro::class.java)
             startActivity(intent)
@@ -57,7 +66,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //si el usuario esta dentro ya se salta el login
+    /**
+     * Función que comprueba si el usuario ya está logueado, y se salta esta pantalla para acceder a la aplicación directamente,
+     * sin tener que volver a loguearse cada vez que abre la app.
+     * @param account Usuario registrado en Firebase con el que se accede a la app.
+     */
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
             val intent = Intent(this@MainActivity, EncuentroActivity::class.java)

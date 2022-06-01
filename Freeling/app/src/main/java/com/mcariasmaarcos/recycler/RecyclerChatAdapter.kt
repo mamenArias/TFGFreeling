@@ -1,30 +1,32 @@
 package com.mcariasmaarcos.recycler
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
-import com.mcariasmaarcos.clases.Usuario
-import com.mcariasmaarcos.freeling.ChatMensajesActivity
 import com.mcariasmaarcos.freeling.R
 
+/**
+ * Adapter para el Recycler de la lista de chats del usuario.
+ * @author Miguel Ángel Arcos Reyes
+ * @author Mª Carme Arias de Haro
+ * @since 1.2
+ * @param chatClick función que nos va a llevar al chat sobre el que hagamos click en el recycler
+ */
 class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: Context?, private val listaChats: ArrayList<String>*/): RecyclerView.Adapter<RecyclerChatHolder>() {
 
-    private val db = Firebase.firestore
+    //private val db = Firebase.firestore
+    /** Lista de chats **/
     var chats: List<Chat> = emptyList()
     //lateinit var usuarioActual:Usuario
 
-
+    /**
+     * Función que va a igualar la lista de chats del adapter, a la que se le pase por argumentos.
+     * @param list Lista de chats que recibe el usuario
+     */
     fun setData(list: List<Chat>){
         chats = list
         notifyDataSetChanged()
@@ -57,6 +59,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
 
         holder.emailChat.text = chats[position].users[1].toString()
         holder.nombreUsuarioChat.text = chats[position].nombreUsuario
+        /** Elemento que al hacer click sobre él, nos llevará al chat en cuestión de la lista **/
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
         }

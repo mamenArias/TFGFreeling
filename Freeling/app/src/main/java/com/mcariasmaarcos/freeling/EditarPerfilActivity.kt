@@ -28,6 +28,9 @@ import com.google.firebase.storage.StorageReference
 import com.mcariasmaarcos.clases.Usuario
 import com.mcariasmaarcos.freeling.databinding.ActivityEditarPerfilBinding
 
+/**
+ * ESTA CLASE SOBRA
+ */
 class EditarPerfilActivity : AppCompatActivity() {
 
     private val binding by lazy{ActivityEditarPerfilBinding.inflate(layoutInflater)}

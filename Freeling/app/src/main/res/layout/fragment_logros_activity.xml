@@ -66,6 +66,7 @@
                 app:layout_constraintTop_toTopOf="@+id/encuentraunoimgbyn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/encuentraUnoColor"
             android:layout_width="match_parent"
@@ -73,7 +74,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/encuentraUnoimg"
@@ -95,7 +96,7 @@
                 android:textColor="@color/verde"
                 app:layout_constraintEnd_toEndOf="@+id/EncuentroUnocolor"
                 app:layout_constraintStart_toStartOf="@+id/EncuentroUnocolor"
-                app:layout_constraintTop_toBottomOf="@+id/EncuentroUnocolor"/>
+                app:layout_constraintTop_toBottomOf="@+id/EncuentroUnocolor" />
 
             <TextView
                 android:id="@+id/EncuentroUnocolor"
@@ -109,7 +110,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/encuentraUnoimg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/encuentraUnoimg"
-                app:layout_constraintTop_toTopOf="@+id/encuentraUnoimg"/>
+                app:layout_constraintTop_toTopOf="@+id/encuentraUnoimg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,7 +171,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/encuentraDiezimg"
@@ -192,7 +193,7 @@
                 android:textColor="@color/verde"
                 app:layout_constraintEnd_toEndOf="@+id/EncuentroDiezcolor"
                 app:layout_constraintStart_toStartOf="@+id/EncuentroDiezcolor"
-                app:layout_constraintTop_toBottomOf="@+id/EncuentroDiezcolor"/>
+                app:layout_constraintTop_toBottomOf="@+id/EncuentroDiezcolor" />
 
             <TextView
                 android:id="@+id/EncuentroDiezcolor"
@@ -264,7 +265,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/chatunoimg"
@@ -360,7 +361,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/chatdiezimg"
@@ -382,7 +383,7 @@
                 android:textColor="@color/verde"
                 app:layout_constraintEnd_toEndOf="@+id/inicioChatdiezcolor"
                 app:layout_constraintStart_toStartOf="@+id/inicioChatdiezcolor"
-                app:layout_constraintTop_toBottomOf="@+id/inicioChatdiezcolor"/>
+                app:layout_constraintTop_toBottomOf="@+id/inicioChatdiezcolor" />
 
             <TextView
                 android:id="@+id/inicioChatdiezcolor"
@@ -429,7 +430,7 @@
                 android:textColor="@color/rojo"
                 app:layout_constraintEnd_toEndOf="@+id/iniciodarmedallabyn"
                 app:layout_constraintStart_toStartOf="@+id/iniciodarmedallabyn"
-                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallabyn"/>
+                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallabyn" />
 
             <TextView
                 android:id="@+id/iniciodarmedallabyn"
@@ -455,7 +456,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/darmedallaimg"
@@ -477,7 +478,7 @@
                 android:textColor="@color/verde"
                 app:layout_constraintEnd_toEndOf="@+id/iniciodarmedallacolor"
                 app:layout_constraintStart_toStartOf="@+id/iniciodarmedallacolor"
-                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallacolor"/>
+                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallacolor" />
 
             <TextView
                 android:id="@+id/iniciodarmedallacolor"
@@ -542,6 +543,7 @@
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/recibemedallacolor"
             android:layout_width="match_parent"
@@ -549,7 +551,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/recibemedallaimg"
@@ -571,7 +573,7 @@
                 android:textColor="@color/verde"
                 app:layout_constraintEnd_toEndOf="@+id/iniciorecibemedallacolor"
                 app:layout_constraintStart_toStartOf="@+id/iniciorecibemedallacolor"
-                app:layout_constraintTop_toBottomOf="@+id/iniciorecibemedallacolor"/>
+                app:layout_constraintTop_toBottomOf="@+id/iniciorecibemedallacolor" />
 
             <TextView
                 android:id="@+id/iniciorecibemedallacolor"

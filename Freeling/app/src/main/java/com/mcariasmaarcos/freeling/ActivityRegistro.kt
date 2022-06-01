@@ -168,7 +168,7 @@ class ActivityRegistro : AppCompatActivity() {
                                                     binding.edadMin.text.toString().toInt(),
                                                     binding.edadMax.text.toString().toInt(),
                                                     binding.campoInteresesRegistro.text.toString(),
-                                                    url.toString(), arrayListOf<String>()
+                                                    url.toString(), 0, 0, arrayListOf<String>()
                                                 )
                                                 db.collection("Usuarios").document(user.email)
                                                     .set(user)

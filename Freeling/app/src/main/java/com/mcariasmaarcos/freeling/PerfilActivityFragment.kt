@@ -50,6 +50,9 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     val dbStorage = FirebaseStorage.getInstance()
     private val STORAGEPERMISSIONCODE = 123
 
+    var medallasBuenas = 0
+    var medallasMalas = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         @Nullable container: ViewGroup?,
@@ -125,6 +128,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 binding.edadMaxEditar.setText(it.get("edadDeseadaSup").toString())
                 binding.edadMinEditar.setText(it.get("edadDeseadaInf").toString())
                 binding.campoInteresesRegistroEditar.setText(it.get("biografia").toString())
+                medallasBuenas = it.get("medallasBuenas") as Int
+                medallasMalas = it.get("medallasMalas") as Int
 
                 for (i in 0 until binding.spinnerPronombreRegistroEditar.count) {
 
@@ -219,7 +224,9 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                         binding.edadMinEditar.text.toString().toInt(),
                         binding.edadMaxEditar.text.toString().toInt(),
                         binding.campoInteresesRegistroEditar.text.toString(),
-                        url.toString()
+                        url.toString(),
+                        medallasBuenas,
+                        medallasMalas
                     )
 
                     //db.collection("Usuarios").document(user.email).delete()

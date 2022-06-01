@@ -21,9 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="@color/azulTransparente"
+            app:cardBackgroundColor="@color/fucsiaClaro"
             app:cardCornerRadius="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/campoEmailOtro"
+            app:layout_constraintBottom_toTopOf="@+id/emailOtro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,29 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/containerMedalla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:cardBackgroundColor="@color/fucsiaClaro"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintStart_toEndOf="@+id/containerImagenPerfil"
+            app:layout_constraintTop_toTopOf="@+id/containerImagenPerfil">
+
+            <ImageView
+                android:id="@+id/imagenMedalla"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/fotoPerfil"
+
+                app:srcCompat="@drawable/medallabuena"
+                tools:ignore="ImageContrastCheck" />
+
+        </androidx.cardview.widget.CardView>
+
         <TextView
-            android:id="@+id/campoEmailOtro"
+            android:id="@+id/emailOtro"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -51,7 +72,7 @@
             android:text="@string/miEmail"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/campoNombreOtro"
+            app:layout_constraintBottom_toTopOf="@+id/nombreOtro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/lblEmailOtro"
@@ -66,17 +87,17 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/campoEmailOtro"
-            app:layout_constraintEnd_toStartOf="@+id/campoEmailOtro"
+            app:layout_constraintBottom_toBottomOf="@+id/emailOtro"
+            app:layout_constraintEnd_toStartOf="@+id/emailOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/campoEmailOtro"
+            app:layout_constraintTop_toTopOf="@+id/emailOtro"
             tools:ignore="TextContrastCheck" />
 
         <TextView
-            android:id="@+id/campoNombreOtro"
-            android:layout_width="170dp"
+            android:id="@+id/nombreOtro"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -86,13 +107,12 @@
             android:importantForAutofill="no"
             android:text="@string/nombreUsuario"
             android:textColor="@color/black"
-            android:textColorHint="@color/negroTransparente"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/generoOtro"
             app:layout_constraintEnd_toStartOf="@+id/pronombreOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/lblNombreOtro"
-            app:layout_constraintTop_toBottomOf="@+id/campoEmailOtro"
+            app:layout_constraintTop_toBottomOf="@+id/emailOtro"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <TextView
@@ -103,59 +123,107 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/campoNombreOtro"
-            app:layout_constraintEnd_toStartOf="@+id/campoNombreOtro"
+            app:layout_constraintBottom_toBottomOf="@+id/nombreOtro"
+            app:layout_constraintEnd_toStartOf="@+id/nombreOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/campoNombreOtro"
+            app:layout_constraintTop_toTopOf="@+id/nombreOtro"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/parentesisIzq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/parentesisIzq"
+            android:fontFamily="@font/avertaregular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pronombreOtro"
+            app:layout_constraintEnd_toStartOf="@+id/pronombreOtro"
+            app:layout_constraintTop_toTopOf="@+id/pronombreOtro"
             tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/pronombreOtro"
-            android:layout_width="115dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:text="@string/pronombres"
+            android:fontFamily="@font/avertaregular"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/campoNombreOtro"
+            app:layout_constraintBottom_toBottomOf="@+id/nombreOtro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/campoNombreOtro"
-            app:layout_constraintTop_toTopOf="@+id/campoNombreOtro"
+            app:layout_constraintStart_toEndOf="@+id/nombreOtro"
+            app:layout_constraintTop_toTopOf="@+id/nombreOtro"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/parentesisDcho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/parentesisDcho"
+            android:fontFamily="@font/avertaregular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pronombreOtro"
+            app:layout_constraintStart_toEndOf="@+id/pronombreOtro"
+            app:layout_constraintTop_toTopOf="@+id/pronombreOtro"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/generoOtro"
-            android:layout_width="320dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
             android:text="@string/genero"
+            android:fontFamily="@font/avertaregular"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/orientacionSexOtro"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/lblGuion3"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoNombreOtro"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            app:layout_constraintTop_toTopOf="@id/lblGuion3"
+            app:layout_constraintBottom_toBottomOf="@id/lblGuion3"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteY="342dp" />
+
+        <TextView
+            android:id="@+id/lblGuion3"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="@string/guion"
+            android:fontFamily="@font/avertaregular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/edadOtro"
+            app:layout_constraintEnd_toStartOf="@+id/orientacionSexOtro"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/generoOtro"
+            app:layout_constraintTop_toBottomOf="@+id/nombreOtro"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/orientacionSexOtro"
-            android:layout_width="320dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
             android:text="@string/orientacion"
+            android:fontFamily="@font/avertaregular"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/campoEdadOtro"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/generoOtro"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            app:layout_constraintStart_toEndOf="@+id/lblGuion3"
+            app:layout_constraintTop_toTopOf="@id/lblGuion3"
+            app:layout_constraintBottom_toBottomOf="@id/lblGuion3"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+            tools:layout_editor_absoluteY="338dp" />
 
         <TextView
             android:id="@+id/lblEdadOtro"
@@ -165,17 +233,17 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/campoEdadOtro"
-            app:layout_constraintEnd_toStartOf="@+id/campoEdadOtro"
+            app:layout_constraintBottom_toBottomOf="@+id/edadOtro"
+            app:layout_constraintEnd_toStartOf="@+id/edadOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/campoEdadOtro"
+            app:layout_constraintTop_toTopOf="@+id/edadOtro"
             tools:ignore="TextContrastCheck" />
 
         <TextView
-            android:id="@+id/campoEdadOtro"
-            android:layout_width="290dp"
+            android:id="@+id/edadOtro"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -183,15 +251,32 @@
             android:ems="10"
             android:fontFamily="@font/avertaregular"
             android:importantForAutofill="no"
-            android:text="@string/edad"
+            android:text="@string/cero"
             android:textColor="@color/black"
             android:textColorHint="@color/negroTransparente"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/lblQueBuscasOtro"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/lblEdadOtro"
-            app:layout_constraintTop_toBottomOf="@+id/orientacionSexOtro"
+            app:layout_constraintTop_toBottomOf="@+id/generoOtro"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/lblanios"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="@color/black"
+            android:ems="10"
+            android:fontFamily="@font/avertaregular"
+            android:importantForAutofill="no"
+            android:text="@string/anios"
+            android:textColor="@color/black"
+            android:textColorHint="@color/negroTransparente"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edadOtro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edadOtro"
+            app:layout_constraintTop_toTopOf="@+id/edadOtro"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <TextView
@@ -200,15 +285,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/avertaregular"
-            android:text="@string/rangoEdad"
-            android:textColor="@color/azulOscuro"
+            android:text="@string/rangoEdadOtro"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/lblGuion2"
             app:layout_constraintEnd_toEndOf="@+id/edadMaxOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/edadMinOtro"
-            app:layout_constraintTop_toBottomOf="@+id/campoEdadOtro"
+            app:layout_constraintTop_toBottomOf="@+id/edadOtro"
             tools:ignore="TextContrastCheck" />
 
         <TextView
@@ -239,7 +324,7 @@
             android:layout_marginBottom="20dp"
             android:text="@string/guion"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/campoInteresesOtro"
+            app:layout_constraintBottom_toTopOf="@+id/lblInteresesOtro"
             app:layout_constraintEnd_toStartOf="@+id/edadMaxOtro"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/edadMinOtro"
@@ -266,7 +351,23 @@
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/campoInteresesOtro"
+            android:id="@+id/lblInteresesOtro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/avertaregular"
+            android:text="@string/interesesOtro"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/interesesOtro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblGuion2"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/interesesOtro"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -282,6 +383,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/negroTransparente"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

@@ -42,6 +42,8 @@ class EditarPerfilActivity : AppCompatActivity() {
     val dbStorage = FirebaseStorage.getInstance()
     private val STORAGEPERMISSIONCODE = 123
 
+    var medallasBuenas = 0
+    var medallasMalas = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,6 +113,9 @@ class EditarPerfilActivity : AppCompatActivity() {
                 binding.edadMaxEditar.setText(it.get("edadDeseadaSup").toString())
                 binding.edadMinEditar.setText(it.get("edadDeseadaInf").toString())
                 binding.campoInteresesRegistroEditar.setText(it.get("biografia").toString())
+                medallasBuenas = it.get("medallasBuenas") as Int
+                medallasMalas = it.get("medallasMalas") as Int
+
 
                 for (i in 0 until binding.spinnerPronombreRegistroEditar.count) {
 
@@ -203,7 +208,7 @@ class EditarPerfilActivity : AppCompatActivity() {
                         binding.edadMinEditar.text.toString().toInt(),
                         binding.edadMaxEditar.text.toString().toInt(),
                         binding.campoInteresesRegistroEditar.text.toString(),
-                        url.toString()
+                        url.toString(), medallasBuenas, medallasMalas
                     )
 
                    // db.collection("Usuarios").document(user.email).delete()
@@ -220,16 +225,12 @@ class EditarPerfilActivity : AppCompatActivity() {
                         "orientacionSexual",user.orientacionSexual,
                         "edad",user.edad,
                         "biografia",user.biografia
-
                     )
 //                    if(image!=null){
                         db.collection("Usuarios").document(user.email).update(
                             "fotoPerfil",user.fotoPerfil
                         )
 //                    }
-
-
-
 
                     Toast.makeText(
                         this@EditarPerfilActivity,
@@ -241,8 +242,6 @@ class EditarPerfilActivity : AppCompatActivity() {
         }
 
 
-
-
         binding.imagenPerfilEditar.setOnClickListener {
             ActivityCompat.requestPermissions(
                 this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -250,10 +249,6 @@ class EditarPerfilActivity : AppCompatActivity() {
             )
         }
     }
-
-
-
-
 
 
     private val selectImageResultLauncher = registerForActivityResult(

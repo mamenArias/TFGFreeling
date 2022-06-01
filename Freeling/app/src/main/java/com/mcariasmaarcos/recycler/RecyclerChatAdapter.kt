@@ -21,6 +21,8 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
     //private val db = Firebase.firestore
     /** Lista de chats **/
     var chats: List<Chat> = emptyList()
+    /** Constante para establecer la conexión a Firebase **/
+    private val db = Firebase.firestore
     //lateinit var usuarioActual:Usuario
 
     /**
@@ -58,10 +60,24 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
             }*/
 
         holder.emailChat.text = chats[position].users[1].toString()
-        holder.nombreUsuarioChat.text = chats[position].nombreUsuario
+
+        db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
+            holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+        }
+        //holder.nombreUsuarioChat.text = chats[position].nombreUsuario
         /** Elemento que al hacer click sobre él, nos llevará al chat en cuestión de la lista **/
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
+        }
+
+        holder.darMedallaBuena.setOnClickListener {
+            /*var numMedallasBuenas:Int = 0
+            db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
+                numMedallasBuenas = it.get("medallasBuenas").toString().toInt()
+            }*/
+
+            db.collection("Usuarios").document(chats[position].users[1])
+                .update("medallasBuenas", 2)
         }
 
         /*lateinit var chatId: String

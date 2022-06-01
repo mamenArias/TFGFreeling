@@ -1,8 +1,5 @@
 package com.mcariasmaarcos.freeling
 
-
-import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,31 +13,27 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mcariasmaarcos.clases.Usuario
-import com.mcariasmaarcos.freeling.databinding.FragmentEncuentroActivityBinding
 import com.mcariasmaarcos.freeling.databinding.FragmentLogrosActivityBinding
 
 /**
- * A simple [Fragment] subclass.
- * Use the [LogrosActivityFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment en el que se van a mostrar los logros conseguidos y por conseguir del usuario conectado.
+ * @author Miguel Ángel Arcos Reyes
+ * @author Mª Carme Arias de Haro
+ * @since 1.2
  */
 class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
-
+    /** Variable que permite enlazar los elementos del layout **/
     private lateinit var binding: FragmentLogrosActivityBinding
+    /** Constante para establecer la conexión a Firebase **/
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var auth: FirebaseAuth
-    private lateinit var storageReference: StorageReference
-    val dbStorage = FirebaseStorage.getInstance()
+    //private lateinit var auth: FirebaseAuth
+    //private lateinit var storageReference: StorageReference
+    //val dbStorage = FirebaseStorage.getInstance()
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        @Nullable container: ViewGroup?,
-        @Nullable savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentLogrosActivityBinding.inflate(inflater, container, false)
         return binding.root
-
         //requireActivity().intent.extras!!.getString("user")
     }
 
@@ -52,7 +45,7 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                 lateinit var user: Usuario
                 if (it.isSuccessful) {
                     user = it.result.toObject(Usuario::class.java)!!
-//                    adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
+                    //adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
                     if (user != null) {
                         if (user.usuariosEncontrados.size > 0) {
                             binding.encuentraUnoColor.visibility = View.VISIBLE
@@ -83,12 +76,7 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                                 }
                             }
                     }
-
-
                 }
-
-
             }
-
     }
 }

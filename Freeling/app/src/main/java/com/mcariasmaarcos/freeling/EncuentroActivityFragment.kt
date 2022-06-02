@@ -60,6 +60,8 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //        var listaUsuarios: ArrayList<String> = arrayListOf<String>()
         lateinit var user: Usuario
         lateinit var email:String
+        var edadInf = -1
+        var edadSup = -1
 
         refreshFragment()
 
@@ -79,6 +81,8 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                             LinearLayoutManager(this.context)
                             binding.publishSwitch.visibility = View.VISIBLE
                             binding.lblCargando.visibility = View.GONE
+                        edadSup = it.result.get("edadDeseadaSup").toString().toInt()
+                        edadInf = it.result.get("edadDeseadaInf").toString().toInt()
                         // RELLENAR VARIABLES INTERNAS DE EMAIL Y EL MMESSAGE
                         //PONER MENSAJE DE CARGA y poner el BINDING DEL SWITCH
                     // ACTIVAR EL SWITCH
@@ -101,16 +105,30 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
          email =Firebase.auth.currentUser!!.email.toString()
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
 
+
         mMessageListener = object : MessageListener() {
+            /**
+             * Función que recibe un mensaje del Listener
+             * Una vez encuentra un mensaje, es decir, email del usuario encontrado comprueba su edad y si está
+             * dentro de los límites de edad que el usuario busca se añade a la lista de usuarios encontrados
+             * @param message mensaje que encuentra el listener
+             */
             override fun onFound(message: Message) {
                 // Toast.makeText(activity, "Encontrado", Toast.LENGTH_SHORT).show()
                 // Called when a new message is found.
                 val msgBody = String(message.content)
-                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
-                    FieldValue.arrayUnion(msgBody)
-                )
-                listaUsuarios = user!!.usuariosEncontrados
-                adapter!!.setData(listaUsuarios)
+                //me traigo el usuario encontrado cojo su edad y compruebo.
+                db.collection("Usuarios").document(msgBody).get().addOnSuccessListener {
+                   var edadEncontrada = it.get("edad").toString().toInt()
+                    if(edadEncontrada >= edadInf && edadEncontrada <= edadSup ){
+                        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
+                            FieldValue.arrayUnion(msgBody)
+                        )
+                        listaUsuarios = user!!.usuariosEncontrados
+                        adapter!!.setData(listaUsuarios)
+                    }
+
+                }
                 refreshFragment()
 //                requireActivity().getSupportFragmentManager().findFragmentById(R.id.home)?.let {
 //                    activity!!.getSupportFragmentManager()
@@ -127,6 +145,10 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //                adapter.notifyItemInserted(adapter.itemCount)
 //                mNearbyDevicesArrayAdapter!!.add(msgBody)
             }
+            /**
+             * Función que recibe un mensaje del Listener de pérdida
+             * @param message mensaje que encuentra el listener
+             */
             override fun onLost(message: Message) {
                 // Called when a message is no longer detectable nearby.
                 val msgBody = String(message.content)

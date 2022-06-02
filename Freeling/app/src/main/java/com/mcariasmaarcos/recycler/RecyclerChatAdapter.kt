@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.internal.ContextUtils.getActivity
 import android.widget.ImageView
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -85,18 +84,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
             chatClick(chats[position])
         }
 
-        holder.darMedallaBuena.setOnClickListener {
-            var numMedallasBuenas:Int = 0
-            db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
-                numMedallasBuenas = it.get("medallasBuenas").toString().toInt()
-                numMedallasBuenas++
-                db.collection("Usuarios").document(chats[position].users[1])
-                    .update("medallasBuenas", numMedallasBuenas)
-                //Esto te pone la medalla a true
-                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
-            }
 
-        }
 
         /*lateinit var chatId: String
         db.collection("Chats").document(Firebase.auth.currentUser!!.email.toString())
@@ -136,6 +124,30 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
             holder.nombreUsuarioChat.setText(it.get("nombre").toString())
             Picasso.get().load(it.get("fotoPerfil").toString()).into(holder.fotoUsuarioChat)
             holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
+        }
+
+        holder.darMedallaBuena.setOnClickListener {
+            var numMedallasBuenas:Int = 0
+            db.collection("Usuarios").document(usuario).get().addOnSuccessListener {
+                numMedallasBuenas = it.get("medallasBuenas").toString().toInt()
+                numMedallasBuenas++
+                db.collection("Usuarios").document(usuario)
+                    .update("medallasBuenas", numMedallasBuenas)
+                //Esto te pone la medalla a true
+                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
+            }
+
+        }
+        holder.darMedallaMala.setOnClickListener {
+            var numMedallasMalas:Int = 0
+            db.collection("Usuarios").document(usuario).get().addOnSuccessListener {
+                numMedallasMalas = it.get("medallasMalas").toString().toInt()
+                numMedallasMalas++
+                db.collection("Usuarios").document(usuario)
+                    .update("medallasMalas", numMedallasMalas)
+                //Esto te pone la medalla a true
+                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
+            }
         }
     }
 }

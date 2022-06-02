@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso
  * @since 1.2
  * @param chatClick función que nos va a llevar al chat sobre el que hagamos click en el recycler
  */
-class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: Context?, private val listaChats: ArrayList<String>*/): RecyclerView.Adapter<RecyclerChatHolder>() {
+class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -> Unit/*, private val listaChats: ArrayList<String>*/): RecyclerView.Adapter<RecyclerChatHolder>() {
 
     //private val db = Firebase.firestore
     /** Lista de chats **/
@@ -135,6 +135,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
                     .update("medallasBuenas", numMedallasBuenas)
                 //Esto te pone la medalla a true
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
+                Toast.makeText(context, "Medalla Buena Entregada", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -147,6 +148,7 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
                     .update("medallasMalas", numMedallasMalas)
                 //Esto te pone la medalla a true
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
+                Toast.makeText(context, "Medalla Mala Entregada", Toast.LENGTH_SHORT).show()
             }
         }
     }

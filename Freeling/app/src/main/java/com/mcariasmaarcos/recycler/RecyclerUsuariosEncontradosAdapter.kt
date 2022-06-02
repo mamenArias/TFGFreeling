@@ -117,7 +117,7 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                                     if (it.isSuccessful) {
                                         var usuarioContrario =
                                             it.result.toObject(Usuario::class.java)!!
-                                        for (i in 0..usuarioContrario.usuariosEncontrados.size) {
+                                        for (i in 0 until usuarioContrario.usuariosEncontrados.size) {
                                             if (usuarioContrario.usuariosEncontrados[i] == Firebase.auth.currentUser!!.email.toString()) {
                                                 usuarioContrario.usuariosEncontrados.removeAt(i)
                                                 db.collection("Usuarios").document(emailAEliminar)

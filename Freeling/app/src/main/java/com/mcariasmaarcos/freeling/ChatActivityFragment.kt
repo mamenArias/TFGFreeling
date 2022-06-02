@@ -61,7 +61,7 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
             }*/
 
         binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
-        binding.recyclerChats.adapter = RecyclerChatAdapter {chat: Chat ->  chatSeleccionado(chat)}
+        binding.recyclerChats.adapter = RecyclerChatAdapter (this.context) {chat: Chat ->  chatSeleccionado(chat)}
 
         /** Documento de Firebase al que accedemos para traer la colección Chats que hay dentro del mismo **/
         val userRef = db.collection("Usuarios").document(user)

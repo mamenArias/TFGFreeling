@@ -19,8 +19,6 @@ class RecyclerChatHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     val fotoUsuarioChat:ImageView by lazy { itemView.findViewById(R.id.fotoUsuarioEncontradoChat) }
     /** TextView que muestra el nombre del usuario con el que se comparte el chat **/
     val nombreUsuarioChat:TextView by lazy { itemView.findViewById(R.id.nombreUsuarioEncontradoChat) }
-    /** TextView que muestra el email del usuario con el que se comparte el chat **/
-    val emailChat:TextView by lazy { itemView.findViewById(R.id.campoEmailChat)}
     /** ImageView que muestra si el usuario con el que se comparte el chat tiene una medalla buena **/
     val darMedallaBuena:ImageView by lazy { itemView.findViewById(R.id.darMedallaBuena) }
     /** ImageView que muestra si el usuario con el que se comparte el chat tiene una medalla mala **/

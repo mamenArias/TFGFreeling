@@ -94,10 +94,12 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                             db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
                                 usuariosEncontrados
                             ).addOnSuccessListener {
-                                Toast.makeText(this.context, "Chat Añadido", Toast.LENGTH_SHORT).show() }
+                                Toast.makeText(this.context, "Chat Añadido", Toast.LENGTH_SHORT).show()
+                                }
                                 .addOnFailureListener {
                                     Toast.makeText(this.context, "No se ha podido añadir el chat", Toast.LENGTH_SHORT).show()
                                 }
+                            //db.collection("Usuarios").document(emailAEliminar)
                             notifyItemRemoved(position)
                             notifyDataSetChanged()
                         }

@@ -55,6 +55,14 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                             binding.encuentraDiezColor.visibility = View.VISIBLE
                             binding.encuentradiezbyn.visibility = View.GONE
                         }
+                        if(user.medallasBuenas > 0 || user.medallasMalas > 0 ){
+                            binding.recibemedallabyn.visibility = View.GONE
+                            binding.recibemedallacolor.visibility =  View.VISIBLE
+                        }
+                        if(user.darMedallas ==true){
+                            binding.darmedallabyn.visibility = View.GONE
+                            binding.darmedallacolor.visibility = View.VISIBLE
+                        }
                         db.collection("Usuarios")
                             .document(Firebase.auth.currentUser!!.email.toString())
                             .collection("Chats").get().addOnCompleteListener {

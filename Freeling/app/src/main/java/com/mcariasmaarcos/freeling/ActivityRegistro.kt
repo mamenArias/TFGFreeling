@@ -185,6 +185,7 @@ class ActivityRegistro : AppCompatActivity() {
                                                 url.toString(),
                                                 0,
                                                 0,
+                                                false,
                                                 arrayListOf<String>()
                                             )
 

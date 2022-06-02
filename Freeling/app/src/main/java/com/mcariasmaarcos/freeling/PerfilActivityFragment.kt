@@ -52,6 +52,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     var medallasBuenas:Int = 0
     /** Variable que indica el nº de medallas malas que tiene el usuario **/
     var medallasMalas:Int = 0
+    /** Variable que indica si se ha dado una medalla o no a otro usuario **/
+    var darMedallas = false
 
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentPerfilActivityBinding.inflate(inflater, container, false)
@@ -131,6 +133,7 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 binding.campoInteresesRegistroEditar.setText(it.get("biografia").toString())
                 medallasBuenas = it.get("medallasBuenas").toString().toInt()
                 medallasMalas = it.get("medallasMalas").toString().toInt()
+                darMedallas = it.get("darMedallas") as Boolean
 
                 for (i in 0 until binding.spinnerPronombreRegistroEditar.count) {
                     if (binding.spinnerPronombreRegistroEditar.getItemAtPosition(i).toString()
@@ -208,7 +211,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                         binding.campoInteresesRegistroEditar.text.toString(),
                         url.toString(),
                         medallasBuenas,
-                        medallasMalas
+                        medallasMalas,
+                        darMedallas
                     )
 
                     db.collection("Usuarios").document(user.email).update(

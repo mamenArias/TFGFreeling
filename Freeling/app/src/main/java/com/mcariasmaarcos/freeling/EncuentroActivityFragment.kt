@@ -27,7 +27,7 @@ import java.nio.charset.Charset
  * Se añadirán en un recycler y desde ahí se podrán agregar a otra lista para poder chatear con ellos, o eliminarlos directamente
  * si no está interesado.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity) {
@@ -46,17 +46,23 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
     //private var mNearbyDevicesArrayAdapter: ArrayAdapter<String>? = null
     /** Adapter for working with messages from nearby publishers. **/
     private var adapter: RecyclerUsuariosEncontradosAdapter? = null
-
+    var listaUsuarios: ArrayList<String> = arrayListOf<String>()
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentEncuentroActivityBinding.inflate(inflater, container, false)
+
         return binding.root
+
         //requireActivity().intent.extras!!.getString("user")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var listaUsuarios: ArrayList<String> = arrayListOf<String>()
+//        var listaUsuarios: ArrayList<String> = arrayListOf<String>()
         lateinit var user: Usuario
+        lateinit var email:String
+
+        refreshFragment()
+
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
             .get() //Al debuguear, se detiene en esta linea y salta hasta el return, dando como resultado un 0 cuando se recibe en el adaptador.
             .addOnCompleteListener {
@@ -71,7 +77,8 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                         binding.recyclerPersonasEncontradas.adapter = adapter
                         binding.recyclerPersonasEncontradas.layoutManager =
                             LinearLayoutManager(this.context)
-
+                            binding.publishSwitch.visibility = View.VISIBLE
+                            binding.lblCargando.visibility = View.GONE
                         // RELLENAR VARIABLES INTERNAS DE EMAIL Y EL MMESSAGE
                         //PONER MENSAJE DE CARGA y poner el BINDING DEL SWITCH
                     // ACTIVAR EL SWITCH
@@ -91,7 +98,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 //                }
 //            }
         /** Variable que almacena el email del usuario conectado **/
-        var email:String =Firebase.auth.currentUser!!.email.toString()
+         email =Firebase.auth.currentUser!!.email.toString()
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
 
         mMessageListener = object : MessageListener() {
@@ -226,10 +233,24 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 "https://developers.google.com/nearby/messages/android/get-started#step_4_configure_your_project"
     }
 
-    fun refreshFragment() {
+    private fun refreshFragment() {
 
-//      parentFragmentManager.beginTransaction().detach(requireParentFragment()). // detach the current fragment
-//                   attach(requireParentFragment()).commit()
+        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firebaseFirestoreException?.let {
+            }
+            querySnapshot.let {
+                val usuarioActualizado = it?.toObject(Usuario::class.java)!!
+                if (usuarioActualizado!=null){
+                    listaUsuarios = usuarioActualizado!!.usuariosEncontrados
+                    adapter =
+                        RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
+                    binding.recyclerPersonasEncontradas.adapter = adapter
+                    binding.recyclerPersonasEncontradas.layoutManager =
+                        LinearLayoutManager(this.context)
+                    adapter!!.notifyDataSetChanged()
+                }
+            }
+        }
     }
 
 

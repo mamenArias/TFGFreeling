@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
@@ -21,7 +23,7 @@ import kotlin.collections.ArrayList
 /**
  * Adapter para el Recycler de los usuarios encontrados a través de Google Nearby
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param context Contexto donde se implementa el Recycler
  * @param usuariosEncontrados ArrayList de los usuarios encontrados que se añadirán al recycler
@@ -87,16 +89,36 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                             db.collection("Usuarios").document(usuariosEncontrados[position]).delete()
                                 .addOnSuccessListener { Log.d(TAG, "Usuario añadido a la lista de chats") }
                                 .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }*/
-                        }
-
-                        /*holder.botonRechazar.setOnClickListener {
+                            var emailAEliminar = usuariosEncontrados[position]
                             usuariosEncontrados.removeAt(position)
+                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
+                                usuariosEncontrados
+                            ).addOnSuccessListener {
+                                Toast.makeText(this.context, "Chat Añadido", Toast.LENGTH_SHORT).show() }
+                                .addOnFailureListener {
+                                    Toast.makeText(this.context, "No se ha podido añadir el chat", Toast.LENGTH_SHORT).show()
+                                }
                             notifyItemRemoved(position)
                             notifyDataSetChanged()
-                            db.collection("Usuarios").document(usuarioActual.email).get(usuariosEncontrados[position]).delete()
-                                //.addOnSuccessListener { Log.d(TAG, "Usuario eliminado") }
-                                //.addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }
-                        }*/
+                        }
+
+                        holder.botonRechazar.setOnClickListener {
+
+                            var emailAEliminar = usuariosEncontrados[position]
+                            usuariosEncontrados.removeAt(position)
+                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
+                                usuariosEncontrados
+                            ).addOnSuccessListener {
+                                Toast.makeText(this.context, "Usuario Eliminado", Toast.LENGTH_SHORT).show() }
+                                .addOnFailureListener {
+                                    Toast.makeText(this.context, "No se ha podido eliminar el usuario", Toast.LENGTH_SHORT).show()
+                                }
+                            notifyItemRemoved(position)
+                            notifyDataSetChanged()
+
+
+
+                        }
                     }
             }
 

@@ -95,4 +95,5 @@
     <string name="encuentraDiezcontactos">Encuentra 10 contactos</string>
     <string name="entregaTuPrimeraMedalla">Entrega tu primera medalla</string>
     <string name="recibeTuPrimeraMedalla">Recibe tu primera medalla</string>
+    <string name="cargandoConexion">Cargando Conexión</string>
 </resources>

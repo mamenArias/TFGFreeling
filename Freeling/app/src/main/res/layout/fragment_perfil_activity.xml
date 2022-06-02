@@ -39,6 +39,25 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/containerMedalla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:cardBackgroundColor="@color/azulTransparente"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintStart_toEndOf="@+id/containerImagenPerfil"
+            app:layout_constraintTop_toTopOf="@+id/containerImagenPerfil">
+
+            <ImageView
+                android:id="@+id/imagenMedallaPerfil"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/fotoPerfil"
+                app:srcCompat="@drawable/medallabuena"
+                tools:ignore="ImageContrastCheck" />
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/campoEmailRegistroEditar"
             android:layout_width="290dp"

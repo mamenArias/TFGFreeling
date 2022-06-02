@@ -3,6 +3,7 @@ package com.mcariasmaarcos.freeling
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,6 +30,8 @@ class PerfilUsuarioEncontradoActivity : AppCompatActivity() {
 
         intent.getStringExtra("otroUsuario")?.let { otroUsuario = it }
 
+        binding.imagenMedalla.visibility = View.GONE
+
         db.collection("Usuarios").document(otroUsuario).get()
             .addOnSuccessListener{
                 binding.emailOtro.text = it.get("email").toString()
@@ -42,6 +45,13 @@ class PerfilUsuarioEncontradoActivity : AppCompatActivity() {
                 binding.edadMaxOtro.setText(it.get("edadDeseadaSup").toString())
                 binding.edadMinOtro.setText(it.get("edadDeseadaInf").toString())
                 binding.interesesOtro.setText(it.get("biografia").toString())
+                if (it.get("medallasBuenas").toString().toInt() > it.get("medallasMalas").toString().toInt()){
+                    binding.imagenMedalla.visibility = View.VISIBLE
+                    binding.imagenMedalla.setImageResource(R.drawable.medallabuena)
+                } else if (it.get("medallasBuenas").toString().toInt() < it.get("medallasMalas").toString().toInt()) {
+                    binding.imagenMedalla.visibility = View.VISIBLE
+                    binding.imagenMedalla.setImageResource(R.drawable.medallamala)
+                }
             }
     }
 }

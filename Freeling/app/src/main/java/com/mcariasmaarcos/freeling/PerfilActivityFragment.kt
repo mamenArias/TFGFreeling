@@ -119,6 +119,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
         adapterOrient.setDropDownViewResource(R.layout.spinner_editar)
         binding.spinnerOrientacSexRegistroEditar.adapter = adapterOrient
 
+        binding.imagenMedallaPerfil.visibility = View.GONE
+
         /** Obtención de los datos del usuario conectado para insertarlos en los diferentes campos del layout **/
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnSuccessListener {
@@ -134,6 +136,14 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 medallasBuenas = it.get("medallasBuenas").toString().toInt()
                 medallasMalas = it.get("medallasMalas").toString().toInt()
                 darMedallas = it.get("darMedallas") as Boolean
+
+                if (medallasBuenas > medallasMalas){
+                    binding.imagenMedallaPerfil.visibility = View.VISIBLE
+                    binding.imagenMedallaPerfil.setImageResource(R.drawable.medallabuena)
+                } else if (medallasBuenas < medallasMalas) {
+                    binding.imagenMedallaPerfil.visibility = View.VISIBLE
+                    binding.imagenMedallaPerfil.setImageResource(R.drawable.medallamala)
+                }
 
                 for (i in 0 until binding.spinnerPronombreRegistroEditar.count) {
                     if (binding.spinnerPronombreRegistroEditar.getItemAtPosition(i).toString()

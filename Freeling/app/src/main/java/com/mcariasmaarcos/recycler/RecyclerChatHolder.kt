@@ -9,8 +9,8 @@ import com.mcariasmaarcos.freeling.R
 /**
  * ViewHolder personalizado para el RecyclerView de la lista de chats, que contiene los elementos del layout del recycler.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
- * @since 1.1
+ * @author Mª Carmen Arias de Haro
+ * @since 1.2
  * @param itemView Elemento del layout del recycler
  */
 class RecyclerChatHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
@@ -23,5 +23,9 @@ class RecyclerChatHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     val darMedallaBuena:ImageView by lazy { itemView.findViewById(R.id.darMedallaBuena) }
     /** ImageView que muestra si el usuario con el que se comparte el chat tiene una medalla mala **/
     val darMedallaMala:ImageView by lazy { itemView.findViewById(R.id.darMedallaMala) }
+    /** ImageView que se muestra cuando el usuario le da una medalla buena al otro **/
+    val medallaBuenaByN:ImageView by lazy { itemView.findViewById(R.id.medallaBuenaByN) }
+    /** ImageView que se muestra cuando el usuario le da una medalla mala al otro **/
+    val medallaMalaByN:ImageView by lazy { itemView.findViewById(R.id.medallaMalaByN) }
 
 }

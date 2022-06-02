@@ -57,6 +57,23 @@
         tools:ignore="ImageContrastCheck" />
 
     <ImageView
+        android:id="@+id/medallaBuenaByN"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/darMedallaBuena"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/darMedallaMala"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/nombreUsuarioEncontradoChat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/medallabuenabyn"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
         android:id="@+id/darMedallaMala"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -69,4 +86,19 @@
         app:layout_constraintStart_toEndOf="@+id/darMedallaBuena"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/medallamala" />
+
+    <ImageView
+        android:id="@+id/medallaMalaByN"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/darMedallaMala"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/medallaBuenaByN"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/medallamalabyn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

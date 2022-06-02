@@ -138,6 +138,9 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
                 Toast.makeText(context, "Medalla Buena Entregada", Toast.LENGTH_SHORT).show()
             }
 
+            /*holder.darMedallaBuena.visibility = View.GONE
+            holder.medallaBuenaByN.visibility = View.VISIBLE
+            holder.darMedallaMala.visibility = View.GONE*/
         }
         holder.darMedallaMala.setOnClickListener {
             var numMedallasMalas:Int = 0

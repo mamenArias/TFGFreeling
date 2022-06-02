@@ -17,7 +17,7 @@ import com.mcariasmaarcos.freeling.databinding.ActivityMainBinding
  * Clase inicial de la aplicación, donde el usuario puede iniciar sesión si ya está registrado, introduciendo su email y contraseña,
  * o darle al botón de Registro que le conducirá a otra pantalla en la que darse de alta.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class MainActivity : AppCompatActivity() {
@@ -52,7 +52,13 @@ class MainActivity : AppCompatActivity() {
 
         /** Botón que nos conduce a otra pantalla para realizar el registro de un nuevo usuario dentro de la app **/
         binding.botonRegistro.setOnClickListener {
-            val intent:Intent = Intent(this@MainActivity, ActivityRegistro::class.java)
+            val intent = Intent(this@MainActivity, ActivityRegistro::class.java)
+            startActivity(intent)
+        }
+
+        /** Logo de la empresa que nos va a llevar a una pantalla con los datos de los creadores de la App e información sobre la misma **/
+        binding.iconoEquipo.setOnClickListener {
+            val intent = Intent(this@MainActivity, SobreNosotrosActivity::class.java)
             startActivity(intent)
         }
     }
@@ -62,8 +68,6 @@ class MainActivity : AppCompatActivity() {
         // comprueba si hay usuario logueado
         val currentUser = Firebase.auth.currentUser
         updateUI(currentUser)
-
-
     }
 
     /**
@@ -76,8 +80,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, EncuentroActivity::class.java)
             intent.putExtra("usuario", account.email)
             startActivity(intent)
-        } else {
-
         }
     }
 

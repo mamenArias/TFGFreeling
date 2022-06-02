@@ -99,7 +99,7 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                                 .addOnFailureListener {
                                     Toast.makeText(this.context, "No se ha podido añadir el chat", Toast.LENGTH_SHORT).show()
                                 }
-                            //db.collection("Usuarios").document(emailAEliminar)
+
                             notifyItemRemoved(position)
                             notifyDataSetChanged()
                         }

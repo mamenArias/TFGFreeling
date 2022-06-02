@@ -1,9 +1,13 @@
 package com.mcariasmaarcos.recycler
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -88,13 +92,16 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
         }
 
         holder.darMedallaBuena.setOnClickListener {
-            /*var numMedallasBuenas:Int = 0
+            var numMedallasBuenas:Int = 0
             db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
                 numMedallasBuenas = it.get("medallasBuenas").toString().toInt()
-            }*/
+                numMedallasBuenas++
+                db.collection("Usuarios").document(chats[position].users[1])
+                    .update("medallasBuenas", numMedallasBuenas)
+                //Esto te pone la medalla a true
+                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
+            }
 
-            db.collection("Usuarios").document(chats[position].users[1])
-                .update("medallasBuenas", 2)
         }
 
         /*lateinit var chatId: String

@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
 import com.mcariasmaarcos.freeling.R
+import com.mcariasmaarcos.freeling.user
 
 /**
  * Adapter para el Recycler de la lista de chats del usuario.
@@ -59,11 +61,26 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
                     }
             }*/
 
-        holder.emailChat.text = chats[position].users[1].toString()
+        holder.emailChat.text = chats[position].users[1]
 
-        db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
-            holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
+            .addOnSuccessListener {
+                user = it.get("email").toString()
+            }
+
+        if (chats[position].users[1].equals(user)){
+            db.collection("Usuarios").document(chats[position].users[0]).get().addOnSuccessListener {
+                holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+            }
+        } else if (chats[position].users[0].equals(user)){
+            db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
+                holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+            }
         }
+
+        /*db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
+            holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+        }*/
         //holder.nombreUsuarioChat.text = chats[position].nombreUsuario
         /** Elemento que al hacer click sobre él, nos llevará al chat en cuestión de la lista **/
         holder.itemView.setOnClickListener {

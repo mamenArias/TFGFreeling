@@ -70,16 +70,21 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
 
                             /** Id del chat que vamos a crear generada aleatoriamente **/
                             val chatId = UUID.randomUUID().toString()
+
                             /** Lista de usuarios que utilizan el chat que se va a crear **/
-                            val usuariosChat = listOf<String>(usuarioActual.email, usuariosEncontrados[position])
+                            val usuariosChat =
+                                listOf<String>(usuarioActual.email, usuariosEncontrados[position])
 
                             /** Chat creado con los dos usuarios **/
-                            val chat = Chat(chatId, usuariosChat, holder.nombreUsuario.text.toString())
+                            val chat =
+                                Chat(chatId, usuariosChat, holder.nombreUsuario.text.toString())
 
                             db.collection("Chats").document(chatId).set(chat)
-                            db.collection("Usuarios").document(usuarioActual.email).collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(usuarioActual.email)
+                                .collection("Chats").document(chatId).set(chat)
                             //if (otroUsuario != null) {
-                            db.collection("Usuarios").document(usuariosEncontrados[position]).collection("Chats").document(chatId).set(chat)
+                            db.collection("Usuarios").document(usuariosEncontrados[position])
+                                .collection("Chats").document(chatId).set(chat)
                             //}
                             /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
                                 .update("listaChats", FieldValue.arrayUnion(otroUsuario))*/
@@ -91,19 +96,43 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                                 .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }*/
                             var emailAEliminar = usuariosEncontrados[position]
                             usuariosEncontrados.removeAt(position)
-                            db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
+                            db.collection("Usuarios")
+                                .document(Firebase.auth.currentUser!!.email.toString()).update(
+                                "usuariosEncontrados",
                                 usuariosEncontrados
                             ).addOnSuccessListener {
-                                Toast.makeText(this.context, "Chat Añadido", Toast.LENGTH_SHORT).show()
-                                }
+                                Toast.makeText(this.context, "Chat Añadido", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                                 .addOnFailureListener {
-                                    Toast.makeText(this.context, "No se ha podido añadir el chat", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this.context,
+                                        "No se ha podido añadir el chat",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
 
-                            notifyItemRemoved(position)
-                            notifyDataSetChanged()
-                        }
+                            db.collection("Usuarios").document(emailAEliminar).get()
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        var usuarioContrario =
+                                            it.result.toObject(Usuario::class.java)!!
+                                        for (i in 0..usuarioContrario.usuariosEncontrados.size) {
+                                            if (usuarioContrario.usuariosEncontrados[i] == Firebase.auth.currentUser!!.email.toString()) {
+                                                usuarioContrario.usuariosEncontrados.removeAt(i)
+                                                db.collection("Usuarios").document(emailAEliminar)
+                                                    .update(
+                                                        "usuariosEncontrados",
+                                                        usuarioContrario.usuariosEncontrados
+                                                    )
+                                            }
+                                        }
+                                    }
 
+                                    notifyItemRemoved(position)
+                                    notifyDataSetChanged()
+                                }
+                        }
                         holder.botonRechazar.setOnClickListener {
 
                             var emailAEliminar = usuariosEncontrados[position]

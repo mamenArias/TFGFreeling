@@ -32,26 +32,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
         android:fontFamily="@font/avertaextrabold"
         android:text="@string/nombreUsuario"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardViewFotoUsuarioChat"
         app:layout_constraintStart_toEndOf="@+id/cardViewFotoUsuarioChat"
         app:layout_constraintTop_toTopOf="@+id/cardViewFotoUsuarioChat" />
-
-    <TextView
-        android:id="@+id/campoEmailChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/averta"
-        android:text="@string/email"
-        app:layout_constraintEnd_toEndOf="@+id/nombreUsuarioEncontradoChat"
-        app:layout_constraintStart_toEndOf="@+id/cardViewFotoUsuarioChat"
-        app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioEncontradoChat" />
 
     <ImageView
         android:id="@+id/darMedallaBuena"

@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.internal.ContextUtils.getActivity
+import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mcariasmaarcos.clases.Chat
 import com.mcariasmaarcos.freeling.R
 import com.mcariasmaarcos.freeling.user
+import com.squareup.picasso.Picasso
 
 /**
  * Adapter para el Recycler de la lista de chats del usuario.
@@ -65,27 +69,17 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
                     }
             }*/
 
-        holder.emailChat.text = chats[position].users[1]
-
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnSuccessListener {
                 user = it.get("email").toString()
             }
 
         if (chats[position].users[1].equals(user)){
-            db.collection("Usuarios").document(chats[position].users[0]).get().addOnSuccessListener {
-                holder.nombreUsuarioChat.setText(it.get("nombre").toString())
-            }
+            datosUsuarioChat(chats[position].users[0], holder)
         } else if (chats[position].users[0].equals(user)){
-            db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
-                holder.nombreUsuarioChat.setText(it.get("nombre").toString())
-            }
+            datosUsuarioChat(chats[position].users[1], holder)
         }
 
-        /*db.collection("Usuarios").document(chats[position].users[1]).get().addOnSuccessListener {
-            holder.nombreUsuarioChat.setText(it.get("nombre").toString())
-        }*/
-        //holder.nombreUsuarioChat.text = chats[position].nombreUsuario
         /** Elemento que al hacer click sobre él, nos llevará al chat en cuestión de la lista **/
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
@@ -129,5 +123,19 @@ class RecyclerChatAdapter(val chatClick: (Chat) -> Unit/*, private val context: 
 
     override fun getItemCount(): Int {
         return chats.size
+    }
+
+    /**
+     * Función para recoger los datos del usuario desde Firebase y añadirlo a los elementos del layout, que mostrará al otro usuario
+     * en cada app.
+     * @param usuario Usuario con el que mantiene el chat
+     * @param holder ViewHolder del Adapter del recycler del chat
+     */
+    fun datosUsuarioChat(usuario:String, holder: RecyclerChatHolder){
+        db.collection("Usuarios").document(usuario).get().addOnSuccessListener {
+            holder.nombreUsuarioChat.setText(it.get("nombre").toString())
+            Picasso.get().load(it.get("fotoPerfil").toString()).into(holder.fotoUsuarioChat)
+            holder.fotoUsuarioChat.scaleType = ImageView.ScaleType.CENTER_CROP
+        }
     }
 }

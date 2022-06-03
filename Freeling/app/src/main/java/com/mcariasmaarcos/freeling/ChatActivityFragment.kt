@@ -21,7 +21,7 @@ lateinit var user: String
 /**
  * Fragment que obtiene la lista de usuarios que ha aceptado el usuario, con los que puede iniciar un chat.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
@@ -38,7 +38,6 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //var listaChats:ArrayList<String>
 
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnSuccessListener {

@@ -21,18 +21,16 @@ import com.squareup.picasso.Picasso
 /**
  * Adapter para el Recycler de la lista de chats del usuario.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param chatClick función que nos va a llevar al chat sobre el que hagamos click en el recycler
  */
 class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -> Unit/*, private val listaChats: ArrayList<String>*/): RecyclerView.Adapter<RecyclerChatHolder>() {
-
-    //private val db = Firebase.firestore
     /** Lista de chats **/
     var chats: List<Chat> = emptyList()
+
     /** Constante para establecer la conexión a Firebase **/
     private val db = Firebase.firestore
-    //lateinit var usuarioActual:Usuario
 
     /**
      * Función que va a igualar la lista de chats del adapter, a la que se le pase por argumentos.
@@ -49,7 +47,6 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
     }
 
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
-
         /*var listaChats: ArrayList<String> = arrayListOf()
 
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
@@ -84,8 +81,6 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
             chatClick(chats[position])
         }
 
-
-
         /*lateinit var chatId: String
         db.collection("Chats").document(Firebase.auth.currentUser!!.email.toString())
             .get()
@@ -116,6 +111,7 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
     /**
      * Función para recoger los datos del usuario desde Firebase y añadirlo a los elementos del layout, que mostrará al otro usuario
      * en cada app.
+     * Además, a través de esta función se sumarán las medallas buenas y malas al usuario y se actualizarán en la base de datos.
      * @param usuario Usuario con el que mantiene el chat
      * @param holder ViewHolder del Adapter del recycler del chat
      */
@@ -137,11 +133,11 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
                 Toast.makeText(context, "Medalla Buena Entregada", Toast.LENGTH_SHORT).show()
             }
-
             /*holder.darMedallaBuena.visibility = View.GONE
             holder.medallaBuenaByN.visibility = View.VISIBLE
             holder.darMedallaMala.visibility = View.GONE*/
         }
+
         holder.darMedallaMala.setOnClickListener {
             var numMedallasMalas:Int = 0
             db.collection("Usuarios").document(usuario).get().addOnSuccessListener {

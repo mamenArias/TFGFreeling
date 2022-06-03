@@ -10,7 +10,7 @@ import com.mcariasmaarcos.freeling.R
 /**
  * Adapter para el Recycler de los mensajes de los chats.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param usuario Usuario con el que se mantiene la conversación del chat.
  */

@@ -5,7 +5,7 @@ import java.util.*
 /**
  * Clase que modela los objetos de tipo MensajeChat, que tendrá cada chat.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param mensaje Mensaje enviado al chat
  * @param from Usuario que envía el mensaje

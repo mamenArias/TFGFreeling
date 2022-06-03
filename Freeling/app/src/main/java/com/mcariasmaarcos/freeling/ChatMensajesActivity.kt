@@ -14,7 +14,7 @@ import com.mcariasmaarcos.recycler.RecyclerMensajeAdapter
  * Clase que va a recoger de los datos que se han pasado por bundle, el id del chat y el usuario conectado, para así traer sus mensajes
  * guardados en dicho chat.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class ChatMensajesActivity : AppCompatActivity() {
@@ -51,7 +51,6 @@ class ChatMensajesActivity : AppCompatActivity() {
         binding.botonEnviarMensaje.setOnClickListener { enviarMensaje() }
 
         val chatRef = db.collection("Chats").document(chatId)
-
         chatRef.collection("Mensajes").orderBy("fecha", Query.Direction.ASCENDING).get()
             .addOnSuccessListener { mensajes ->
                 val listaMensajes = mensajes.toObjects(MensajeChat::class.java)

@@ -9,7 +9,7 @@ import com.mcariasmaarcos.freeling.R
  * ViewHolder personalizado para el RecyclerView de los mensajes que contiene cada chat,
  * que contiene los elementos del layout del recycler.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.1
  * @param itemView Elemento del layout del recycler
  */

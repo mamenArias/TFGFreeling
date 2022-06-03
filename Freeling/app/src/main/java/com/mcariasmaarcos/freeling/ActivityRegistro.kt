@@ -33,7 +33,7 @@ import com.mcariasmaarcos.freeling.databinding.ActivityRegistroBinding
  * Clase para que el usuario se registre por primera vez en la aplicación. Se cogerán los datos introducidos en los campos
  * correspondientes, teniendo en cuenta que ninguno puede quedar vacío, y se añadirán estos datos a Firebase.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class ActivityRegistro : AppCompatActivity() {
@@ -143,8 +143,7 @@ class ActivityRegistro : AppCompatActivity() {
                             Toast.makeText(this, R.string.intervaloValido, Toast.LENGTH_SHORT).show()
                         } else if (binding.edadMin.text.toString().toByte() < 18) {
                             Toast.makeText(this, R.string.edadBuscadaValida, Toast.LENGTH_SHORT).show()
-                        } else if (binding.campoEdadRegistro.text.toString().toInt() > 100 || binding.edadMin.text.toString().toInt() > 100
-                            || binding.edadMax.text.toString().toInt() > 100) {
+                        } else if (binding.campoEdadRegistro.text.toString().toInt() > 100 || binding.edadMin.text.toString().toInt() > 100 || binding.edadMax.text.toString().toInt() > 100) {
                             Toast.makeText(this, R.string.demasiadaEdad, Toast.LENGTH_SHORT).show()
                         } else {
                             val auth = FirebaseAuth.getInstance()
@@ -211,7 +210,7 @@ class ActivityRegistro : AppCompatActivity() {
         }
     }
 
-    /** MIGUE **/
+    /** Para establecer en el elemento iamgen de perfil, la foto que hemos cogido de la galería del móvil **/
     private val selectImageResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
         ActivityResultCallback<ActivityResult> { result ->
@@ -226,7 +225,9 @@ class ActivityRegistro : AppCompatActivity() {
         }
     )
 
-    /** MIGUE **/
+    /**
+     * Función para coger una foto de la galería del móvil
+     */
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -247,7 +248,12 @@ class ActivityRegistro : AppCompatActivity() {
         }
     }
 
-    /** MIGUE **/
+    /**
+     * Clase que va a aplicar un estilo determinado a los spinner utilizados en el layout
+     * @param context Contexto en el que se aplica
+     * @param resource Layout aplicado como estilo
+     * @param objects Array de String que se verá en el spinner
+     */
     class CustomArrayAdapter(context: Context, resource: Int, objects: Array<String>) : ArrayAdapter<String>(context, resource, objects) {
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = super.getDropDownView(position, convertView, parent)

@@ -3,7 +3,7 @@ package com.mcariasmaarcos.clases
 /**
  * Clase que modela los objetos de tipo Chat, que tendrá cada usuario.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param id Id del chat creado
  * @param users Lista de usuarios de comparten el chat

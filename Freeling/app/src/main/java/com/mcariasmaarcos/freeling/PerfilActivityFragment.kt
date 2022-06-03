@@ -32,7 +32,7 @@ import com.mcariasmaarcos.freeling.databinding.FragmentPerfilActivityBinding
  * Fragment que obtiene los datos del perfil del usuario conectado desde Firebase y los establece en los campos del layout,
  * para poder modificar los que quiera, salvo el emaily y la contraseña.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
@@ -125,8 +125,7 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnSuccessListener {
                 binding.campoEmailRegistroEditar.text = it.get("email").toString()
-                Glide.with(this).load(it.get("fotoPerfil"))
-                    .into(binding.imagenPerfilEditar as ImageView)
+                Glide.with(this).load(it.get("fotoPerfil")).into(binding.imagenPerfilEditar as ImageView)
                 binding.imagenPerfilEditar.scaleType = ImageView.ScaleType.CENTER_CROP
                 binding.campoNombreRegistroEditar.setText(it.get("nombre").toString())
                 binding.campoEdadRegistroEditar.setText(it.get("edad").toString())
@@ -146,25 +145,19 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 }
 
                 for (i in 0 until binding.spinnerPronombreRegistroEditar.count) {
-                    if (binding.spinnerPronombreRegistroEditar.getItemAtPosition(i).toString()
-                            .equals(it.get("pronombre").toString())
-                    ) {
+                    if (binding.spinnerPronombreRegistroEditar.getItemAtPosition(i).toString().equals(it.get("pronombre").toString())) {
                         binding.spinnerPronombreRegistroEditar.setSelection(i)
                     }
                 }
 
                 for (i in 0 until binding.spinnerGeneroRegistroEditar.count) {
-                    if (binding.spinnerGeneroRegistroEditar.getItemAtPosition(i).toString()
-                            .equals(it.get("genero").toString())
-                    ) {
+                    if (binding.spinnerGeneroRegistroEditar.getItemAtPosition(i).toString().equals(it.get("genero").toString())) {
                         binding.spinnerGeneroRegistroEditar.setSelection(i)
                     }
                 }
 
                 for (i in 0 until binding.spinnerOrientacSexRegistroEditar.count) {
-                    if (binding.spinnerOrientacSexRegistroEditar.getItemAtPosition(i).toString()
-                            .equals(it.get("orientacionSexual").toString())
-                    ) {
+                    if (binding.spinnerOrientacSexRegistroEditar.getItemAtPosition(i).toString().equals(it.get("orientacionSexual").toString())) {
                         binding.spinnerOrientacSexRegistroEditar.setSelection(i)
                     }
                 }
@@ -174,10 +167,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
          * de los campos **/
         binding.botonModificarPerfil.setOnClickListener {
             if (binding.campoNombreRegistroEditar.text.isNullOrEmpty() || binding.edadMaxEditar.text.isNullOrEmpty() ||
-                binding.edadMinEditar.text.isNullOrEmpty() || binding.campoInteresesRegistroEditar.text.isNullOrEmpty()||
-                binding.campoEdadRegistroEditar.text.isNullOrEmpty()
-            ) {
-                Toast.makeText(this.context, R.string.camposVacios, Toast.LENGTH_SHORT).show()
+                binding.edadMinEditar.text.isNullOrEmpty() || binding.campoInteresesRegistroEditar.text.isNullOrEmpty() || binding.campoEdadRegistroEditar.text.isNullOrEmpty()) {
+                    Toast.makeText(this.context, R.string.camposVacios, Toast.LENGTH_SHORT).show()
             } else if (binding.spinnerPronombreRegistroEditar.selectedItemPosition == 0) {
                 Toast.makeText(this.context, R.string.pronombreVacio, Toast.LENGTH_SHORT).show()
             } else if (binding.spinnerGeneroRegistroEditar.selectedItemPosition == 0) {
@@ -195,16 +186,15 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                     Toast.makeText(this.context, R.string.demasiadaEdad, Toast.LENGTH_SHORT).show()
             } else {
                if (image != null) {
-                    val reference = FirebaseStorage.getInstance()
-                        .getReference("imagenesPerfil/" + binding.campoEmailRegistroEditar.text.toString() + ".jpg")
-                    reference.putFile(image!!)
-                    storageRef = dbStorage.reference.child("imagenesPerfil")
-                        .child(binding.campoEmailRegistroEditar.text.toString() + ".jpg")
-
-                } else {
-                    storageRef = dbStorage.reference.child("imagenesPerfil")
-                        .child("avatarpordefecto.png")
-                }
+                   val reference = FirebaseStorage.getInstance()
+                       .getReference("imagenesPerfil/" + binding.campoEmailRegistroEditar.text.toString() + ".jpg")
+                   reference.putFile(image!!)
+                   storageRef = dbStorage.reference.child("imagenesPerfil")
+                       .child(binding.campoEmailRegistroEditar.text.toString() + ".jpg")
+               } else {
+                   storageRef = dbStorage.reference.child("imagenesPerfil")
+                       .child("avatarpordefecto.png")
+               }
 
                 storageRef.downloadUrl.addOnSuccessListener { url ->
 
@@ -256,7 +246,7 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
         }
     }
 
-    /** MIGUE **/
+    /** Para establecer en el elemento iamgen de perfil, la foto que hemos cogido de la galería del móvil **/
     private val selectImageResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
         ActivityResultCallback<ActivityResult> { result ->
@@ -271,7 +261,9 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
         }
     )
 
-    /** MIGUE **/
+    /**
+     * Función para coger una foto de la galería del móvil
+     */
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -293,7 +285,12 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     }
 
 
-    /** MIGUE **/
+    /**
+     * Clase que va a aplicar un estilo determinado a los spinner utilizados en el layout
+     * @param context Contexto en el que se aplica
+     * @param resource Layout aplicado como estilo
+     * @param objects Array de String que se verá en el spinner
+     */
     class CustomArrayAdapter(context: Context, resource: Int, objects: Array<String>) : ArrayAdapter<String>(context, resource, objects) {
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = super.getDropDownView(position, convertView, parent)

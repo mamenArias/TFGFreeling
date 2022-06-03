@@ -13,7 +13,7 @@ import com.mcariasmaarcos.freeling.databinding.ActivityPerfilUsuarioEncontradoBi
  * Clase que nos muestra los datos del usuario que se ha almacenado en nuestra lista de usuarios encontrados una vez que nos lo
  * hemos cruzado por la calle. Accedemos a ella una vez que hacemos click sobre dicho usuario en la lista.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class PerfilUsuarioEncontradoActivity : AppCompatActivity() {

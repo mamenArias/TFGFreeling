@@ -18,23 +18,19 @@ import com.mcariasmaarcos.freeling.databinding.FragmentLogrosActivityBinding
 /**
  * Fragment en el que se van a mostrar los logros conseguidos y por conseguir del usuario conectado.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  */
 class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
     /** Variable que permite enlazar los elementos del layout **/
     private lateinit var binding: FragmentLogrosActivityBinding
-    /** Constante para establecer la conexión a Firebase **/
-    private val db = FirebaseFirestore.getInstance()
-    //private lateinit var auth: FirebaseAuth
-    //private lateinit var storageReference: StorageReference
-    //val dbStorage = FirebaseStorage.getInstance()
 
+    /** Establece la conexión a Firebase **/
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentLogrosActivityBinding.inflate(inflater, container, false)
         return binding.root
-        //requireActivity().intent.extras!!.getString("user")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +38,7 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
 
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnCompleteListener {
+                /** Variable donde vamos a añadir los datos del usuario obtenido de Firebase **/
                 lateinit var user: Usuario
                 if (it.isSuccessful) {
                     user = it.result.toObject(Usuario::class.java)!!
@@ -67,6 +64,7 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                             .document(Firebase.auth.currentUser!!.email.toString())
                             .collection("Chats").get().addOnCompleteListener {
                                 if (it.isSuccessful) {
+                                    /** Contador para activar los logros **/
                                     var contador = 0
                                     it.result?.let {
                                         for (snapshot in it) {

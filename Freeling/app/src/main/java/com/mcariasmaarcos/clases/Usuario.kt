@@ -3,7 +3,7 @@ package com.mcariasmaarcos.clases
 /**
  * Clase que modela los objetos de tipo Usuario.
  * @author Miguel Ángel Arcos Reyes
- * @author Mª Carme Arias de Haro
+ * @author Mª Carmen Arias de Haro
  * @since 1.2
  * @param email Email del usuario.
  * @param nombre Nombre del usuario.

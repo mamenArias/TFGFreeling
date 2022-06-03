@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // comprueba si hay usuario logueado
         val currentUser = Firebase.auth.currentUser
         updateUI(currentUser)
     }
@@ -82,5 +81,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

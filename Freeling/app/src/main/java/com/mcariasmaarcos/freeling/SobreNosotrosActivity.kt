@@ -15,6 +15,10 @@ class SobreNosotrosActivity : AppCompatActivity() {
     /** Constante que permite enlazar los elementos del layout **/
     private val binding by lazy { ActivitySobreNosotrosBinding.inflate(layoutInflater) }
 
+    /**
+     * Función que cuando se cree el Activity, va a mostrar el contenido.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

@@ -31,11 +31,22 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
     /** Constante para establecer la conexión a Firebase **/
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Función que va a inflar el fragment
+     * @param inflater xml del layout que se va a inflar????
+     * @param container contenedor donde se va a inflar el layout
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentChatActivityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /**
+     * Función que va a inflar el recycler con todos los usuarios que se han añadido a la colección de chats.
+     * @param view vista de la actividad.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,21 +54,6 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
             .addOnSuccessListener {
                 user = it.get("email").toString()
             }
-
-        /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    user = it.result.toObject(Usuario::class.java)!!
-                }
-            }.addOnSuccessListener {
-                if(user!=null){
-                    listaChats = user!!.listaChats
-                    val adapter = RecyclerChatAdapter(this.context,listaChats)
-                    binding.recyclerChats.adapter = adapter
-                    binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
-                }
-            }*/
 
         binding.recyclerChats.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerChats.adapter = RecyclerChatAdapter (this.context) {chat: Chat ->  chatSeleccionado(chat)}

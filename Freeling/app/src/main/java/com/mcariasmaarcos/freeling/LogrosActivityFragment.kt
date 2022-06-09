@@ -28,11 +28,23 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
     /** Establece la conexión a Firebase **/
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Función que va a inflar el fragment
+     * @param inflater xml del layout que se va a inflar????
+     * @param container contenedor donde se va a inflar el layout
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentLogrosActivityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /**
+     * Función en la que, cuando se infle el fragment, se van a cargar todos los logros disponibles, y veremos en color
+     * los que hayamos conseguido.
+     * @param view vista de la actividad.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

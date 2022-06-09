@@ -50,6 +50,11 @@ class ActivityRegistro : AppCompatActivity() {
     /** Variable para establecer la imagen del perfil **/
     private var image: Uri? = null
 
+    /**
+     * Función que cuando se cree la actividad, va a cargar todos los campos que el usuario debe rellenar con sus datos
+     * para el correcto registro del mismo en la base de datos.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

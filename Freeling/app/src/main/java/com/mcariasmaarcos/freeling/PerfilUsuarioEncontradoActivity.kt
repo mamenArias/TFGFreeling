@@ -1,6 +1,5 @@
 package com.mcariasmaarcos.freeling
 
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +23,11 @@ class PerfilUsuarioEncontradoActivity : AppCompatActivity() {
     /** Email del usuario encontrado al que queremos acceder para ver su perfil **/
     private var otroUsuario:String = ""
 
+    /**
+     * Función que cuando se cree el activity, va a mostrar en los diferentes campos, los datos del usuario sobre el que
+     * hemos hecho click en la pantalla anterior.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

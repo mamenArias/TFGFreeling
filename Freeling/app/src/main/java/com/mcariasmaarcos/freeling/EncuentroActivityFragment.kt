@@ -47,11 +47,23 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
     /** ArrayList de usuarios que serán los que se vayan encontrando a través del Google N**/
     var listaUsuarios: ArrayList<String> = arrayListOf<String>()
 
+    /**
+     * Función que va a inflar el fragment
+     * @param inflater xml del layout que se va a inflar????
+     * @param container contenedor donde se va a inflar el layout
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentEncuentroActivityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /**
+     * Función en la que se va a cargar el recycler con los diferentes usuarios que nos encontramos gracias a Google Nearby,
+     * teniendo en cuenta las condiciones de edad mínima y máxima que haya establecido el usuario.
+     * @param view vista de la actividad.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         /** Variable a la que se pasarán los datos del usuario obtenidos de Firebase **/

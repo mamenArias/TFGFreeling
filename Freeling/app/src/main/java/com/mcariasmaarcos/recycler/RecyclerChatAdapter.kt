@@ -41,11 +41,22 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
         notifyDataSetChanged()
     }
 
+    /**
+     * Función que infla el adapter.
+     * @param parent vista padre que contendrá el recycler
+     * @param viewType tipos de vista que puede haber en el layout ?????
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerChatHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_chatlist, parent, false)
         return RecyclerChatHolder(view)
     }
 
+    /**
+     * Función que va a cargar los diferentes chats que tenga el usuario en su base de datos, y a través de los cuales,
+     * pinchando sobre ellos, podremos acceder a la conversación de chat guardada para cada uno.
+     * @param holder holder del adapter del recycler
+     * @param position posición del array del elemento.
+     */
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
         /*var listaChats: ArrayList<String> = arrayListOf()
 
@@ -104,6 +115,9 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
         }*/
     }
 
+    /**
+     * Función que devuelve el tamaño del array de chats.
+     */
     override fun getItemCount(): Int {
         return chats.size
     }

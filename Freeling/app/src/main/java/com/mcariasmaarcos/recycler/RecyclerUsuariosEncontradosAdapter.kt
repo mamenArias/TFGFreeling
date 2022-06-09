@@ -44,11 +44,23 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
         notifyDataSetChanged()
     }
 
+    /**
+     * Función que infla el adapter.
+     * @param parent vista padre que contendrá el recycler
+     * @param viewType tipos de vista que puede haber en el layout ?????
+     */
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecyclerUsuariosEncontradosHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_usuariosencontrados, parent, false)
         return RecyclerUsuariosEncontradosHolder(view)
     }
 
+    /**
+     * Función que va a cargar los datos de los usuarios encontrados en los diferentes campos del recycler, a la vez que podremos
+     * aceptar a un usuario y añadirlo a la lista de chats mediante el botón Aceptar, y eliminarlo del recycler mediante el botón
+     * Rechazar.
+     * @param holder holder del adapter del recycler
+     * @param position posición del array del elemento.
+     */
     override fun onBindViewHolder(holder: RecyclerUsuariosEncontradosHolder, position: Int) {
 
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
@@ -66,6 +78,9 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                         holder.pronombreUsuario.setText(it.get("pronombre").toString())
                         holder.edadUsuario.setText(it.get("edad").toString())
 
+                        /**
+                         * Botón que acepta al usuario encontrado y lo añade a la pantalla de chats cuando hacemos click.
+                         */
                         holder.bontonAceptar.setOnClickListener {
 
                             /** Id del chat que vamos a crear generada aleatoriamente **/
@@ -86,14 +101,8 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                             db.collection("Usuarios").document(usuariosEncontrados[position])
                                 .collection("Chats").document(chatId).set(chat)
                             //}
-                            /*db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-                                .update("listaChats", FieldValue.arrayUnion(otroUsuario))*/
-                            /*usuariosEncontrados.removeAt(position)
-                            notifyItemRemoved(position)
-                            notifyDataSetChanged()
-                            db.collection("Usuarios").document(usuariosEncontrados[position]).delete()
-                                .addOnSuccessListener { Log.d(TAG, "Usuario añadido a la lista de chats") }
-                                .addOnFailureListener { e -> Log.w(TAG, "Error al borrar el usuario") }*/
+
+                            /** Email del usuario que vamos a eliminar de la base de datos **/
                             var emailAEliminar = usuariosEncontrados[position]
                             usuariosEncontrados.removeAt(position)
                             db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update(
@@ -121,6 +130,9 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                                 }
                         }
 
+                        /**
+                         * Botón que elimina al usuario del recycler cuando hacemos click.
+                         */
                         holder.botonRechazar.setOnClickListener {
                             var emailAEliminar = usuariosEncontrados[position]
                             usuariosEncontrados.removeAt(position)
@@ -145,6 +157,9 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
         }
     }
 
+    /**
+     * Función que devuelve el tamaño del array de usuarios encontrados.
+     */
     override fun getItemCount(): Int {
         return usuariosEncontrados.size
     }

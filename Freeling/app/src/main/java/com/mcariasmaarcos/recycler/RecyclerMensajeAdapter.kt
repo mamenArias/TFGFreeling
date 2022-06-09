@@ -28,11 +28,22 @@ class RecyclerMensajeAdapter(private val usuario:String): RecyclerView.Adapter<R
         notifyDataSetChanged()
     }
 
+    /**
+     * Función que infla el adapter.
+     * @param parent vista padre que contendrá el recycler
+     * @param viewType tipos de vista que puede haber en el layout ?????
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerMensajeHolder {
         return RecyclerMensajeHolder(LayoutInflater.from(parent.context).inflate(
                 R.layout.layout_recycler_mensajeschat, parent, false))
     }
 
+    /**
+     * Función que según quién de las 2 personas del chat hable, mostrará el mensaje en un lado u otro de la pantalla,
+     * y de un color u otro.
+     * @param holder holder del adapter del recycler
+     * @param position posición del array del elemento.
+     */
     override fun onBindViewHolder(holder: RecyclerMensajeHolder, position: Int) {
         val mensaje = mensajes[position]
 
@@ -49,6 +60,9 @@ class RecyclerMensajeAdapter(private val usuario:String): RecyclerView.Adapter<R
         }
     }
 
+    /**
+     * Función que devuelve el tamaño del array de mensajes.
+     */
     override fun getItemCount(): Int {
         return mensajes.size
     }

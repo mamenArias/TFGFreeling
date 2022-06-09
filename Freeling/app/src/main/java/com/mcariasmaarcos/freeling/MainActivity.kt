@@ -24,6 +24,12 @@ class MainActivity : AppCompatActivity() {
     /** Constante que permite enlazar los elementos del layout **/
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
+    /**
+     * Cuando se crea la actividad, si no hay ningún usuario logueado, vamos a ver la pantalla de inicio de sesión, donde podremos
+     * iniciar sesión si tenemos un usuario creado, darle a botón de registro para irnos a otras pantalla o darle al icono de la
+     * empresa para que se muestre otra pantalla con información de la app y sus creadores.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -63,6 +69,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * En esta función se va a comprobobar si hay un usuario logueado llamando a la función [updateUI].
+     */
     override fun onStart() {
         super.onStart()
         val currentUser = Firebase.auth.currentUser

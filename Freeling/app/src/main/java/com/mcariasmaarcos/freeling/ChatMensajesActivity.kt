@@ -27,6 +27,11 @@ class ChatMensajesActivity : AppCompatActivity() {
     /** Constante para establecer la conexión a Firebase **/
     private val db = Firebase.firestore
 
+    /**
+     * Función en la que se va a obtener los datos pasados por bundle de la pantalla anterior, y si no son nulos,
+     * se llamará a la función [initViews].
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -66,32 +71,6 @@ class ChatMensajesActivity : AppCompatActivity() {
                     }
                 }
             }
-
-        /*val adapter = RecyclerMensajeAdapter(usuario)
-        binding.recyclerMensajesChat.adapter = adapter
-        binding.recyclerMensajesChat.layoutManager = LinearLayoutManager(this)
-
-        binding.botonEnviarMensaje.setOnClickListener {
-            enviarMensaje()
-        }
-
-        val chatRef = db.collection("chats").document(chatId)
-
-        chatRef.collection("mensajes").orderBy("dob", Query.Direction.ASCENDING)
-            .get().addOnSuccessListener { mensajes ->
-                val listaMensajes = mensajes.toObjects(MensajeChat::class.java)
-                (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
-            }
-
-        chatRef.collection("mensajes").orderBy("dob", Query.Direction.ASCENDING)
-            .addSnapshotListener { mensajes, error ->
-                if (error == null){
-                    mensajes?.let {
-                        val listaMensajes = it.toObjects(MensajeChat::class.java)
-                        (binding.recyclerMensajesChat.adapter as RecyclerMensajeAdapter).setData(listaMensajes)
-                    }
-                }
-            }*/
     }
 
     /**

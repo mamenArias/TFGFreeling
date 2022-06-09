@@ -16,6 +16,10 @@ class EncuentroActivity : AppCompatActivity() {
     /** Constante que permite enlazar los elementos del layout **/
     val binding by lazy { ActivityEncuentroBinding.inflate(layoutInflater)}
 
+    /**
+     * Función que va a inicializar los diferentes fragments que hay en variables para luego llamarlos mediante el menú inferior.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

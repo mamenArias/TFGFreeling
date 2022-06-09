@@ -55,11 +55,23 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     /** Variable que indica si se ha dado una medalla o no a otro usuario **/
     var darMedallas = false
 
+    /**
+     * Función que va a inflar el fragment
+     * @param inflater xml del layout que se va a inflar????
+     * @param container contenedor donde se va a inflar el layout
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         binding = FragmentPerfilActivityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /**
+     * Se van a cargar todos los datos del usuario registrado en los diferentes campos de la pantalla, para poder editar
+     * cualquiera de ellos y que se actualicen en Firebase.
+     * @param view vista de la actividad.
+     * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -272,6 +284,9 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
 
     /**
      * Función para solicitar permisos al usuario para acceder a la galería a la hora de modificar la foto de perfil
+     * @param requestCode código del permiso pedido
+     * @param permissions valor que indica los distintos permisos
+     * @param grantResults lista de permisos concedidos.
      */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

@@ -82,9 +82,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     user = it.result.toObject(Usuario::class.java)!!
-//                    adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
                     if (user != null) {
-                        //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
                         listaUsuarios = user!!.usuariosEncontrados
                         adapter =
                             RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
@@ -95,23 +93,9 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                             binding.lblCargando.visibility = View.GONE
                         edadSup = it.result.get("edadDeseadaSup").toString().toInt()
                         edadInf = it.result.get("edadDeseadaInf").toString().toInt()
-                        // RELLENAR VARIABLES INTERNAS DE EMAIL Y EL MMESSAGE
-                        //PONER MENSAJE DE CARGA y poner el BINDING DEL SWITCH
-                    // ACTIVAR EL SWITCH
                     }
                 }
          }
-//            .addOnSuccessListener {
-//                if (user != null) {
-//                    //Toast.makeText(this.context, "llegue", Toast.LENGTH_SHORT).show()
-//                    listaUsuarios = user!!.usuariosEncontrados
-//                    adapter =
-//                        RecyclerUsuariosEncontradosAdapter(this.context, listaUsuarios)
-//                    binding.recyclerPersonasEncontradas.adapter = adapter
-//                    binding.recyclerPersonasEncontradas.layoutManager =
-//                        LinearLayoutManager(this.context)
-//                }
-//            }
 
         email =Firebase.auth.currentUser!!.email.toString()
         mMessage = Message(email.toByteArray(Charset.forName("UTF-8")))
@@ -154,20 +138,6 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                     }
                 }
                 refreshFragment()
-//                requireActivity().getSupportFragmentManager().findFragmentById(R.id.home)?.let {
-//                    activity!!.getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .detach(it) // detach the current fragment
-//                       .attach(requireParentFragment()) // attach with current fragment
-//                        .commit()
-//                };
-//                val adapter: RecyclerUsuariosEncontradosAdapter =
-//                    RecyclerUsuariosEncontradosAdapter(requireActivity().getApplicationContext(), listaUsuarios)
-//                binding.recyclerPersonasEncontradas.adapter = adapter
-//                binding.recyclerPersonasEncontradas.layoutManager =
-//                    LinearLayoutManager(requireActivity().getApplicationContext())
-//                adapter.notifyItemInserted(adapter.itemCount)
-//                mNearbyDevicesArrayAdapter!!.add(msgBody)
             }
 
             /**
@@ -175,21 +145,9 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
              * @param message mensaje que encuentra el listener
              */
             override fun onLost(message: Message) {
-                // Called when a message is no longer detectable nearby.
                 val msgBody = String(message.content)
-//                mNearbyDevicesArrayAdapter!!.remove(msgBody)
             }
         }
-//        val nearbyDevicesArrayList: List<String> = ArrayList()
-//        mNearbyDevicesArrayAdapter = ArrayAdapter(
-//            requireContext(),
-//            android.R.layout.simple_list_item_1,
-//            nearbyDevicesArrayList
-//        )
-//        val nearbyDevicesListView = view.findViewById<View>(R.id.nearby_devices_list_view) as ListView
-//        if (nearbyDevicesListView != null) {
-//            nearbyDevicesListView.adapter = mNearbyDevicesArrayAdapter
-//        }
 
         binding!!.publishSwitch.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             if (isChecked) {
@@ -232,11 +190,9 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                 override fun onExpired() {
                     super.onExpired()
                     Log.i(TAG, "No longer publishing")
-                    //  activity!!.runOnUiThread { binding!!.publishSwitch.isChecked = false }
                 }
             }).build()
         Nearby.getMessagesClient(requireActivity()).publish(mMessage!!, options)
-        //  .addOnFailureListener { e: Exception? -> logAndShowSnackbar(MISSING_API_KEY) }
     }
 
     /**
@@ -254,13 +210,6 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
         Log.i(TAG, "Unpublishing.")
         Nearby.getMessagesClient(requireActivity()).unpublish(mMessage!!)
     }
-
-    /*  private fun logAndShowSnackbar(text: String) {
-          Log.w(TAG, text)
-          if (binding!!.activityMainContainer != null) {
-              Snackbar.make(binding!!.activityMainContainer, text, Snackbar.LENGTH_LONG).show()
-          }
-      }*/
 
     companion object {
         /** Variable identificativa del nombre de la clase **/

@@ -58,23 +58,6 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
      * @param position posición del array del elemento.
      */
     override fun onBindViewHolder(holder: RecyclerChatHolder, position: Int) {
-        /*var listaChats: ArrayList<String> = arrayListOf()
-
-        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    usuarioActual = it.result.toObject(Usuario::class.java)!!
-                }
-
-                listaChats = usuarioActual.listaChats
-                db.collection("Usuarios").document(listaChats[position]).get()
-                    .addOnSuccessListener {
-                        //Glide.with(context!!).load(it.get("fotoPerfil")).into(holder.fotoUsuario)
-                        //holder.fotoUsuario.scaleType = ImageView.ScaleType.CENTER_CROP
-                        holder.nombreUsuarioChat.text = it.get(("nombre")).toString()
-                        holder.emailChat.text = it.get("email").toString()
-                    }
-            }*/
 
         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).get()
             .addOnSuccessListener {
@@ -91,28 +74,6 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
         holder.itemView.setOnClickListener {
             chatClick(chats[position])
         }
-
-        /*lateinit var chatId: String
-        db.collection("Chats").document(Firebase.auth.currentUser!!.email.toString())
-            .get()
-            .addOnSuccessListener {
-                chatId = it.get("id").toString()
-            }
-
-        lateinit var usuarioEmail: String
-        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
-            .get()
-            .addOnSuccessListener {
-                usuarioEmail = it.get("email").toString()
-            }
-
-        holder.itemView.setOnClickListener {
-            listaChats[position]
-            val intent = Intent(context, ChatMensajesActivity::class.java)
-            intent.putExtra("chatId", chatId)
-            intent.putExtra("usuario", usuarioEmail)
-            context?.startActivity(intent)
-        }*/
     }
 
     /**
@@ -147,9 +108,6 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
                 db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("darMedallas",true)
                 Toast.makeText(context, "Medalla Buena Entregada", Toast.LENGTH_SHORT).show()
             }
-            /*holder.darMedallaBuena.visibility = View.GONE
-            holder.medallaBuenaByN.visibility = View.VISIBLE
-            holder.darMedallaMala.visibility = View.GONE*/
         }
 
         holder.darMedallaMala.setOnClickListener {

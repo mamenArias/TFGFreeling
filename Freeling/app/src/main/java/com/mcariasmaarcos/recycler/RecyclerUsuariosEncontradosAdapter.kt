@@ -97,10 +97,8 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
                             db.collection("Chats").document(chatId).set(chat)
                             db.collection("Usuarios").document(usuarioActual.email)
                                 .collection("Chats").document(chatId).set(chat)
-                            //if (otroUsuario != null) {
                             db.collection("Usuarios").document(usuariosEncontrados[position])
                                 .collection("Chats").document(chatId).set(chat)
-                            //}
 
                             /** Email del usuario que vamos a eliminar de la base de datos **/
                             var emailAEliminar = usuariosEncontrados[position]

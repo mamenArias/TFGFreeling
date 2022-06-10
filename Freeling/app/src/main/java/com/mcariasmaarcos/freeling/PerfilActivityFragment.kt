@@ -54,6 +54,10 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
     var medallasMalas:Int = 0
     /** Variable que indica si se ha dado una medalla o no a otro usuario **/
     var darMedallas = false
+    /** Variable que indica si se ha encontrado o no a otro usuario **/
+    var encuentroUno = false
+    /** Variable que indica si se ha encontrado o no a otros diez usuarios **/
+    var encuentroDiez = false
 
     /**
      * Función que va a inflar el fragment
@@ -147,7 +151,8 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                 medallasBuenas = it.get("medallasBuenas").toString().toInt()
                 medallasMalas = it.get("medallasMalas").toString().toInt()
                 darMedallas = it.get("darMedallas") as Boolean
-
+                encuentroUno = it.get("encontradoUno") as Boolean
+                encuentroDiez = it.get("encontradoDiez") as Boolean
                 if (medallasBuenas > medallasMalas){
                     binding.imagenMedallaPerfil.visibility = View.VISIBLE
                     binding.imagenMedallaPerfil.setImageResource(R.drawable.medallabuena)
@@ -224,7 +229,10 @@ class PerfilActivityFragment : Fragment(R.layout.fragment_perfil_activity) {
                         url.toString(),
                         medallasBuenas,
                         medallasMalas,
-                        darMedallas
+                        darMedallas,
+                        encuentroUno,
+                        encuentroDiez
+
                     )
 
                     db.collection("Usuarios").document(user.email).update(

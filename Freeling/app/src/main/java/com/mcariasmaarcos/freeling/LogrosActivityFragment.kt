@@ -28,6 +28,7 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
     /** Establece la conexión a Firebase **/
     private val db = FirebaseFirestore.getInstance()
 
+
     /**
      * Función que va a inflar el fragment
      * @param inflater xml del layout que se va a inflar
@@ -56,11 +57,11 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                     user = it.result.toObject(Usuario::class.java)!!
                     //adapter.notifyDataSetChanged() //le avisamos al adapter que tiene nuevos elementos
                     if (user != null) {
-                        if (user.usuariosEncontrados.size > 0) {
+                        if (user.encontradoUno) {
                             binding.encuentraUnoColor.visibility = View.VISIBLE
                             binding.encuentraunobyn.visibility = View.GONE
                         }
-                        if (user.usuariosEncontrados.size > 9) {
+                        if (user.encontradoDiez) {
                             binding.encuentraDiezColor.visibility = View.VISIBLE
                             binding.encuentradiezbyn.visibility = View.GONE
                         }
@@ -97,4 +98,5 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                 }
             }
     }
+
 }

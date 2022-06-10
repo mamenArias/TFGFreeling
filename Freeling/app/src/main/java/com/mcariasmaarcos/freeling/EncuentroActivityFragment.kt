@@ -132,7 +132,24 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
                         db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("usuariosEncontrados",
                             FieldValue.arrayUnion(msgBody)
                         )
-                        listaUsuarios = user!!.usuariosEncontrados
+                        db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString())
+                            .get() //Al debuguear, se detiene en esta linea y salta hasta el return, dando como resultado un 0 cuando se recibe en el adaptador.
+                            .addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    user = it.result.toObject(Usuario::class.java)!!
+                                }
+                            }
+                            listaUsuarios = user!!.usuariosEncontrados
+                            if(user!!.usuariosEncontrados.size > 9){
+                                user.encontradoDiez=true
+                                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("encontradoDiez",user.encontradoDiez)
+                            }
+                            if(user!!.usuariosEncontrados.size>0){
+                                user.encontradoUno=true
+                                db.collection("Usuarios").document(Firebase.auth.currentUser!!.email.toString()).update("encontradoUno",user.encontradoUno)
+                            }
+
+
                         adapter!!.setData(listaUsuarios)
                     }
                 }

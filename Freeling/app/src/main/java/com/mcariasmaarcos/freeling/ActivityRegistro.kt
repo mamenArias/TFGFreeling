@@ -190,6 +190,8 @@ class ActivityRegistro : AppCompatActivity() {
                                                 0,
                                                 0,
                                                 false,
+                                                false,
+                                                false,
                                                 arrayListOf<String>()
                                             )
 

@@ -47,7 +47,7 @@ class RecyclerUsuariosEncontradosAdapter(private val context: Context?, private 
     /**
      * Función que infla el adapter.
      * @param parent vista padre que contendrá el recycler
-     * @param viewType tipos de vista que puede haber en el layout ?????
+     * @param viewType tipos de vista que puede haber en el layout
      */
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecyclerUsuariosEncontradosHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_usuariosencontrados, parent, false)

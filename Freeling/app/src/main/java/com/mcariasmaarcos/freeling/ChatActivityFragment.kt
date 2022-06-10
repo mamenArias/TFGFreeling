@@ -33,7 +33,7 @@ class ChatActivityFragment : Fragment(R.layout.fragment_chat_activity) {
 
     /**
      * Función que va a inflar el fragment
-     * @param inflater xml del layout que se va a inflar????
+     * @param inflater xml del layout que se va a inflar
      * @param container contenedor donde se va a inflar el layout
      * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
      */

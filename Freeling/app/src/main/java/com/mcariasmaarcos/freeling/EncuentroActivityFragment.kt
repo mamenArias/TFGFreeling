@@ -49,7 +49,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
 
     /**
      * Función que va a inflar el fragment
-     * @param inflater xml del layout que se va a inflar????
+     * @param inflater xml del layout que se va a inflar
      * @param container contenedor donde se va a inflar el layout
      * @param savedInstanceState objeto Bundle que contiene el estado ya guardado de la actividad.
      */
@@ -246,7 +246,7 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
       }*/
 
     companion object {
-        /** ESTO QUE ES XD **/
+        /** Variable identificativa del nombre de la clase **/
         private val TAG = MainActivity::class.java.simpleName
 
         /** Cantidad de segundos que tendremos el mensaje o la suscripción vivos **/

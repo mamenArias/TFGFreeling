@@ -31,7 +31,7 @@ class RecyclerMensajeAdapter(private val usuario:String): RecyclerView.Adapter<R
     /**
      * Función que infla el adapter.
      * @param parent vista padre que contendrá el recycler
-     * @param viewType tipos de vista que puede haber en el layout ?????
+     * @param viewType tipos de vista que puede haber en el layout
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerMensajeHolder {
         return RecyclerMensajeHolder(LayoutInflater.from(parent.context).inflate(

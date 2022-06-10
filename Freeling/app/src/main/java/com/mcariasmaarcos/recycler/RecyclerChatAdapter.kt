@@ -44,7 +44,7 @@ class RecyclerChatAdapter( private val context: Context?,val chatClick: (Chat) -
     /**
      * Función que infla el adapter.
      * @param parent vista padre que contendrá el recycler
-     * @param viewType tipos de vista que puede haber en el layout ?????
+     * @param viewType tipos de vista que puede haber en el layout
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerChatHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_recycler_chatlist, parent, false)

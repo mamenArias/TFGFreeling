@@ -100,4 +100,5 @@
     <string name="foto_migue">Foto de Migue</string>
     <string name="foto_mamen">Foto de Mamen</string>
     <string name="texto_informativo">Somos dos estudiantes de 2º de Desarrollo de Aplicaciones Multiplataforma (DAM) en CENEC, y hemos creado esta App como proyecto final de nuestro ciclo. El objetivo de la App es poder conocer a gente con la que te cruzas por la calle, y que por vergüenza, falta de tiempo o el motivo que sea, no te atreves a hablarle directamente en persona. A través de nuestra aplicación podrás conocer más de esas personas, entablar una conversación a través de un chat y, quién sabe, quizás sea el comienzo de una nueva amistad.</string>
+    <string name="imagenesLogros">Imágenes de los diferentes logros</string>
 </resources>

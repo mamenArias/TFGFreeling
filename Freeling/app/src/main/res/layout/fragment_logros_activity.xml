@@ -21,7 +21,7 @@
         tools:context=".LogrosActivityFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/encuentraunobyn"
+            android:id="@+id/encuentraUnoByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -30,16 +30,18 @@
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/encuentraunoimgbyn"
+                android:id="@+id/encuentraUnoImgByn"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/encuentraunobyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/lblBloqueadoencuentrounobyn"
+                android:id="@+id/lblBloqueadoEncuentroUnoByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -47,12 +49,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/bloqueado"
                 android:textColor="@color/rojo"
-                app:layout_constraintEnd_toEndOf="@+id/inicioEncuentroUnobyn"
-                app:layout_constraintStart_toStartOf="@+id/inicioEncuentroUnobyn"
-                app:layout_constraintTop_toBottomOf="@+id/inicioEncuentroUnobyn"/>
+                app:layout_constraintEnd_toEndOf="@+id/inicioEncuentroUnoByn"
+                app:layout_constraintStart_toStartOf="@+id/inicioEncuentroUnoByn"
+                app:layout_constraintTop_toBottomOf="@+id/inicioEncuentroUnoByn"/>
 
             <TextView
-                android:id="@+id/inicioEncuentroUnobyn"
+                android:id="@+id/inicioEncuentroUnoByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,10 +62,11 @@
                 android:text="@string/encuentraPrimerContacto"
                 android:textAlignment="center"
                 android:textColor="@color/grisOscuro"
-                app:layout_constraintBottom_toBottomOf="@+id/encuentraunoimgbyn"
+                app:layout_constraintBottom_toBottomOf="@+id/encuentraUnoImgByn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/encuentraunoimgbyn"
-                app:layout_constraintTop_toTopOf="@+id/encuentraunoimgbyn" />
+                app:layout_constraintStart_toEndOf="@+id/encuentraUnoImgByn"
+                app:layout_constraintTop_toTopOf="@+id/encuentraUnoImgByn"
+                tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,16 +80,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/encuentraUnoimg"
+                android:id="@+id/encuentraUnoImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/encuentrauno"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidoencuentraUno"
+                android:id="@+id/lblConseguidoEncuentraUno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -94,12 +98,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/EncuentroUnocolor"
-                app:layout_constraintStart_toStartOf="@+id/EncuentroUnocolor"
-                app:layout_constraintTop_toBottomOf="@+id/EncuentroUnocolor" />
+                app:layout_constraintEnd_toEndOf="@+id/encuentroUnoColor"
+                app:layout_constraintStart_toStartOf="@+id/encuentroUnoColor"
+                app:layout_constraintTop_toBottomOf="@+id/encuentroUnoColor" />
 
             <TextView
-                android:id="@+id/EncuentroUnocolor"
+                android:id="@+id/encuentroUnoColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -107,15 +111,15 @@
                 android:text="@string/encuentraPrimerContacto"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/encuentraUnoimg"
+                app:layout_constraintBottom_toBottomOf="@+id/encuentraUnoImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/encuentraUnoimg"
-                app:layout_constraintTop_toTopOf="@+id/encuentraUnoimg" />
+                app:layout_constraintStart_toEndOf="@+id/encuentraUnoImg"
+                app:layout_constraintTop_toTopOf="@+id/encuentraUnoImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/encuentradiezbyn"
+            android:id="@+id/encuentraDiezByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -127,6 +131,7 @@
                 android:id="@+id/encuentraDiezimgbyn"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/encuentradiezbyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -174,16 +179,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/encuentraDiezimg"
+                android:id="@+id/encuentraDiezImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/encuentradiez"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidoencuentraDiez"
+                android:id="@+id/lblConseguidoEncuentraDiez"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -191,12 +197,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/EncuentroDiezcolor"
-                app:layout_constraintStart_toStartOf="@+id/EncuentroDiezcolor"
-                app:layout_constraintTop_toBottomOf="@+id/EncuentroDiezcolor" />
+                app:layout_constraintEnd_toEndOf="@+id/EncuentroDiezColor"
+                app:layout_constraintStart_toStartOf="@+id/EncuentroDiezColor"
+                app:layout_constraintTop_toBottomOf="@+id/EncuentroDiezColor" />
 
             <TextView
-                android:id="@+id/EncuentroDiezcolor"
+                android:id="@+id/EncuentroDiezColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -204,15 +210,15 @@
                 android:text="@string/encuentraDiezcontactos"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/encuentraDiezimg"
+                app:layout_constraintBottom_toBottomOf="@+id/encuentraDiezImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/encuentraDiezimg"
-                app:layout_constraintTop_toTopOf="@+id/encuentraDiezimg" />
+                app:layout_constraintStart_toEndOf="@+id/encuentraDiezImg"
+                app:layout_constraintTop_toTopOf="@+id/encuentraDiezImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chatunobyn"
+            android:id="@+id/chatUnoByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -224,13 +230,15 @@
                 android:id="@+id/imageView"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/chatunobyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/lblBloqueadoChatuno"
+                android:id="@+id/lblBloqueadoChatUno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -259,7 +267,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chatunocolor"
+            android:id="@+id/chatUnoColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -268,16 +276,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/chatunoimg"
+                android:id="@+id/chatUnoImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/chatuno"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidochatuno"
+                android:id="@+id/lblConseguidoChatUno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -285,12 +294,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/inicioChatcolor"
-                app:layout_constraintStart_toStartOf="@+id/inicioChatcolor"
-                app:layout_constraintTop_toBottomOf="@+id/inicioChatcolor" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioChatColor"
+                app:layout_constraintStart_toStartOf="@+id/inicioChatColor"
+                app:layout_constraintTop_toBottomOf="@+id/inicioChatColor" />
 
             <TextView
-                android:id="@+id/inicioChatcolor"
+                android:id="@+id/inicioChatColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -298,16 +307,16 @@
                 android:text="@string/iniciaTuPrimerChat"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/chatunoimg"
+                app:layout_constraintBottom_toBottomOf="@+id/chatUnoImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/chatunoimg"
-                app:layout_constraintTop_toTopOf="@+id/chatunoimg"
+                app:layout_constraintStart_toEndOf="@+id/chatUnoImg"
+                app:layout_constraintTop_toTopOf="@+id/chatUnoImg"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chatdiezbyn"
+            android:id="@+id/chatDiezByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -316,16 +325,18 @@
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/chatdiezimgbyn"
+                android:id="@+id/chatDiezImgByn"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/chatdiezbyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/lblBloqueadochatdiez"
+                android:id="@+id/lblBloqueadoChatDiez"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -333,12 +344,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/bloqueado"
                 android:textColor="@color/rojo"
-                app:layout_constraintEnd_toEndOf="@+id/inicioChatdiezbyn"
-                app:layout_constraintStart_toStartOf="@+id/inicioChatdiezbyn"
-                app:layout_constraintTop_toBottomOf="@+id/inicioChatdiezbyn" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioChatDiezByn"
+                app:layout_constraintStart_toStartOf="@+id/inicioChatDiezByn"
+                app:layout_constraintTop_toBottomOf="@+id/inicioChatDiezByn" />
 
             <TextView
-                android:id="@+id/inicioChatdiezbyn"
+                android:id="@+id/inicioChatDiezByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -346,16 +357,16 @@
                 android:text="@string/iniciaDiezChatsDiferentes"
                 android:textAlignment="center"
                 android:textColor="@color/grisOscuro"
-                app:layout_constraintBottom_toBottomOf="@+id/chatdiezimgbyn"
+                app:layout_constraintBottom_toBottomOf="@+id/chatDiezImgByn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/chatdiezimgbyn"
-                app:layout_constraintTop_toTopOf="@+id/chatdiezimgbyn"
+                app:layout_constraintStart_toEndOf="@+id/chatDiezImgByn"
+                app:layout_constraintTop_toTopOf="@+id/chatDiezImgByn"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chatdiezcolor"
+            android:id="@+id/chatDiezColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -364,16 +375,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/chatdiezimg"
+                android:id="@+id/chatDiezImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/chatdiez"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidochatdiez"
+                android:id="@+id/lblConseguidoChatDiez"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -381,12 +393,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/inicioChatdiezcolor"
-                app:layout_constraintStart_toStartOf="@+id/inicioChatdiezcolor"
-                app:layout_constraintTop_toBottomOf="@+id/inicioChatdiezcolor" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioChatDiezColor"
+                app:layout_constraintStart_toStartOf="@+id/inicioChatDiezColor"
+                app:layout_constraintTop_toBottomOf="@+id/inicioChatDiezColor" />
 
             <TextView
-                android:id="@+id/inicioChatdiezcolor"
+                android:id="@+id/inicioChatDiezColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -394,15 +406,15 @@
                 android:text="@string/iniciaDiezChatsDiferentes"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/chatdiezimg"
+                app:layout_constraintBottom_toBottomOf="@+id/chatDiezImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/chatdiezimg"
-                app:layout_constraintTop_toTopOf="@+id/chatdiezimg" />
+                app:layout_constraintStart_toEndOf="@+id/chatDiezImg"
+                app:layout_constraintTop_toTopOf="@+id/chatDiezImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/darmedallabyn"
+            android:id="@+id/darMedallaByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -411,16 +423,18 @@
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/darmedallaimgbyn"
+                android:id="@+id/darMedallaImgByn"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/darmedallabyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/lblBloqueadodarmedallabyn"
+                android:id="@+id/lblBloqueadoDarMedallaByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -428,12 +442,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/bloqueado"
                 android:textColor="@color/rojo"
-                app:layout_constraintEnd_toEndOf="@+id/iniciodarmedallabyn"
-                app:layout_constraintStart_toStartOf="@+id/iniciodarmedallabyn"
-                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallabyn" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioDarMedallaByn"
+                app:layout_constraintStart_toStartOf="@+id/inicioDarMedallaByn"
+                app:layout_constraintTop_toBottomOf="@+id/inicioDarMedallaByn" />
 
             <TextView
-                android:id="@+id/iniciodarmedallabyn"
+                android:id="@+id/inicioDarMedallaByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -441,16 +455,16 @@
                 android:text="@string/entregaTuPrimeraMedalla"
                 android:textAlignment="center"
                 android:textColor="@color/grisOscuro"
-                app:layout_constraintBottom_toBottomOf="@+id/darmedallaimgbyn"
+                app:layout_constraintBottom_toBottomOf="@+id/darMedallaImgByn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/darmedallaimgbyn"
-                app:layout_constraintTop_toTopOf="@+id/darmedallaimgbyn"
+                app:layout_constraintStart_toEndOf="@+id/darMedallaImgByn"
+                app:layout_constraintTop_toTopOf="@+id/darMedallaImgByn"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/darmedallacolor"
+            android:id="@+id/darMedallaColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -459,16 +473,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/darmedallaimg"
+                android:id="@+id/darMedallaImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/darmedalla"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidodarmedalla"
+                android:id="@+id/lblConseguidoDarMedalla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -476,12 +491,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/iniciodarmedallacolor"
-                app:layout_constraintStart_toStartOf="@+id/iniciodarmedallacolor"
-                app:layout_constraintTop_toBottomOf="@+id/iniciodarmedallacolor" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioDarMedallaColor"
+                app:layout_constraintStart_toStartOf="@+id/inicioDarMedallaColor"
+                app:layout_constraintTop_toBottomOf="@+id/inicioDarMedallaColor" />
 
             <TextView
-                android:id="@+id/iniciodarmedallacolor"
+                android:id="@+id/inicioDarMedallaColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -489,15 +504,15 @@
                 android:text="@string/entregaTuPrimeraMedalla"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/darmedallaimg"
+                app:layout_constraintBottom_toBottomOf="@+id/darMedallaImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/darmedallaimg"
-                app:layout_constraintTop_toTopOf="@+id/darmedallaimg" />
+                app:layout_constraintStart_toEndOf="@+id/darMedallaImg"
+                app:layout_constraintTop_toTopOf="@+id/darMedallaImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/recibemedallabyn"
+            android:id="@+id/recibeMedallaByn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -506,16 +521,18 @@
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/recibemedallaimgbyn"
+                android:id="@+id/recibeMedallaImgByn"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/recibemedallabyn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/lblBloqueadorecibemedallabyn"
+                android:id="@+id/lblBloqueadoRecibeMedallaByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -523,12 +540,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/bloqueado"
                 android:textColor="@color/rojo"
-                app:layout_constraintEnd_toEndOf="@+id/iniciorecibemedallabyn"
-                app:layout_constraintStart_toStartOf="@+id/iniciorecibemedallabyn"
-                app:layout_constraintTop_toBottomOf="@+id/iniciorecibemedallabyn"/>
+                app:layout_constraintEnd_toEndOf="@+id/inicioRecibeMedallaByn"
+                app:layout_constraintStart_toStartOf="@+id/inicioRecibeMedallaByn"
+                app:layout_constraintTop_toBottomOf="@+id/inicioRecibeMedallaByn"/>
 
             <TextView
-                android:id="@+id/iniciorecibemedallabyn"
+                android:id="@+id/inicioRecibeMedallaByn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -536,16 +553,16 @@
                 android:text="@string/recibeTuPrimeraMedalla"
                 android:textAlignment="center"
                 android:textColor="@color/grisOscuro"
-                app:layout_constraintBottom_toBottomOf="@+id/recibemedallaimgbyn"
+                app:layout_constraintBottom_toBottomOf="@+id/recibeMedallaImgByn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recibemedallaimgbyn"
-                app:layout_constraintTop_toTopOf="@+id/recibemedallaimgbyn"
+                app:layout_constraintStart_toEndOf="@+id/recibeMedallaImgByn"
+                app:layout_constraintTop_toTopOf="@+id/recibeMedallaImgByn"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/recibemedallacolor"
+            android:id="@+id/recibeMedallaColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -554,16 +571,17 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/recibemedallaimg"
+                android:id="@+id/recibeMedallaImg"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/imagenesLogros"
                 android:src="@drawable/recibemedalla"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblConseguidorecibemedalla"
+                android:id="@+id/lblConseguidoRecibeMedalla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -571,12 +589,12 @@
                 android:fontFamily="@font/avertaextrabold"
                 android:text="@string/conseguido"
                 android:textColor="@color/verde"
-                app:layout_constraintEnd_toEndOf="@+id/iniciorecibemedallacolor"
-                app:layout_constraintStart_toStartOf="@+id/iniciorecibemedallacolor"
-                app:layout_constraintTop_toBottomOf="@+id/iniciorecibemedallacolor" />
+                app:layout_constraintEnd_toEndOf="@+id/inicioRecibeMedallaColor"
+                app:layout_constraintStart_toStartOf="@+id/inicioRecibeMedallaColor"
+                app:layout_constraintTop_toBottomOf="@+id/inicioRecibeMedallaColor" />
 
             <TextView
-                android:id="@+id/iniciorecibemedallacolor"
+                android:id="@+id/inicioRecibeMedallaColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -584,10 +602,10 @@
                 android:text="@string/recibeTuPrimeraMedalla"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/recibemedallaimg"
+                app:layout_constraintBottom_toBottomOf="@+id/recibeMedallaImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recibemedallaimg"
-                app:layout_constraintTop_toTopOf="@+id/recibemedallaimg" />
+                app:layout_constraintStart_toEndOf="@+id/recibeMedallaImg"
+                app:layout_constraintTop_toTopOf="@+id/recibeMedallaImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

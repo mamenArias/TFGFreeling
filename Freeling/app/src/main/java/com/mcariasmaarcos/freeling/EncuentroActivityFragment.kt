@@ -166,14 +166,12 @@ class EncuentroActivityFragment : Fragment(R.layout.fragment_encuentro_activity)
      */
     private fun subscribe() {
         Log.i(TAG, "Subscribing")
-//        mNearbyDevicesArrayAdapter!!.clear()
         val options = SubscribeOptions.Builder()
             .setStrategy(PUB_SUB_STRATEGY)
             .setCallback(object : SubscribeCallback() {
                 override fun onExpired() {
                     super.onExpired()
                     Log.i(TAG, "No longer subscribing")
-                    // activity!!.runOnUiThread { binding!!.publishSwitch.isChecked = false }
                 }
             }).build()
         Nearby.getMessagesClient(requireActivity()).subscribe(mMessageListener!!, options)

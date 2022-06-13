@@ -59,19 +59,19 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                     if (user != null) {
                         if (user.encontradoUno) {
                             binding.encuentraUnoColor.visibility = View.VISIBLE
-                            binding.encuentraunobyn.visibility = View.GONE
+                            binding.encuentraUnoByn.visibility = View.GONE
                         }
                         if (user.encontradoDiez) {
                             binding.encuentraDiezColor.visibility = View.VISIBLE
-                            binding.encuentradiezbyn.visibility = View.GONE
+                            binding.encuentraDiezByn.visibility = View.GONE
                         }
                         if(user.medallasBuenas > 0 || user.medallasMalas > 0 ){
-                            binding.recibemedallabyn.visibility = View.GONE
-                            binding.recibemedallacolor.visibility =  View.VISIBLE
+                            binding.recibeMedallaByn.visibility = View.GONE
+                            binding.recibeMedallaColor.visibility =  View.VISIBLE
                         }
                         if(user.darMedallas ==true){
-                            binding.darmedallabyn.visibility = View.GONE
-                            binding.darmedallacolor.visibility = View.VISIBLE
+                            binding.darMedallaByn.visibility = View.GONE
+                            binding.darMedallaColor.visibility = View.VISIBLE
                         }
                         db.collection("Usuarios")
                             .document(Firebase.auth.currentUser!!.email.toString())
@@ -85,12 +85,12 @@ class LogrosActivityFragment : Fragment(R.layout.fragment_logros_activity) {
                                         }
                                     }
                                     if (contador > 0) {
-                                        binding.chatunobyn.visibility = View.GONE
-                                        binding.chatunocolor.visibility = View.VISIBLE
+                                        binding.chatUnoByn.visibility = View.GONE
+                                        binding.chatUnoColor.visibility = View.VISIBLE
                                     }
                                     if (contador > 9) {
-                                        binding.chatdiezbyn.visibility = View.GONE
-                                        binding.chatdiezcolor.visibility = View.VISIBLE
+                                        binding.chatDiezByn.visibility = View.GONE
+                                        binding.chatDiezColor.visibility = View.VISIBLE
                                     }
                                 }
                             }
